@@ -241,11 +241,6 @@ class LeeSigmaFilter:
             self.first_start = False
             self.dlg = LeeSigmaFilterDialog()
             self.dlg.pb_output.clicked.connect(self.openOutputPath)
-
-        layers = QgsProject.instance().layerTreeRoot().children()
-        self.dlg.cb_input_s.clear()
-        self.dlg.cb_input_s.addItems([layer.name() for layer in layers])
-
         
         self.dlg.le_output_s.clear()
 
@@ -275,10 +270,10 @@ class LeeSigmaFilter:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            selected_layer = layers[self.dlg.cb_input_s.currentIndex()]
-            self.arguments['-i'] = selected_layer.layer().dataProvider().dataSourceUri()
-            self.arguments["-c"] = str(selected_layer.layer().width())
-            self.arguments["-r"] = str(selected_layer.layer().height())
+            selected_layer = self.dlg.mcb_input.currentLayer()
+            self.arguments['-i'] = selected_layer.dataProvider().dataSourceUri()
+            self.arguments["-c"] = str(selected_layer.width())
+            self.arguments["-r"] = str(selected_layer.height())
             kernelsize = 5 + 2*self.dlg.cb_kernelsize_s.currentIndex() #currently hardcoved. #TODO - change
             self.arguments["-k"] = str(kernelsize)
 

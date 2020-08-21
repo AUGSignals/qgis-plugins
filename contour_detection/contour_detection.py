@@ -27,7 +27,7 @@ import os
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QMenu, QFileDialog
-from qgis.core import QgsMessageLog, Qgis, QgsProject
+from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLayer
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -222,8 +222,18 @@ class ContourDetection:
             self.iface.removeToolBarIcon(action)
 
     def openOutputPath(self):
-        filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", "", ".img")
-        self.dlg.le_output.setText(filepath[0])
+        layer_paths = [layer.source() for layer in QgsProject.instance().mapLayers().values()]
+        directory_path = os.path.dirname(layer_paths[0])
+        filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", directory_path, ".img")
+        self.dlg.le_output_s.setText(filepath[0] + filepath[1])
+
+    def display_bands(self):
+        curr_layer = self.dlg.mcb_input.currentLayer()
+        if curr_layer.type() == QgsMapLayer.RasterLayer:
+            self.dlg.rcb_band.setEnabled(True)
+            self.dlg.rcb_band.setLayer(curr_layer)
+        else:
+            self.dlg.rcb_band.setDisabled(True)
 
 
     def run(self):
@@ -234,13 +244,11 @@ class ContourDetection:
         if self.first_start == True:
             self.first_start = False
             self.dlg = ContourDetectionDialog()
-
-        layers = QgsProject.instance().layerTreeRoot().children()
-        self.dlg.cb_input.clear()
-        self.dlg.cb_input.addItems([layer.name() for layer in layers])
+            self.dlg.pb_output.clicked.connect(self.openOutputPath)
+            self.dlg.mcb_input.layerChanged.connect(self.display_bands)
+            self.dlg.rcb_band.setLayer(self.dlg.mcb_input.currentLayer())
 
         self.dlg.le_output.clear()
-        self.dlg.pb_output.clicked.connect(self.openOutputPath)
 
         # show the dialog
         self.dlg.show()
@@ -248,10 +256,10 @@ class ContourDetection:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            self.arguments['-i'] = selected_layer.layer().dataProvider().dataSourceUri()
+            self.arguments['-i'] = self.dlg.mcb_input.currentLayer().dataProvider().dataSourceUri()
             self.arguments["-o"] = self.dlg.le_output.text()
 
-            self.arguments["-b"] = self.dlg.le_band.text()
+            self.arguments["-b"] = self.dlg.rcb_band.currentBand()
             self.arguments["-c"] = self.dlg.le_small.text()
             self.arguments["-t"] = self.dlg.le_threshold.text()
 
@@ -270,5 +278,8 @@ class ContourDetection:
             popen = subprocess.Popen(args, stdout=subprocess.PIPE)
             popen.wait()
             output = popen.stdout.read()
+            rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
+            if not rlayer.isValid():
+                print("Layer failed to load!")
 
 
