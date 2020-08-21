@@ -4,12 +4,12 @@
 
 # QGIS Plugin Stuff
 help/
-scripts/
+#scripts/
 test/
 .noseids
-pb_tool.cfg
+#pb_tool.cfg
 pylintrc
-resources_rc.py
+#resources_rc.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
