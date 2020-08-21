@@ -225,7 +225,7 @@ class ContourDetection:
         layer_paths = [layer.source() for layer in QgsProject.instance().mapLayers().values()]
         directory_path = os.path.dirname(layer_paths[0])
         filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", directory_path, ".img")
-        self.dlg.le_output_s.setText(filepath[0] + filepath[1])
+        self.dlg.le_output.setText(filepath[0] + filepath[1])
 
     def display_bands(self):
         curr_layer = self.dlg.mcb_input.currentLayer()

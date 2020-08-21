@@ -21,9 +21,13 @@
  *                                                                         *
  ***************************************************************************/
 """
+import subprocess
+import os
+
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction, QMenu
+from qgis.PyQt.QtWidgets import QAction, QMenu, QFileDialog
+from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLayer
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -218,6 +222,20 @@ class HuMoments:
                 action)
             self.iface.removeToolBarIcon(action)
 
+    def openOutputPath(self):
+        layer_paths = [layer.source() for layer in QgsProject.instance().mapLayers().values()]
+        directory_path = os.path.dirname(layer_paths[0])
+        filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", directory_path, ".img")
+        self.dlg.le_output.setText(filepath[0] + filepath[1])
+
+    def display_bands(self):
+        curr_layer = self.dlg.mcb_input.currentLayer()
+        if curr_layer.type() == QgsMapLayer.RasterLayer:
+            self.dlg.rcb_band.setEnabled(True)
+            self.dlg.rcb_band.setLayer(curr_layer)
+        else:
+            self.dlg.rcb_band.setDisabled(True)
+
 
     def run(self):
         """Run method that performs all the real work"""
@@ -227,6 +245,11 @@ class HuMoments:
         if self.first_start == True:
             self.first_start = False
             self.dlg = HuMomentsDialog()
+            self.dlg.pb_output.clicked.connect(self.openOutputPath)
+            self.dlg.mcb_input.layerChanged.connect(self.display_bands)
+            self.dlg.rcb_band.setLayer(self.dlg.mcb_input.currentLayer())
+
+        self.dlg.le_output.clear()
 
         # show the dialog
         self.dlg.show()
@@ -234,6 +257,27 @@ class HuMoments:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
-            pass
+            self.arguments['-i'] = self.dlg.mcb_input.currentLayer().dataProvider().dataSourceUri()
+            self.arguments["-o"] = self.dlg.le_output.text()
+
+            self.arguments["-b"] = str(self.dlg.rcb_band.currentBand())
+            self.arguments["-n"] = self.dlg.le_numBins.text()
+
+            self.arguments["-v"] = self.dlg.check_verbose.isChecked()
+
+            args = []
+            for key, value in self.arguments.items():
+                if (value == None):
+                    args.append(key)
+                else:
+                    args.append(key)
+                    args.append(value)
+            args.insert(0, "C:\\Users\\TomasBL\\Documents\\AUG\\bin\\HuMoments.exe")
+            QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
+            QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
+            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+            popen.wait()
+            output = popen.stdout.read()
+            rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
+            if not rlayer.isValid():
+                print("Layer failed to load!")
