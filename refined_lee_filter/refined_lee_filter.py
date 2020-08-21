@@ -26,8 +26,8 @@ import os
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction, QMenu
-from qgis.core import QgsMessageLog, Qgis, QgsProject
+from qgis.PyQt.QtWidgets import QAction, QMenu, QFileDialog
+from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLayer
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -222,6 +222,12 @@ class RefinedLeeFilter:
                 action)
             self.iface.removeToolBarIcon(action)
 
+    def openOutputPath(self):
+        layer_paths = [layer.source() for layer in QgsProject.instance().mapLayers().values()]
+        directory_path = os.path.dirname(layer_paths[0])
+        filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", directory_path, ".img")
+        self.dlg.le_output.setText(filepath[0] + filepath[1])
+
 
     def run(self):
         """Run method that performs all the real work"""
@@ -231,10 +237,8 @@ class RefinedLeeFilter:
         if self.first_start == True:
             self.first_start = False
             self.dlg = RefinedLeeFilterDialog()
+            self.dlg.pb_output.clicked.connect(self.openOutputPath)
 
-        layers = QgsProject.instance().layerTreeRoot().children()
-        self.dlg.cb_input.clear()
-        self.dlg.cb_input.addItems([layer.name() for layer in layers])
 
         self.arguments = {}
 
@@ -244,8 +248,7 @@ class RefinedLeeFilter:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            selected_layer = layers[self.dlg.cb_input.currentIndex()]
-            self.arguments['-i'] = selected_layer.layer().dataProvider().dataSourceUri()
+            self.arguments['-i'] = self.dlg.mcb_input.currentLayer().dataProvider().dataSourceUri()
             self.arguments["-c"] = str(selected_layer.layer().width())
             self.arguments["-r"] = str(selected_layer.layer().height())
             self.arguments["-o"] = self.dlg.le_output.text()
@@ -265,6 +268,7 @@ class RefinedLeeFilter:
             popen.wait()
             output = popen.stdout.read()
             print(output)
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
-            pass
+            rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
+            if not rlayer.isValid():
+                print("Layer failed to load!")
+            print(output)
