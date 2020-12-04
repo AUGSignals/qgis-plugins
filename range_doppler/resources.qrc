@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/range_doppler" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
