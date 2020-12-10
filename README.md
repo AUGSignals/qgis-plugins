@@ -1,2 +1,2 @@
 # qgis-plugins
-A collection of gui's based on qgis platform
+A collection of GUIs based on qgis platform
