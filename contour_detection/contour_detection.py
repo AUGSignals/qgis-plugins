@@ -222,7 +222,7 @@ class ContourDetection:
             self.iface.removeToolBarIcon(action)
 
     def display_bands(self):
-        curr_layer = self.dlg.mcb_input.currentLayer()
+        curr_layer = self.dlg.inputQgsMapLayerComboBox.currentLayer()
         if curr_layer.type() == QgsMapLayer.RasterLayer:
             self.dlg.bandIndexQgsRasterBandComboBox.setEnabled(True)
             self.dlg.bandIndexQgsRasterBandComboBox.setLayer(curr_layer)
