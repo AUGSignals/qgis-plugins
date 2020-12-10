@@ -231,20 +231,13 @@ class FourierTransform:
 
         #self.menu.deleteLater()
 
-    def openOutputPath(self):
-        layer_paths = [layer.source() for layer in QgsProject.instance().mapLayers().values()]
-        directory_path = os.path.dirname(layer_paths[0])
-        filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", directory_path, self.tr("ENVI image (*.img);; Tiff (*.tif *.tiff *.gtif);; All Files (*.*)"))
-        if filepath:
-            self.dlg.le_output.setText(filepath[0])
-
     def display_bands(self):
-        curr_layer = self.dlg.mcb_input.currentLayer()
+        curr_layer = self.dlg.inputQgsMapLayerComboBox.currentLayer()
         if curr_layer.type() == QgsMapLayer.RasterLayer:
-            self.dlg.rcb_band.setEnabled(True)
-            self.dlg.rcb_band.setLayer(curr_layer)
+            self.dlg.bandIndexQgsRasterBandComboBox.setEnabled(True)
+            self.dlg.bandIndexQgsRasterBandComboBox.setLayer(curr_layer)
         else:
-            self.dlg.rcb_band.setDisabled(True)
+            self.dlg.bandIndexQgsRasterBandComboBox.setDisabled(True)
 
 
     def run(self):
@@ -255,9 +248,8 @@ class FourierTransform:
         if self.first_start == True:
             self.first_start = False
             self.dlg = FourierTransformDialog()
-            self.dlg.pb_output.clicked.connect(self.openOutputPath)
-            self.dlg.mcb_input.layerChanged.connect(self.display_bands)
-            self.dlg.rcb_band.setLayer(self.dlg.mcb_input.currentLayer())
+            self.dlg.inputQgsMapLayerComboBox.layerChanged.connect(self.display_bands)
+            self.dlg.bandIndexQgsRasterBandComboBox.setLayer(self.dlg.inputQgsMapLayerComboBox.currentLayer())
 
         self.arguments = {}
         # show the dialog
@@ -266,16 +258,16 @@ class FourierTransform:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            self.arguments['-i'] = self.dlg.mcb_input.currentLayer().dataProvider().dataSourceUri()
-            self.arguments["-o"] = self.dlg.le_output.text()
+            self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
+            self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
 
-            self.arguments["-b"] = str(self.dlg.rcb_band.currentBand())
-            self.arguments["-c"] = self.dlg.le_column.text()
-            self.arguments["-r"] = self.dlg.le_row.text()
-            self.arguments["-l"] = self.dlg.le_windowheight.text()
-            self.arguments["-s"] = self.dlg.le_windowwidth.text()
+            self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
+            self.arguments["-c"] = str(self.dlg.columnIndexSpinBox.text())
+            self.arguments["-r"] = str(self.dlg.rowIndexSpinBox.text())
+            self.arguments["-l"] = str(self.dlg.windowHeightSpinBox.text())
+            self.arguments["-s"] = str(self.dlg.windowWidthSpinBox.text())
 
-            self.arguments["-v"] = self.dlg.check_verbose.isChecked()
+            self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
             args = []
             for key, value in self.arguments.items():
@@ -297,7 +289,7 @@ class FourierTransform:
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             popen = subprocess.Popen(args)
             popen.wait()
-            output_path = self.dlg.le_output.text()
+            output_path = self.dlg.outputQgsFileWidget.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
             if not rlayer.isValid():
                 QgsMessageLog.logMessage("Layer failed to load!", 'MyPlugin', Qgis.Info)

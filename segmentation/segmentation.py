@@ -27,7 +27,7 @@ import os
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QMenu, QFileDialog
-from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer
+from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLayer
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -221,34 +221,13 @@ class Segmentation:
                 action)
             self.iface.removeToolBarIcon(action)
 
-    def openOutputPath(self):
-        layer_paths = [layer.source() for layer in QgsProject.instance().mapLayers().values()]
-        directory_path = os.path.dirname(layer_paths[0])
-        filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", directory_path, self.tr("ENVI image (*.img);; Tiff (*.tif *.tiff *.gtif);; All Files (*.*)"))
-        if filepath:
-            self.dlg.le_output.setText(filepath[0])
-    
-    def openTempPath(self):
-        layer_paths = [layer.source() for layer in QgsProject.instance().mapLayers().values()]
-        directory_path = os.path.dirname(layer_paths[0])
-        filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", directory_path, self.tr("ENVI image (*.img);; Tiff (*.tif *.tiff *.gtif);; All Files (*.*)"))
-        if filepath:
-            self.dlg.le_temp_output.setText(filepath[0])
-        
-    def openPDFPath(self):
-        layer_paths = [layer.source() for layer in QgsProject.instance().mapLayers().values()]
-        directory_path = os.path.dirname(layer_paths[0])
-        filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", directory_path, self.tr("PDF Files (*.pdf)"))
-        if filepath:
-            self.dlg.le_pdf.setText(filepath[0])
-
     def display_bands(self):
-        curr_layer = self.dlg.mcb_input.currentLayer()
+        curr_layer = self.dlg.inputQgsMapLayerComboBox.currentLayer()
         if curr_layer.type() == QgsMapLayer.RasterLayer:
-            self.dlg.rcb_band.setEnabled(True)
-            self.dlg.rcb_band.setLayer(curr_layer)
+            self.dlg.bandQgsRasterBandComboBox.setEnabled(True)
+            self.dlg.bandQgsRasterBandComboBox.setLayer(curr_layer)
         else:
-            self.dlg.rcb_band.setDisabled(True)
+            self.dlg.bandQgsRasterBandComboBox.setDisabled(True)
 
 
     def run(self):
@@ -259,13 +238,8 @@ class Segmentation:
         if self.first_start == True:
             self.first_start = False
             self.dlg = SegmentationDialog()
-            self.dlg.pb_output.clicked.connect(self.openOutputPath)
-            self.dlg.pb_temp_output.clicked.connect(self.openTempPath)
-            self.dlg.pb_pdf.clicked.connect(self.openPDFPath)
-            self.dlg.mcb_input.layerChanged.connect(self.display_bands)
-            self.dlg.rcb_band.setLayer(self.dlg.mcb_input.currentLayer())
-
-        self.dlg.le_output.clear()
+            self.dlg.inputQgsMapLayerComboBox.layerChanged.connect(self.display_bands)
+            self.dlg.bandQgsRasterBandComboBox.setLayer(self.dlg.inputQgsMapLayerComboBox.currentLayer())
 
         self.arguments = {}
         # show the dialog
@@ -274,16 +248,16 @@ class Segmentation:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            self.arguments['-i'] = self.dlg.mcb_input.currentLayer().dataProvider().dataSourceUri()
-            self.arguments["-o"] = self.dlg.le_output.text()
+            self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
+            self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
 
-            self.arguments["-b"] = str(self.dlg.rcb_band.currentBand())
-            self.arguments["-t"] = self.dlg.le_threshold.text()
-            self.arguments["-k"] = self.dlg.le_kernelsize.text()
-            self.arguments["-p"] = self.dlg.le_pdf.text()
-            self.arguments["-f"] = self.dlg.le_temp_output.text()
+            self.arguments["-b"] = str(self.dlg.bandQgsRasterBandComboBox.currentBand())
+            self.arguments["-t"] = str(self.dlg.thresholdDoubleSpinBox.text())
+            self.arguments["-k"] = str(self.dlg.kernelSizeSpinBox_2.text())
+            self.arguments["-p"] = self.dlg.pDFFilenameQgsFileWidget.filePath()
+            self.arguments["-f"] = self.dlg.tempOutputQgsFileWidget.filePath()
 
-            self.arguments["-v"] = self.dlg.check_verbose.isChecked()
+            self.arguments["-v"] = self.dlg.verboseCheckBox_2.isChecked()
 
             args = []
             for key, value in self.arguments.items():
@@ -305,7 +279,7 @@ class Segmentation:
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             popen = subprocess.Popen(args)
             popen.wait()
-            output_path = self.dlg.le_output.text()
+            output_path = self.dlg.outputQgsFileWidget.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
             if not rlayer.isValid():
                 QgsMessageLog.logMessage("Layer failed to load!", 'MyPlugin', Qgis.Info)

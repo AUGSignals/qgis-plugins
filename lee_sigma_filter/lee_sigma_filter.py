@@ -225,15 +225,6 @@ class LeeSigmaFilter:
             self.iface.removeToolBarIcon(action)
         """
 
-    def openOutputPath(self):
-        layer_paths = [layer.source() for layer in QgsProject.instance().mapLayers().values()]
-        directory_path = os.path.dirname(layer_paths[0])
-        filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", directory_path, self.tr("ENVI image (*.img);; Tiff (*.tif *.tiff *.gtif);; All Files (*.*)"))
-        # self.dlg.le_output.setText(filepath[0] + filepath[1])
-        if filepath:
-            self.dlg.le_output_s.setText(filepath[0])
-
-
     def run(self):
         """Run method that performs all the real work"""
 
@@ -242,29 +233,24 @@ class LeeSigmaFilter:
         if self.first_start == True:
             self.first_start = False
             self.dlg = LeeSigmaFilterDialog()
-            self.dlg.pb_output.clicked.connect(self.openOutputPath)
-        
-        self.dlg.le_output_s.clear()
-
 
         kernelsizes = ["5x5", "7x7", "9x9", "11x11", "13x13", "15x15", "17x17"]
-        self.dlg.cb_kernelsize_s.clear()
-        self.dlg.cb_kernelsize_s.addItems(kernelsizes)
+        self.dlg.kernelSizeComboBox.clear()
+        self.dlg.kernelSizeComboBox.addItems(kernelsizes)
 
         sigmas = ["0.5", "0.6", "0.7", "0.8", "0.9"]
-        self.dlg.cb_sigma_s.clear()
-        self.dlg.cb_sigma_s.addItems(sigmas)
+        self.dlg.sigmaComboBox.clear()
+        self.dlg.sigmaComboBox.addItems(sigmas)
 
         targets = ["3x3", "5x5"]
-        self.dlg.cb_target_s.clear()
-        self.dlg.cb_target_s.addItems(targets)
+        self.dlg.targetWindowSizeComboBox.clear()
+        self.dlg.targetWindowSizeComboBox.addItems(targets)
 
         looks = ["1", "2", "3", "4"]
-        self.dlg.cb_numlooks_s.clear()
-        self.dlg.cb_numlooks_s.addItems(looks)
+        self.dlg.numLooksComboBox.clear()
+        self.dlg.numLooksComboBox.addItems(looks)
 
         self.arguments = {}
-
 
         # show the dialog
         self.dlg.show()
@@ -272,21 +258,21 @@ class LeeSigmaFilter:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            selected_layer = self.dlg.mcb_input.currentLayer()
+            selected_layer = self.dlg.inputQgsMapLayerComboBox.currentLayer()
             self.arguments['-i'] = selected_layer.dataProvider().dataSourceUri()
             self.arguments["-c"] = str(selected_layer.width())
             self.arguments["-r"] = str(selected_layer.height())
-            kernelsize = 5 + 2*self.dlg.cb_kernelsize_s.currentIndex() #currently hardcoved. #TODO - change
+            kernelsize = 5 + 2*self.dlg.kernelSizeComboBox.currentIndex() #currently hardcoved. #TODO - change
             self.arguments["-k"] = str(kernelsize)
 
-            self.arguments["-n"] = looks[self.dlg.cb_numlooks_s.currentIndex()]
-            self.arguments["-o"] = self.dlg.le_output_s.text()
-            output_path = self.dlg.le_output_s.text()
+            self.arguments["-n"] = looks[self.dlg.numLooksComboBox.currentIndex()]
+            self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
+            output_path = self.dlg.outputQgsFileWidget.filePath()
 
-            target = targets[self.dlg.cb_target_s.currentIndex()]
+            target = targets[self.dlg.targetWindowSizeComboBox.currentIndex()]
             self.arguments["-t"] = target
 
-            self.arguments["-s"] = sigmas[self.dlg.cb_sigma_s.currentIndex()]
+            self.arguments["-s"] = sigmas[self.dlg.sigmaComboBox.currentIndex()]
             
             #self.arguments["-v"] = None
 
@@ -307,10 +293,8 @@ class LeeSigmaFilter:
             QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             print(args)
-            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+            popen = subprocess.Popen(args)
             popen.wait()
-            output = popen.stdout.read()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
             if not rlayer.isValid():
                 print("Layer failed to load!")
-            print(output)
