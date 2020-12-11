@@ -21,9 +21,13 @@
  *                                                                         *
  ***************************************************************************/
 """
+import subprocess
+import os
+
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QWidget, QMenu
+from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLayer
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -254,12 +258,65 @@ class ImageRegistration:
         self.dlg.scalingList.clear()
         self.dlg.featureImageList.clear()
 
+        self.arguments = {}
+
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
-            pass
+            self.arguments['-t'] = str(self.dlg.transformationTypeComboBox.currentIndex())
+            self.arguments['-b'] = str(self.dlg.bandSpinBox.text())
+            self.arguments['-d'] = self.dlg.downsampleInputImageCheckBox.isChecked()
+            self.arguments['-k'] = str(self.dlg.windowSizeSpinBox.text())
+            self.arguments['-r'] = str(self.dlg.interpolationMethodComboBox.currentIndex())
+            self.arguments['-m'] = str(self.dlg.searchMethodComboBox.currentIndex())
+            self.arguments['-n'] = str(self.dlg.similarityMetricsComboBox.currentIndex())
+            self.arguments['-p'] = str(self.dlg.borderPaddingValueDoubleSpinBox.text())
+            self.arguments['-c'] = str(self.dlg.scaleIncrementValueQDoubleSpinBox.text())
+            self.arguments['-a'] = str(self.dlg.rotationIncrementValueDoubleSpinBox.text())
+            self.arguments['-rf'] = str(self.dlg.lowerRotationFactorBoundDoubleSpinBox.text()) + ',' + str(self.dlg.upperRotationFactorBoundDoubleSpinBox.text())
+            logFilePath = self.dlg.logFileQgsFileWidget.filePath()
+            backslashPos = logFilePath.rfind('\\')
+            self.arguments['-l'] = logFilePath[:backslashPos] + ',' + logFilePath[backslashPos + 1:]
+            self.arguments['-i'] = self.dlg.originalReferenceImageQgsFileWidget.filePath() + ',' + self.dlg.originalWarpImageQgsFileWidget.filePath()
+
+            outputFiles = self.dlg.outputDirectoryQgsFileWidget.filePath() + '\\'
+            outputFiles += ',' + self.dlg.referenceUnionLineEdit.text()
+            outputFiles += ',' + self.dlg.warpUnionLineEdit.text()
+            outputFiles += ',' + self.dlg.warpIntersectLineEdit.text()
+            outputFiles += ',' + self.dlg.trasformationMatrixLineEdit.text()
+            outputFiles += ',' + self.dlg.finalControlPointsLineEdit.text()
+            self.arguments['-o'] = outputFiles
+
+            args = []
+            for key, value in self.arguments.items():
+                if(value == False):
+                    continue
+                if (value == True):
+                    args.append(key)
+                else:
+                    args.append(key)
+                    args.append(value)
+            
+            for scaling in self.scalingPairs:
+                args.append('-s')
+                args.append(str(scaling[0]) + ',' + str(scaling[1]))
+
+            for featureImage in self.featureImagePairs:
+                args.append('-f')
+                args.append(str(featureImage[0]) + ',' + str(featureImage[1]))
+
+            print(args)
+
+            s = QSettings()
+            path = s.value("qgis-exe/path")
+            exeName = "Registration.exe"
+            path = path + "/" + exeName
+            args.insert(0, path)
+            
+            QgsMessageLog.logMessage("Your plugin has been executed correctly", 'MyPlugin', Qgis.Info)
+            QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
+            popen = subprocess.Popen(args)
+            popen.wait()
