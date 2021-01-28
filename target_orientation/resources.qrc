@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/target_orientation" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
