@@ -170,7 +170,11 @@ class ClassifierTrainer:
         self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
                                     "Classifier Trainer",
                                     self.iface.mainWindow())
+<<<<<<< HEAD
         self.action.setObjectName("Classifier Trainer")
+=======
+        self.action.setObjectNa me("Classifier Trainer")
+>>>>>>> fa4f5e9e3d4874ed8ebce653e8322163753d1324
         self.action.setWhatsThis("Configuration for test plugin")
         self.action.setStatusTip("This is status tip")
         self.action.triggered.connect(self.run)

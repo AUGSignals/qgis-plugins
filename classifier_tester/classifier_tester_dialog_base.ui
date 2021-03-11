@@ -99,6 +99,7 @@
         </property>
        </widget>
       </item>
+<<<<<<< HEAD
       <item row="3" column="1">
        <widget class="QSpinBox" name="algorithmSpinBox"/>
       </item>
@@ -106,11 +107,54 @@
        <widget class="QLabel" name="label_2">
         <property name="text">
          <string>knn</string>
+=======
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Knn Num Neighbours (optional)</string>
+>>>>>>> fa4f5e9e3d4874ed8ebce653e8322163753d1324
         </property>
        </widget>
       </item>
       <item row="4" column="1">
+<<<<<<< HEAD
        <widget class="QSpinBox" name="knnNumSpinBox"/>
+=======
+       <widget class="QSpinBox" name="knnNumSpinBox">
+        <property name="value">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="comboBox">
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+       </widget>
+>>>>>>> fa4f5e9e3d4874ed8ebce653e8322163753d1324
       </item>
      </layout>
     </widget>

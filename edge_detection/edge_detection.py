@@ -281,7 +281,11 @@ class EdgeDetection:
             QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             my_env = {}
+<<<<<<< HEAD
             my_env['PATH'] = 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\MATLAB\\R2019b\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\Program Files\\TortoiseHg\\;C:\\GDAL-3.0.4\\lib;C:\\OSGeo4W\\bin;C:\\sqlite;C:\\Windows\\system32\\config\\systemprofile\\.dnx\\bin;C:\\Program Files\\Microsoft DNX\\Dnvm\\;C:\\Program Files (x86)\\Windows Kits\\8.1\\\\Windows Performance Toolkit\\;C;C:\\ProgramData\\chocolatey\\bin;C:\\HDF5-1.12.0\\bin\\;C:\\Users\\AUG\\AppData\\Local\\Programs\\Python\\Python38\\Scripts\\;C:\\Users\\AUG\\AppData\\Local\\Programs\\Python\\Python38\\;C:\\Users\\AUG\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\AUG\\AppData\\Local\\Microsoft\\WindowsApps;C:\\OpenCV\\OpenCV-4.2\\bin;C:\\Program Files (x86)\\Graphviz2.38\\bin;'
+=======
+            my_env['PATH'] = 'C:\\OSGeo4W\\bin;C:\\GDAL-3.0.4\\lib;C:\\Program Files\\HDF_Group\\HDF5\\1.12.0\\bin;'
+>>>>>>> fa4f5e9e3d4874ed8ebce653e8322163753d1324
             popen = subprocess.Popen(args, stdout=subprocess.PIPE, env=my_env)
             popen.wait()
             out, err = popen.communicate()
