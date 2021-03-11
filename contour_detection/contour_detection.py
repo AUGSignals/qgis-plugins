@@ -272,10 +272,11 @@ class ContourDetection:
             exeName = "ContourDetection.exe"
             path = path + "/" + exeName
             args.insert(0, path)
+            args.append('/k')
             
             QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
-            popen = subprocess.Popen(args)
+            popen = subprocess.Popen(args, shell=True)
             popen.wait()
             output_path = self.dlg.outputQgsFileWidget.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
