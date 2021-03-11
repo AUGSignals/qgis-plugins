@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/model_based_cfar" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>

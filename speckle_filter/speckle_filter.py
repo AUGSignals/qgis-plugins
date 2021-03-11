@@ -281,7 +281,8 @@ class SpeckleFilter:
                 else:
                     args.append(key)
                     args.append(value)
-
+            
+            args.extend(["-b", "1"])
             s = QSettings()
             path = s.value("qgis-exe/path")
             exeName = "Lee.exe"
@@ -291,7 +292,9 @@ class SpeckleFilter:
             QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             print(args)
-            popen = subprocess.Popen(args)
+            my_env = {}
+            my_env['PATH'] = 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\MATLAB\\R2019b\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\Program Files\\TortoiseHg\\;C:\\GDAL-3.0.4\\lib;C:\\OSGeo4W\\bin;C:\\sqlite;C:\\Windows\\system32\\config\\systemprofile\\.dnx\\bin;C:\\Program Files\\Microsoft DNX\\Dnvm\\;C:\\Program Files (x86)\\Windows Kits\\8.1\\\\Windows Performance Toolkit\\;C;C:\\ProgramData\\chocolatey\\bin;C:\\HDF5-1.12.0\\bin\\;C:\\Users\\AUG\\AppData\\Local\\Programs\\Python\\Python38\\Scripts\\;C:\\Users\\AUG\\AppData\\Local\\Programs\\Python\\Python38\\;C:\\Users\\AUG\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\AUG\\AppData\\Local\\Microsoft\\WindowsApps;C:\\OpenCV\\OpenCV-4.2\\bin;C:\\Program Files (x86)\\Graphviz2.38\\bin;'
+            popen = subprocess.Popen(args, env=my_env)
             popen.wait()
             output_path = self.dlg.outputQgsFileWidget.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
