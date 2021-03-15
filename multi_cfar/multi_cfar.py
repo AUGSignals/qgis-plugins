@@ -157,17 +157,6 @@ class MultiCFAR:
 
         return action
 
-<<<<<<< HEAD
-    def initGui(self):
-        """Create the menu entries and toolbar icons inside the QGIS GUI."""
-
-        icon_path = ':/plugins/multi_cfar/icon.png'
-        self.add_action(
-            icon_path,
-            text=self.tr(u''),
-            callback=self.run,
-            parent=self.iface.mainWindow())
-=======
     def addToCustomMenu(self):
         self.menu = self.iface.mainWindow().findChild(QMenu, '&AUG Plugins')
         if not self.menu:
@@ -206,7 +195,6 @@ class MultiCFAR:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
         addToCustomMenu()
->>>>>>> fa4f5e9e3d4874ed8ebce653e8322163753d1324
 
         # will be set False in run()
         self.first_start = True

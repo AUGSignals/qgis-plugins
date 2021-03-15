@@ -92,18 +92,18 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QDoubleSpinBox" name="algorithmDoubleSpinBox"/>
-      </item>
       <item row="3" column="0">
        <widget class="QLabel" name="kernelTypeLabel">
         <property name="text">
-         <string>SVM Kernel Type</string>
+         <string>SVMKernel Type (optional)</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
        <widget class="QComboBox" name="kernelComboBox">
+        <property name="statusTip">
+         <string extracomment="This is the test comment">This is a test status tip. Shows what can be done.</string>
+        </property>
         <item>
          <property name="text">
           <string>Linear</string>
@@ -139,20 +139,23 @@
       <item row="4" column="0">
        <widget class="QLabel" name="autoTrainSizeLabel">
         <property name="text">
-         <string>AutoTrainSize</string>
+         <string>SVMAutoTrain Flag (optional)</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
        <widget class="QComboBox" name="autoTrainSizeComboBox">
+        <property name="statusTip">
+         <string>This is a test of the status tip info popup</string>
+        </property>
         <item>
          <property name="text">
-          <string>Enabled</string>
+          <string>Disabled</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Disabled</string>
+          <string>Enabled</string>
          </property>
         </item>
        </widget>
@@ -168,6 +171,11 @@
        <widget class="QComboBox" name="adaboostTypeComboBox">
         <item>
          <property name="text">
+          <string>Gentle</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>Discrete</string>
          </property>
         </item>
@@ -181,9 +189,38 @@
           <string>Logit</string>
          </property>
         </item>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="comboBox">
         <item>
          <property name="text">
-          <string>Gentle</string>
+          <string>1 - Knn (No model)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2 - SVM One Vs Else</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3 - SVM Pairwise</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4 - Adaboost One Vs Else</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5 - Adaboost Pairwise</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6 - SVM Pairwise (AUG Version)</string>
          </property>
         </item>
        </widget>
