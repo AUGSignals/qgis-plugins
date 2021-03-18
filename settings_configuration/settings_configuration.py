@@ -158,11 +158,11 @@ class SettingsConfiguration:
         return action
 
     def addToCustomMenu(self):
-        self.menu = self.iface.mainWindow().findChild(QMenu, '&AUG Plugins')
+        self.menu = self.iface.mainWindow().findChild(QMenu, '&AUG Settings')
         if not self.menu:
             self.menu = QMenu(self.iface.mainWindow())
-            self.menu.setObjectName('&AUG Plugins')
-            self.menu.setTitle('&AUG Plugins')
+            self.menu.setObjectName('&AUG Settings')
+            self.menu.setTitle('&AUG Settings')
         self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
                                     "Settings",
                                     self.iface.mainWindow())

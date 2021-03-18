@@ -162,11 +162,11 @@ class HuMoments:
         return action
 
     def addToCustomMenu(self):
-        self.menu = self.iface.mainWindow().findChild(QMenu, '&AUG Plugins')
+        self.menu = self.iface.mainWindow().findChild(QMenu, '&Image Registration')
         if not self.menu:
             self.menu = QMenu(self.iface.mainWindow())
-            self.menu.setObjectName('&AUG Plugins')
-            self.menu.setTitle('&AUG Plugins')
+            self.menu.setObjectName('&Image Registration')
+            self.menu.setTitle('&Image Registration')
         self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
                                     "Hu Moments",
                                     self.iface.mainWindow())

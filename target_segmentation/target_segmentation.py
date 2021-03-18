@@ -162,11 +162,11 @@ class TargetSegmentation:
         return action
 
     def addToCustomMenu(self):
-        self.menu = self.iface.mainWindow().findChild(QMenu, '&AUG Plugins')
+        self.menu = self.iface.mainWindow().findChild(QMenu, '&ATDR')
         if not self.menu:
             self.menu = QMenu(self.iface.mainWindow())
-            self.menu.setObjectName('&AUG Plugins')
-            self.menu.setTitle('&AUG Plugins')
+            self.menu.setObjectName('&ATDR')
+            self.menu.setTitle('&ATDR')
         self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
                                     "Target Segmentation",
                                     self.iface.mainWindow())
@@ -178,7 +178,7 @@ class TargetSegmentation:
         # Create list containing submenu actions from main menu
         submenus = []
         for item in self.menu.actions():
-            if item.text() == '&Feature Extraction':
+            if item.text() == '&Target Segmentation':
                 submenus.append(item.menu())
                 print(item)
 
@@ -186,9 +186,9 @@ class TargetSegmentation:
         if submenus:
             self.subMenu = submenus[0]
         if not submenus:
-            self.subMenu = self.menu.addMenu( '&Feature Extraction')
+            self.subMenu = self.menu.addMenu( '&Target Segmentation')
 
-        self.subMenu.setObjectName("&Feature Extraction")
+        self.subMenu.setObjectName("&Target Segmentation")
 
         self.subMenu.addAction(self.action)
 
