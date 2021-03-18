@@ -23,7 +23,8 @@
 """
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction
+from qgis.PyQt.QtWidgets import QAction, QMenu, QFileDialog
+from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLayer
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -158,11 +159,11 @@ class MultiCFAR:
         return action
 
     def addToCustomMenu(self):
-        self.menu = self.iface.mainWindow().findChild(QMenu, '&AUG Plugins')
+        self.menu = self.iface.mainWindow().findChild(QMenu, '&ATDR')
         if not self.menu:
             self.menu = QMenu(self.iface.mainWindow())
-            self.menu.setObjectName('&AUG Plugins')
-            self.menu.setTitle('&AUG Plugins')
+            self.menu.setObjectName('&ATDR')
+            self.menu.setTitle('&ATDR')
         self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
                                     "Multi CFAR",
                                     self.iface.mainWindow())
@@ -174,7 +175,7 @@ class MultiCFAR:
         # Create list containing submenu actions from main menu
         submenus = []
         for item in self.menu.actions():
-            if item.text() == '&Feature Extraction':
+            if item.text() == '&Target Detection':
                 submenus.append(item.menu())
                 print(item)
 
@@ -182,9 +183,9 @@ class MultiCFAR:
         if submenus:
             self.subMenu = submenus[0]
         if not submenus:
-            self.subMenu = self.menu.addMenu( '&CFAR')
+            self.subMenu = self.menu.addMenu( '&Target Detection')
 
-        self.subMenu.setObjectName("&CFAR")
+        self.subMenu.setObjectName("&Target Detection")
 
         self.subMenu.addAction(self.action)
 
@@ -194,7 +195,7 @@ class MultiCFAR:
     
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
-        addToCustomMenu()
+        self.addToCustomMenu()
 
         # will be set False in run()
         self.first_start = True
@@ -208,8 +209,6 @@ class MultiCFAR:
                 action)
             self.iface.removeToolBarIcon(action)
 
-<<<<<<< HEAD
-=======
     def display_bands(self):
         curr_layer = self.dlg.inputQgsMapLayerComboBox.currentLayer()
         if curr_layer.type() == QgsMapLayer.RasterLayer:
@@ -220,7 +219,6 @@ class MultiCFAR:
             self.dlg.inputQgsMapLayerComboBox.layerChanged.connect(self.display_bands)
             self.dlg.bandIndexQgsRasterBandComboBox.setLayer(self.dlg.inputQgsMapLayerComboBox.currentLayer())                        
 
->>>>>>> fa4f5e9e3d4874ed8ebce653e8322163753d1324
 
     def run(self):
         """Run method that performs all the real work"""
@@ -237,11 +235,6 @@ class MultiCFAR:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-<<<<<<< HEAD
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
-            pass
-=======
             self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
 
@@ -287,4 +280,3 @@ class MultiCFAR:
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
             if not rlayer.isValid():
                 QgsMessageLog.logMessage("Layer failed to load!", 'MyPlugin', Qgis.Info)
->>>>>>> fa4f5e9e3d4874ed8ebce653e8322163753d1324
