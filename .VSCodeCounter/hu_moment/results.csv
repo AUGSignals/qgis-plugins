@@ -1,0 +1,15 @@
+"filename", "language", "Python", "HTML", "TypeScript", "Properties", "Shell Script", "Makefile", "XML", "comment", "blank", "total"
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\Makefile", "Makefile", 0, 0, 0, 0, 0, 146, 0, 57, 42, 245
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\README.html", "HTML", 0, 40, 0, 0, 0, 0, 0, 0, 3, 43
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\__init__.py", "Python", 3, 0, 0, 0, 0, 0, 0, 31, 3, 37
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\hu_moment.py", "Python", 134, 0, 0, 0, 0, 0, 0, 109, 40, 283
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\hu_moment_dialog.py", "Python", 9, 0, 0, 0, 0, 0, 0, 30, 6, 45
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\hu_moment_dialog_base.ui.xml", "XML", 0, 0, 0, 0, 0, 0, 203, 0, 1, 204
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\i18n\af.ts", "TypeScript", 0, 0, 11, 0, 0, 0, 0, 0, 1, 12
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\pb_tool.cfg", "Properties", 0, 0, 0, 14, 0, 0, 0, 53, 14, 81
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\plugin_upload.py", "Python", 77, 0, 0, 0, 0, 0, 0, 22, 13, 112
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\resources.py", "Python", 112, 0, 0, 0, 0, 0, 0, 6, 11, 129
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\scripts\compile-strings.sh", "Shell Script", 0, 0, 0, 0, 7, 0, 0, 3, 3, 13
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\scripts\run-env-linux.sh", "Shell Script", 0, 0, 0, 0, 20, 0, 0, 1, 8, 29
+"c:\Users\AUG\Documents\qgis-plugins\hu_moment\scripts\update-strings.sh", "Shell Script", 0, 0, 0, 0, 41, 0, 0, 10, 6, 57
+"Total", "-", 335, 40, 11, 14, 68, 146, 203, 322, 151, 1290

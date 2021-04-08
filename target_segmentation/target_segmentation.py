@@ -40,13 +40,7 @@ class TargetSegmentation:
     """QGIS Plugin Implementation."""
 
     def __init__(self, iface):
-        """Constructor.
 
-        :param iface: An interface instance that will be passed to this class
-            which provides the hook by which you can manipulate the QGIS
-            application at run time.
-        :type iface: QgsInterface
-        """
         # Save reference to the QGIS interface
         self.iface = iface
         # initialize plugin directory
@@ -200,15 +194,6 @@ class TargetSegmentation:
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
         self.addToCustomMenu()
 
-        """
-        icon_path = ':/plugins/target_segmentation/icon.png'
-        self.add_action(
-            icon_path,
-            text=self.tr(u'Target Segmentation'),
-            callback=self.run,
-            parent=self.iface.mainWindow())
-        """
-
         # will be set False in run()
         self.first_start = True
 
@@ -239,10 +224,10 @@ class TargetSegmentation:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            self.arguments['-i'] = self.dlg.inputImageQgsFileWidget.filePath()
+            self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.filePath()
             self.arguments['-o'] = self.dlg.outputImageQgsFileWidget.filePath()
 
-            self.arguments['-b'] = str(self.dlg.bandIndexSpinBox.text())
+            self.arguments['-b'] = str(self.dlg.bandRasterBandComboBox.currentBand())
             self.arguments['-c'] = str(self.dlg.anchorWidthSpinBox.text())
             self.arguments['-r'] = str(self.dlg.anchorHeightSpinBox.text())
             self.arguments['-m'] = str(self.dlg.majorAxisSpinBox.text())
@@ -261,18 +246,17 @@ class TargetSegmentation:
                     args.append(key)
                     args.append(value)
 
-            # args.insert(0, "path", "%PATH%;C:\OpenCV\OpenCV-4.2\\bin")
 
             s = QSettings()
             path = s.value("qgis-exe/path")
             exeName = "targetSegmentation.exe"
             path = path + "/" + exeName
             args.insert(0, path)
-
-            QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
-            QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             popen = subprocess.Popen(args)
             popen.wait()
+            QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
+            QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
+
             output_path = self.dlg.outputQgsFileWidget.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
             if not rlayer.isValid():

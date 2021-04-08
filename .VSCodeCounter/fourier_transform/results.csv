@@ -1,0 +1,15 @@
+"filename", "language", "HTML", "Python", "Shell Script", "Makefile", "Properties", "XML", "TypeScript", "comment", "blank", "total"
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\Makefile", "Makefile", 0, 0, 0, 146, 0, 0, 0, 57, 42, 245
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\README.html", "HTML", 40, 0, 0, 0, 0, 0, 0, 0, 3, 43
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\__init__.py", "Python", 0, 3, 0, 0, 0, 0, 0, 31, 3, 37
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\fourier_transform.py", "Python", 0, 140, 0, 0, 0, 0, 0, 112, 45, 297
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\fourier_transform_dialog.py", "Python", 0, 9, 0, 0, 0, 0, 0, 30, 6, 45
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\fourier_transform_dialog_base.ui.xml", "XML", 0, 0, 0, 0, 0, 254, 0, 0, 1, 255
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\i18n\af.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 11, 0, 1, 12
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\pb_tool.cfg", "Properties", 0, 0, 0, 0, 14, 0, 0, 53, 14, 81
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\plugin_upload.py", "Python", 0, 77, 0, 0, 0, 0, 0, 22, 13, 112
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\resources.py", "Python", 0, 113, 0, 0, 0, 0, 0, 6, 11, 130
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\scripts\compile-strings.sh", "Shell Script", 0, 0, 7, 0, 0, 0, 0, 3, 3, 13
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\scripts\run-env-linux.sh", "Shell Script", 0, 0, 20, 0, 0, 0, 0, 1, 8, 29
+"c:\Users\AUG\Documents\qgis-plugins\fourier_transform\scripts\update-strings.sh", "Shell Script", 0, 0, 41, 0, 0, 0, 0, 10, 6, 57
+"Total", "-", 40, 342, 68, 146, 14, 254, 11, 325, 156, 1356

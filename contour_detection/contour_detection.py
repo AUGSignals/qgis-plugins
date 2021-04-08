@@ -167,7 +167,7 @@ class ContourDetection:
             self.menu = QMenu(self.iface.mainWindow())
             self.menu.setObjectName('&Image Registration')
             self.menu.setTitle('&Image Registration')
-        self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
+        self.action = QAction(QIcon(":/plugins/contour_detection/icon.png"),
                                     "Contour Detection",
                                     self.iface.mainWindow())
         self.action.setObjectName("testAction")

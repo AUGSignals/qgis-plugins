@@ -1,0 +1,15 @@
+"filename", "language", "Python", "TypeScript", "HTML", "Makefile", "Properties", "Shell Script", "XML", "comment", "blank", "total"
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\Makefile", "Makefile", 0, 0, 0, 146, 0, 0, 0, 57, 42, 245
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\README.html", "HTML", 0, 0, 40, 0, 0, 0, 0, 0, 3, 43
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\__init__.py", "Python", 3, 0, 0, 0, 0, 0, 0, 31, 3, 37
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\i18n\af.ts", "TypeScript", 0, 11, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\pb_tool.cfg", "Properties", 0, 0, 0, 0, 14, 0, 0, 53, 14, 81
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\plugin_upload.py", "Python", 77, 0, 0, 0, 0, 0, 0, 22, 13, 112
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\range_doppler.py", "Python", 135, 0, 0, 0, 0, 0, 0, 120, 49, 304
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\range_doppler_dialog.py", "Python", 9, 0, 0, 0, 0, 0, 0, 30, 6, 45
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\range_doppler_dialog_base.ui.xml", "XML", 0, 0, 0, 0, 0, 0, 311, 0, 1, 312
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\resources.py", "Python", 112, 0, 0, 0, 0, 0, 0, 6, 11, 129
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\scripts\compile-strings.sh", "Shell Script", 0, 0, 0, 0, 0, 7, 0, 3, 3, 13
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\scripts\run-env-linux.sh", "Shell Script", 0, 0, 0, 0, 0, 20, 0, 1, 8, 29
+"c:\Users\AUG\Documents\qgis-plugins\range_doppler\scripts\update-strings.sh", "Shell Script", 0, 0, 0, 0, 0, 41, 0, 10, 6, 57
+"Total", "-", 336, 11, 40, 146, 14, 68, 311, 333, 160, 1419

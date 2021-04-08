@@ -1,0 +1,45 @@
+Date : 2021-03-26 10:11:49
+Directory : c:\Users\AUG\Documents\qgis-plugins\histogram
+Total : 13 files,  798 codes, 322 comments, 151 blanks, all 1271 lines
+
+Languages
++--------------+------------+------------+------------+------------+------------+
+| language     | files      | code       | comment    | blank      | total      |
++--------------+------------+------------+------------+------------+------------+
+| Python       |          5 |        335 |        198 |         73 |        606 |
+| XML          |          1 |        184 |          0 |          1 |        185 |
+| Makefile     |          1 |        146 |         57 |         42 |        245 |
+| Shell Script |          3 |         68 |         14 |         17 |         99 |
+| HTML         |          1 |         40 |          0 |          3 |         43 |
+| Properties   |          1 |         14 |         53 |         14 |         81 |
+| TypeScript   |          1 |         11 |          0 |          1 |         12 |
++--------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                       | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                          |         13 |        798 |        322 |        151 |      1,271 |
+| i18n                                                                       |          1 |         11 |          0 |          1 |         12 |
+| scripts                                                                    |          3 |         68 |         14 |         17 |         99 |
++----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| filename                                                                   | language     | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| c:\Users\AUG\Documents\qgis-plugins\histogram\Makefile                     | Makefile     |        146 |         57 |         42 |        245 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\README.html                  | HTML         |         40 |          0 |          3 |         43 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\__init__.py                  | Python       |          3 |         31 |          3 |         37 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\histogram.py                 | Python       |        134 |        109 |         40 |        283 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\histogram_dialog.py          | Python       |          9 |         30 |          6 |         45 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\histogram_dialog_base.ui.xml | XML          |        184 |          0 |          1 |        185 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\i18n\af.ts                   | TypeScript   |         11 |          0 |          1 |         12 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\pb_tool.cfg                  | Properties   |         14 |         53 |         14 |         81 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\plugin_upload.py             | Python       |         77 |         22 |         13 |        112 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\resources.py                 | Python       |        112 |          6 |         11 |        129 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\scripts\compile-strings.sh   | Shell Script |          7 |          3 |          3 |         13 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\scripts\run-env-linux.sh     | Shell Script |         20 |          1 |          8 |         29 |
+| c:\Users\AUG\Documents\qgis-plugins\histogram\scripts\update-strings.sh    | Shell Script |         41 |         10 |          6 |         57 |
+| Total                                                                      |              |        798 |        322 |        151 |      1,271 |
++----------------------------------------------------------------------------+--------------+------------+------------+------------+------------+

@@ -80,7 +80,11 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox"/>
+       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox">
+        <property name="statusTip">
+         <string>Select input image from images loaded in layers</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="outputLabel">
@@ -91,6 +95,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="1" column="1">
        <widget class="QgsFileWidget" name="outputQgsFileWidget">
+        <property name="statusTip">
+         <string>Select location of output. Ensure proper filetype extension is shown.</string>
+        </property>
         <property name="dialogTitle">
          <string>Select output file</string>
         </property>
@@ -110,7 +117,46 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QComboBox" name="kernelSizeComboBox"/>
+       <widget class="QComboBox" name="kernelSizeComboBox">
+        <property name="statusTip">
+         <string>Generally a larger kernel size leads to a more blurred output image.</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>5x5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7x7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>9x9</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11x11</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>13x13</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>15x15</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>17x17</string>
+         </property>
+        </item>
+       </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="estimateNLooksLabel">

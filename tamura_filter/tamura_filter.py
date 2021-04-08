@@ -40,13 +40,6 @@ class TamuraFilter:
     """QGIS Plugin Implementation."""
 
     def __init__(self, iface):
-        """Constructor.
-
-        :param iface: An interface instance that will be passed to this class
-            which provides the hook by which you can manipulate the QGIS
-            application at run time.
-        :type iface: QgsInterface
-        """
         # Save reference to the QGIS interface
         self.iface = iface
         # initialize plugin directory
@@ -73,16 +66,6 @@ class TamuraFilter:
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
-        """Get the translation for a string using Qt translation API.
-
-        We implement this ourselves since we do not inherit QObject.
-
-        :param message: String for translation.
-        :type message: str, QString
-
-        :returns: Translated version of message.
-        :rtype: QString
-        """
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
         return QCoreApplication.translate('TamuraFilter', message)
 
@@ -167,7 +150,7 @@ class TamuraFilter:
             self.menu = QMenu(self.iface.mainWindow())
             self.menu.setObjectName('&Image Registration')
             self.menu.setTitle('&Image Registration')
-        self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
+        self.action = QAction(QIcon(":/plugins/tamura_filter/icon.png"),
                                     "Tamura Filter",
                                     self.iface.mainWindow())
         self.action.setObjectName("testAction")
@@ -199,15 +182,6 @@ class TamuraFilter:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
         self.addToCustomMenu()
-        """
-
-        icon_path = ':/plugins/tamura_filter/icon.png'
-        self.add_action(
-            icon_path,
-            text=self.tr(u''),
-            callback=self.run,
-            parent=self.iface.mainWindow())
-        """
 
         # will be set False in run()
         self.first_start = True

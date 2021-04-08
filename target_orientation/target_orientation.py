@@ -40,13 +40,7 @@ class TargetOrientation:
     """QGIS Plugin Implementation."""
 
     def __init__(self, iface):
-        """Constructor.
 
-        :param iface: An interface instance that will be passed to this class
-            which provides the hook by which you can manipulate the QGIS
-            application at run time.
-        :type iface: QgsInterface
-        """
         # Save reference to the QGIS interface
         self.iface = iface
         # initialize plugin directory
@@ -239,9 +233,9 @@ class TargetOrientation:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            self.arguments['-b'] = str(self.dlg.bandIndexSpinBox.text())
+            self.arguments['-i'] = self.dlg.inputMapLayerComboBox.filepath()
             self.arguments['-p'] = str(self.dlg.percentileDoubleSpinBox.text())
-            self.arguments['-i'] = str(self.dlg.inputImageQgsFileWidget.filePath())
+            self.arguments['-b'] = str(self.dlg.bandRasterBandComboBox.currentBand())
 
             args = []
 
@@ -262,11 +256,10 @@ class TargetOrientation:
             exeName = "TargetOrientation.exe"
             path = path + "/" + exeName
             args.insert(0, path)
-
-            QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
-            QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             popen = subprocess.Popen(args)
             popen.wait()
+            QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
+            QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)  
             output_path = self.dlg.outputQgsFileWidget.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
             if not rlayer.isValid():

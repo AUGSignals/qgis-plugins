@@ -1,0 +1,15 @@
+"filename", "language", "Makefile", "TypeScript", "Python", "HTML", "Properties", "Shell Script", "XML", "comment", "blank", "total"
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\Makefile", "Makefile", 146, 0, 0, 0, 0, 0, 0, 57, 42, 245
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\README.html", "HTML", 0, 0, 0, 40, 0, 0, 0, 0, 3, 43
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\__init__.py", "Python", 0, 0, 3, 0, 0, 0, 0, 31, 3, 37
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\edge_detection.py", "Python", 0, 0, 142, 0, 0, 0, 0, 110, 44, 296
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\edge_detection_dialog.py", "Python", 0, 0, 9, 0, 0, 0, 0, 30, 6, 45
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\edge_detection_dialog_base.ui.xml", "XML", 0, 0, 0, 0, 0, 0, 237, 0, 1, 238
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\i18n\af.ts", "TypeScript", 0, 11, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\pb_tool.cfg", "Properties", 0, 0, 0, 0, 14, 0, 0, 53, 14, 81
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\plugin_upload.py", "Python", 0, 0, 77, 0, 0, 0, 0, 22, 13, 112
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\resources.py", "Python", 0, 0, 112, 0, 0, 0, 0, 6, 11, 129
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\scripts\compile-strings.sh", "Shell Script", 0, 0, 0, 0, 0, 7, 0, 3, 3, 13
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\scripts\run-env-linux.sh", "Shell Script", 0, 0, 0, 0, 0, 20, 0, 1, 8, 29
+"c:\Users\AUG\Documents\qgis-plugins\edge_detection\scripts\update-strings.sh", "Shell Script", 0, 0, 0, 0, 0, 41, 0, 10, 6, 57
+"Total", "-", 146, 11, 343, 40, 14, 68, 237, 323, 155, 1337
