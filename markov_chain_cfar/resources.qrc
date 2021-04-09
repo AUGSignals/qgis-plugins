@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/markov_chain_cfar" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
