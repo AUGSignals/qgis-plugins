@@ -245,10 +245,10 @@ class TamuraFilter:
             path = path + "/" + exeName
             args.insert(0, path)
 
-            QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
-            QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             popen = subprocess.Popen(args)
             popen.wait()
+            QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
+            QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             #QgsMessageLog.logMessage(str(output), 'MyPlugin', Qgis.Info)
             output_path = self.dlg.outputQgsFileWidget.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
