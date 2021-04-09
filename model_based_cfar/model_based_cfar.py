@@ -21,9 +21,13 @@
  *                                                                         *
  ***************************************************************************/
 """
+import subprocess
+import os
+
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction
+from qgis.PyQt.QtWidgets import QAction, QMenu, QFileDialog
+from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLayer
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -157,15 +161,45 @@ class ModelBasedCFAR:
 
         return action
 
+    def addToCustomMenu(self):
+        self.menu = self.iface.mainWindow().findChild(QMenu, '&ATDR')
+        if not self.menu:
+            self.menu = QMenu(self.iface.mainWindow())
+            self.menu.setObjectName('&ATDR')
+            self.menu.setTitle('&ATDR')
+        self.action = QAction(QIcon(":/plugins/model_based_cfar/icon.png"),
+                                    "Model Based CFAR",
+                                    self.iface.mainWindow())
+        self.action.setObjectName("Model Based CFAR")
+        self.action.setWhatsThis("Configuration for test plugin")
+        self.action.setStatusTip("Model Based CFAR plugin")
+        self.action.triggered.connect(self.run)
+
+        # Create list containing submenu actions from main menu
+        submenus = []
+        for item in self.menu.actions():
+            if item.text() == '&Target Detection':
+                submenus.append(item.menu())
+                print(item)
+
+        # If 'MySubMenu' is not in above list (i.e. does not exist), create it
+        if submenus:
+            self.subMenu = submenus[0]
+        if not submenus:
+            self.subMenu = self.menu.addMenu( '&Target Detection')
+
+        self.subMenu.setObjectName("&Target Detection")
+
+        self.subMenu.addAction(self.action)
+
+        menuBar = self.iface.mainWindow().menuBar()
+        menuBar.insertMenu(self.iface.firstRightStandardMenu().menuAction(),
+                       self.menu)
+
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ':/plugins/model_based_cfar/icon.png'
-        self.add_action(
-            icon_path,
-            text=self.tr(u''),
-            callback=self.run,
-            parent=self.iface.mainWindow())
+        self.addToCustomMenu()
 
         # will be set False in run()
         self.first_start = True
@@ -189,6 +223,10 @@ class ModelBasedCFAR:
             self.first_start = False
             self.dlg = ModelBasedCFARDialog()
 
+        self.bar = QgsMessageBar()
+        self.bar.setSizePolicy( QSizePolicy.Minimum, QSizePolicy.Fixed )
+
+
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
@@ -197,4 +235,4 @@ class ModelBasedCFAR:
         if result:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
-            pass
+            self.bar.pushMessage("Hello", "World", level=QgsMessageBar.INFO)
