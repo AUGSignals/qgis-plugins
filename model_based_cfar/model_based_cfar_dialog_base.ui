@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>657</width>
+    <width>643</width>
     <height>525</height>
    </rect>
   </property>
@@ -33,19 +33,22 @@
    <property name="geometry">
     <rect>
      <x>9</x>
-     <y>9</y>
+     <y>29</y>
      <width>621</width>
-     <height>461</height>
+     <height>441</height>
     </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QWidget" name="formLayoutWidget">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>40</y>
+       <y>10</y>
        <width>581</width>
-       <height>321</height>
+       <height>351</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout">
@@ -57,7 +60,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QgsMapLayerComboBox" name="mMapLayerComboBox"/>
+       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox"/>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
@@ -67,7 +70,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsFileWidget" name="mQgsFileWidget_2"/>
+       <widget class="QgsFileWidget" name="outputQgsFileWidget"/>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_3">
@@ -77,7 +80,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QgsRasterBandComboBox" name="mRasterBandComboBox"/>
+       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox"/>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_4">
@@ -140,16 +143,6 @@
        <widget class="QDoubleSpinBox" name="doubleSpinBox_5"/>
       </item>
      </layout>
-    </widget>
-    <widget class="QgsFileWidget" name="mQgsFileWidget">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>10</y>
-       <width>161</width>
-       <height>20</height>
-      </rect>
-     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="page_2"/>

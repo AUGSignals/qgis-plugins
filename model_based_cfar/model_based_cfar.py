@@ -233,6 +233,45 @@ class ModelBasedCFAR:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
-            self.bar.pushMessage("Hello", "World", level=QgsMessageBar.INFO)
+            self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
+            self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
+            self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
+
+            self.arguments["-k"] = str(self.dlg.backgroundWindowQDoubleSpinBox.text())
+            self.arguments["-w"] = str(self.neighbourhoodQComboBox.currentText())
+
+            self.arguments["-g"] = str(self.dlg.guardWindowQgsDoubleSpinBox.text())
+            self.arguments["-c"] = str(self.dlg.CFARQgsDoubleSpinBox.text())
+            self.arguments["-n"] = str(self.dlg.numBinsQgsDoubleSpinBox.text())
+
+
+            
+            args = []
+            
+            for key, value in self.arguments.items():
+                if(value == False):
+                    continue
+                if (value == True):
+                    args.append(key)
+                else:
+                    args.append(key)
+                    args.append(value)
+            args.append('/k')
+            
+            #args.insert(0, "path", "%PATH%;C:\OpenCV\OpenCV-4.2\\bin")
+            
+            s = QSettings()
+            path = s.value("qgis-exe/path")
+            exeName = "markovChainCFAR.exe"
+            path = path + "/" + exeName
+            args.insert(0, path)
+
+            popen = subprocess.Popen(args)
+            popen.wait()
+            QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
+            QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
+            #QgsMessageLog.logMessage(str(output), 'MyPlugin', Qgis.Info)
+            output_path = self.dlg.outputQgsFileWidget.filePath()
+            rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
+            if not rlayer.isValid():
+                QgsMessageLog.logMessage("Layer failed to load!", 'MyPlugin', Qgis.Info)
