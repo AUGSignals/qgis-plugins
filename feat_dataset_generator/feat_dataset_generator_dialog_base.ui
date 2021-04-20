@@ -43,7 +43,7 @@ p, li { white-space: pre-wrap; }
      <property name="frameShape">
       <enum>QFrame::Box</enum>
      </property>
-     <widget class="QWidget" name="stackedWidgetPage1" native="true">
+     <widget class="QWidget" name="stackedWidgetPage1">
       <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0">
         <widget class="QLabel" name="inputDatasetLabel">
@@ -56,21 +56,21 @@ p, li { white-space: pre-wrap; }
         <widget class="QgsFileWidget" name="inputDatasetQgsFileWidget"/>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="groupNamesLabel">
+        <widget class="QLabel" name="outputDatasetLabel">
          <property name="text">
-          <string>Group Names</string>
+          <string>Output Datasets</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <layout class="QVBoxLayout" name="groupNamesVBoxLayout">
+        <layout class="QVBoxLayout" name="outputDatasetVBoxLayout">
          <item>
-          <widget class="QLineEdit" name="groupNamesLineEdit"/>
+          <widget class="QLineEdit" name="outputDatasetLineEdit"/>
          </item>
          <item>
-          <widget class="QLabel" name="groupNamesHelpLabel">
+          <widget class="QLabel" name="outputDatasetHelpLabel">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Separate group names with commas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Separate filenames with commas. Enter as training and testing pair for each feature.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -97,19 +97,26 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="imageCropSizeLabel">
+       <item row="3" column="0">
+        <widget class="QLabel" name="groupNamesLabel">
          <property name="text">
-          <string>Image Crop Size</string>
+          <string>Group Names</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
-        <widget class="QSpinBox" name="imageCropSizeSpinBox">
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
+       <item row="3" column="1">
+        <layout class="QVBoxLayout" name="groupNamesVBoxLayout">
+         <item>
+          <widget class="QLineEdit" name="groupNamesLineEdit"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="groupNamesHelpLabel">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Separate group names with commas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item row="5" column="0">
         <widget class="QLabel" name="numberPCALabel">
@@ -125,14 +132,14 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="percentageTrainingDataLabel">
          <property name="text">
           <string>Percentage Training Data</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="6" column="1">
         <widget class="QDoubleSpinBox" name="percentageTrainingDataDoubleSpinBox">
          <property name="maximum">
           <double>1.000000000000000</double>
@@ -142,49 +149,21 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="11" column="0">
-        <widget class="QLabel" name="outputTestingDatasetLabel">
+       <item row="7" column="0">
+        <widget class="QLabel" name="imageCropSizeLabel">
          <property name="text">
-          <string>Output Testing Datasets</string>
+          <string>Image Crop Size</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="1">
-        <layout class="QVBoxLayout" name="outputTestingDatasetVBoxLayout">
-         <item>
-          <widget class="QLineEdit" name="outputTestingDatasetLineEdit"/>
-         </item>
-         <item>
-          <widget class="QLabel" name="outputTestingDatasetHelpLabel">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Separate filenames with commas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="12" column="0">
-        <widget class="QLabel" name="outputTrainingDatasetLabel">
-         <property name="text">
-          <string>Output Training Datasets</string>
+       <item row="7" column="1">
+        <widget class="QSpinBox" name="imageCropSizeSpinBox">
+         <property name="maximum">
+          <number>100</number>
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
-        <layout class="QVBoxLayout" name="outputTrainingDatasetVBoxLayout">
-         <item>
-          <widget class="QLineEdit" name="outputTrainingDatasetLineEdit"/>
-         </item>
-         <item>
-          <widget class="QLabel" name="outputTrainingDatasetHelpLabel">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Separate filenames with commas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="13" column="0">
+       <item row="8" column="0">
         <widget class="QCheckBox" name="textModeCheckBox">
          <property name="text">
           <string>Use Text Mode</string>

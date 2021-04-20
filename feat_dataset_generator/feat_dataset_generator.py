@@ -240,17 +240,14 @@ class FeatDatasetGenerator:
         # See if OK was pressed
         if result:
             self.arguments['-i'] = self.dlg.inputDatasetQgsFileWidget.filePath()
-            self.arguments['-e'] = self.dlg.outputTestingDatasetLineEdit.text()
-            self.arguments['-r'] = self.dlg.outputTrainingDatasetLineEdit.text()
+            self.arguments['-o'] = self.dlg.outputDatasetLineEdit.text()
 
             self.arguments['-f'] = str(self.dlg.fftFeatureLineEdit.text())
             self.arguments['-g'] = str(self.dlg.groupNamesLineEdit.text())
-            self.arguments['-m'] = str(self.dlg.humomentsFeatureLineEdit.text())
             self.arguments['-n'] = str(self.dlg.numberPCASpinBox.text())
             self.arguments['-p'] = str(self.dlg.percentageTrainingDataDoubleSpinBox.text())
             self.arguments['-s'] = str(self.dlg.imageCropSizeSpinBox.text())
-            if self.dlg.textModeCheckBox.isChecked():
-                self.arguments['-t'] = ""
+            self.arguments['-t'] = self.dlg.textModeCheckBox.isChecked()
 
             args = []
 

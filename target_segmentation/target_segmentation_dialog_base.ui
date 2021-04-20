@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>659</width>
-    <height>401</height>
+    <height>385</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,55 +43,8 @@ p, li { white-space: pre-wrap; }
      <property name="frameShape">
       <enum>QFrame::Box</enum>
      </property>
-     <widget class="QWidget" name="stackedWidgetPage1" native="true">
+     <widget class="QWidget" name="stackedWidgetPage1">
       <layout class="QFormLayout" name="formLayout_2">
-       <item row="4" column="0">
-        <widget class="QLabel" name="bandIndexLabel">
-         <property name="text">
-          <string>Band Index</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="0">
-        <widget class="QLabel" name="anchorWidthLabel">
-         <property name="text">
-          <string>Anchor Positon Width</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="1">
-        <widget class="QSpinBox" name="anchorWidthSpinBox">
-         <property name="statusTip">
-          <string>Anchor position width (integer)</string>
-         </property>
-         <property name="minimum">
-          <number>-1</number>
-         </property>
-         <property name="value">
-          <number>-1</number>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="0">
-        <widget class="QLabel" name="anchorHeightLabel">
-         <property name="text">
-          <string>Anchor Position Height</string>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="1">
-        <widget class="QSpinBox" name="anchorHeightSpinBox">
-         <property name="statusTip">
-          <string>Anchor position height (integer)</string>
-         </property>
-         <property name="minimum">
-          <number>-1</number>
-         </property>
-         <property name="value">
-          <number>-1</number>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
         <widget class="QLabel" name="inputImageLabel">
          <property name="text">
@@ -120,17 +73,52 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="bandIndexLabel">
+         <property name="text">
+          <string>Band Index</string>
+         </property>
+        </widget>
+       </item>
        <item row="4" column="1">
         <widget class="QgsRasterBandComboBox" name="bandRasterBandComboBox"/>
        </item>
        <item row="5" column="0">
+        <widget class="QLabel" name="majorAxisLabel">
+         <property name="text">
+          <string>Width/Major Axis Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QSpinBox" name="majorAxisSpinBox">
+         <property name="statusTip">
+          <string>Width for rectangular/cross shape, semi major axis for ellipse (integer)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="minorAxisLabel">
+         <property name="text">
+          <string>Height/Minor Axis Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QSpinBox" name="minorAxisSpinBox">
+         <property name="statusTip">
+          <string>Height for rectangular/cross shape, semi minor axis for ellipse (integer)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
         <widget class="QLabel" name="morphShapeLabel">
          <property name="text">
           <string>Morph Shape</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="7" column="1">
         <widget class="QComboBox" name="morphShapeComboBox">
          <property name="statusTip">
           <string>Shape of the structuring element</string>
@@ -153,30 +141,42 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item row="8" column="0">
-        <widget class="QLabel" name="majorAxisLabel">
+        <widget class="QLabel" name="anchorWidthLabel">
          <property name="text">
-          <string>Major Axis Size</string>
+          <string>Anchor Positon Width</string>
          </property>
         </widget>
        </item>
        <item row="8" column="1">
-        <widget class="QSpinBox" name="majorAxisSpinBox">
+        <widget class="QSpinBox" name="anchorWidthSpinBox">
          <property name="statusTip">
-          <string>Width for rectangular/cross shape, semi major axis for ellipse (integer)</string>
+          <string>Anchor position width (integer)</string>
+         </property>
+         <property name="minimum">
+          <number>-1</number>
+         </property>
+         <property name="value">
+          <number>-1</number>
          </property>
         </widget>
        </item>
        <item row="9" column="0">
-        <widget class="QLabel" name="minorAxisLabel">
+        <widget class="QLabel" name="anchorHeightLabel">
          <property name="text">
-          <string>Minor Axis Size</string>
+          <string>Anchor Position Height</string>
          </property>
         </widget>
        </item>
        <item row="9" column="1">
-        <widget class="QSpinBox" name="minorAxisSpinBox">
+        <widget class="QSpinBox" name="anchorHeightSpinBox">
          <property name="statusTip">
-          <string>Height for rectangular/cross shape, semi minor axis for ellipse (integer)</string>
+          <string>Anchor position height (integer)</string>
+         </property>
+         <property name="minimum">
+          <number>-1</number>
+         </property>
+         <property name="value">
+          <number>-1</number>
          </property>
         </widget>
        </item>
