@@ -34,7 +34,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>269</width>
+     <width>201</width>
      <height>33</height>
     </rect>
    </property>
@@ -139,7 +139,7 @@ p, li { white-space: pre-wrap; }
       <item row="4" column="1">
        <widget class="QgsDoubleSpinBox" name="thresholdQgsDoubleSpinBox">
         <property name="minimum">
-         <double>-100.000000000000000</double>
+         <double>0.000000000000000</double>
         </property>
         <property name="maximum">
          <double>100.000000000000000</double>

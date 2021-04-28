@@ -34,7 +34,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>181</width>
+     <width>131</width>
      <height>33</height>
     </rect>
    </property>
@@ -115,14 +115,17 @@ p, li { white-space: pre-wrap; }
       <item row="3" column="0">
        <widget class="QLabel" name="gammaLabel">
         <property name="text">
-         <string>Gamma</string>
+         <string>Spatial Aspect Ratio</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QDoubleSpinBox" name="gammaDoubleSpinBox">
+       <widget class="QDoubleSpinBox" name="gammaQDoubleSpinBox">
+        <property name="statusTip">
+         <string>Spatial Aspect Ratio (gamma)</string>
+        </property>
         <property name="singleStep">
-         <double>0.010000000000000</double>
+         <double>0.100000000000000</double>
         </property>
         <property name="value">
          <double>0.020000000000000</double>
@@ -132,14 +135,7 @@ p, li { white-space: pre-wrap; }
       <item row="4" column="0">
        <widget class="QLabel" name="lambdaLabel">
         <property name="text">
-         <string>Lambda</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QSpinBox" name="lambdaSpinBox">
-        <property name="value">
-         <number>1</number>
+         <string>Wavelength of Sinusoidal Factor</string>
         </property>
        </widget>
       </item>
@@ -151,7 +147,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QSpinBox" name="kernelSizeSpinBox">
+       <widget class="QSpinBox" name="kernelSizeQSpinBox">
         <property name="maximum">
          <number>9999</number>
         </property>
@@ -167,39 +163,19 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
-       <widget class="QSpinBox" name="phaseOffsetPhiSpinBox">
-        <property name="minimum">
-         <number>-999</number>
-        </property>
-        <property name="maximum">
-         <number>999</number>
-        </property>
-       </widget>
-      </item>
       <item row="7" column="0">
        <widget class="QLabel" name="sigmaLabel">
         <property name="text">
-         <string>Sigma</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QSpinBox" name="sigmaSpinBox">
-        <property name="value">
-         <number>2</number>
+         <string>Standard Dev. of Gaussian Envelope</string>
         </property>
        </widget>
       </item>
       <item row="8" column="0">
        <widget class="QLabel" name="thetaLabel">
         <property name="text">
-         <string>Theta</string>
+         <string>Theta (deg.)</string>
         </property>
        </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QSpinBox" name="thetaSpinBox"/>
       </item>
       <item row="9" column="0">
        <widget class="QLabel" name="verboseLabel">
@@ -210,6 +186,33 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="9" column="1">
        <widget class="QCheckBox" name="verboseCheckBox"/>
+      </item>
+      <item row="7" column="1">
+       <widget class="QDoubleSpinBox" name="sigmaQDoubleSpinBox">
+        <property name="statusTip">
+         <string>Standard Deviation of the Gaussian Envelope (Sigma)</string>
+        </property>
+        <property name="maximum">
+         <double>10000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QDoubleSpinBox" name="lambdaQDoubleSpinBox">
+        <property name="statusTip">
+         <string>Wavelength of the sinusoidal factor (lamda)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QDoubleSpinBox" name="phaseOffsetQDoubleSpinBox"/>
+      </item>
+      <item row="8" column="1">
+       <widget class="QDoubleSpinBox" name="thetaQDoubleSpinBox">
+        <property name="maximum">
+         <double>360.000000000000000</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

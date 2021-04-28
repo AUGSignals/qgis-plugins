@@ -251,12 +251,12 @@ class GaborFilter:
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
 
             self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
-            self.arguments["-g"] = str(self.dlg.gammaDoubleSpinBox.text())
-            self.arguments["-k"] = str(self.dlg.kernelSizeSpinBox.text())
-            self.arguments["-l"] = str(self.dlg.lambdaSpinBox.text())
-            self.arguments["-p"] = str(self.dlg.phaseOffsetPhiSpinBox.text())
-            self.arguments["-s"] = str(self.dlg.sigmaSpinBox.text())
-            self.arguments["-t"] = str(self.dlg.thetaSpinBox.text())
+            self.arguments["-g"] = str(self.dlg.gammaQDoubleSpinBox.text())
+            self.arguments["-k"] = str(self.dlg.kernelSizeQSpinBox.text())
+            self.arguments["-l"] = str(self.dlg.lambdaQDoubleSpinBox.text())
+            self.arguments["-p"] = str(self.dlg.phaseOffsetQDoubleSpinBox.text())
+            self.arguments["-s"] = str(self.dlg.sigmaQDoubleSpinBox.text())
+            self.arguments["-t"] = str(self.dlg.thetaQDoubleSpinBox.text())
 
             self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
