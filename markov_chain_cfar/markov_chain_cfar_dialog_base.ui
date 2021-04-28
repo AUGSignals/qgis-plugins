@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>568</width>
-    <height>482</height>
+    <width>551</width>
+    <height>623</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>440</y>
+     <x>200</x>
+     <y>580</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
+     <y>50</y>
      <width>531</width>
      <height>421</height>
     </rect>
@@ -41,19 +41,19 @@
    <property name="frameShape">
     <enum>QFrame::Box</enum>
    </property>
-   <widget class="QWidget" name="stackedWidgetPage1" native="true">
+   <widget class="QWidget" name="stackedWidgetPage1">
     <widget class="QWidget" name="formLayoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>521</width>
-       <height>411</height>
+       <width>511</width>
+       <height>401</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout">
       <item row="0" column="0">
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="inputLabel">
         <property name="text">
          <string>Input Image </string>
         </property>
@@ -63,7 +63,7 @@
        <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox"/>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="outputLabel">
         <property name="text">
          <string>Output Image</string>
         </property>
@@ -73,34 +73,134 @@
        <widget class="QgsFileWidget" name="outputQgsFileWidget"/>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Mask File</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QgsFileWidget" name="maskQgsFileWidget"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="bandIndexLabel">
         <property name="text">
          <string>Band Index</string>
         </property>
        </widget>
       </item>
+      <item row="2" column="1">
+       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="CFARLabel">
+        <property name="text">
+         <string>CFAR</string>
+        </property>
+       </widget>
+      </item>
       <item row="3" column="1">
-       <widget class="QgsRasterBandComboBox" name="bandIndexRasterBandComboBox"/>
+       <widget class="QgsDoubleSpinBox" name="CFARQgsDoubleSpinBox">
+        <property name="decimals">
+         <number>3</number>
+        </property>
+       </widget>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="minTargetSizeLabel">
+        <property name="text">
+         <string>Minimum Target Size</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QgsSpinBox" name="minTargetSizeQgsSpinBox"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="guardWindowLabel">
+        <property name="text">
+         <string>Guard Window</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QgsDoubleSpinBox" name="guardWindowQgsDoubleSpinBox">
+        <property name="decimals">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="backgroundWindowLabel">
+        <property name="text">
+         <string>Background Window</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QgsDoubleSpinBox" name="backgroundWindowQgsDoubleSpinBox">
+        <property name="decimals">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="maskLabel">
+        <property name="text">
+         <string>Mask File</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QgsFileWidget" name="maskQgsFileWidget"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="numBinsLabel">
+        <property name="text">
+         <string>Number of Bins</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QgsDoubleSpinBox" name="numBinsQgsDoubleSpinBox">
+        <property name="decimals">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="histogramBinsLabel">
+        <property name="text">
+         <string>Histogram Bins</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QgsFileWidget" name="histogramBinsQgsFileWidget"/>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="transitionHistogramLabel">
+        <property name="text">
+         <string>Transition Histogram</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QgsFileWidget" name="transitionHistogramQgsFileWidget"/>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="targetModelLabel">
+        <property name="text">
+         <string>Target Model</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QCheckBox" name="targetModelCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="neighbourhoodLabel">
         <property name="text">
          <string>Neighbourhood Window Order</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
-       <widget class="QComboBox" name="neighbourhoodQComboBox">
+      <item row="12" column="1">
+       <widget class="QComboBox" name="neighbourhoodComboBox">
         <item>
          <property name="text">
           <string>c</string>
@@ -113,65 +213,40 @@
         </item>
        </widget>
       </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_6">
+      <item row="13" column="0">
+       <widget class="QLabel" name="verboseLabel">
         <property name="text">
-         <string>Background Window</string>
+         <string>Verbose</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_7">
+      <item row="13" column="1">
+       <widget class="QCheckBox" name="verboseCheckBox">
         <property name="text">
-         <string>Guard Window</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>CFAR</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>Number of Bins</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QgsDoubleSpinBox" name="backgroundWindowQgsDoubleSpinBox">
-        <property name="decimals">
-         <number>0</number>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QgsDoubleSpinBox" name="guardWindowQgsDoubleSpinBox">
-        <property name="decimals">
-         <number>0</number>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QgsDoubleSpinBox" name="CFARQgsDoubleSpinBox">
-        <property name="decimals">
-         <number>3</number>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QgsDoubleSpinBox" name="numBinsQgsDoubleSpinBox">
-        <property name="decimals">
-         <number>0</number>
+         <string/>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </widget>
+  </widget>
+  <widget class="QLabel" name="title_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>341</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:16pt; font-weight:600;&quot;&gt;Markov Chain CFAR&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
   </widget>
  </widget>
  <customwidgets>
@@ -194,6 +269,11 @@
    <class>QgsRasterBandComboBox</class>
    <extends>QComboBox</extends>
    <header>qgsrasterbandcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>qgsspinbox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

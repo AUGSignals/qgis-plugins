@@ -238,19 +238,23 @@ class MarkovChainCFAR:
         if result:
             self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
-            self.arguments["-m"] = self.dlg.maskQgsFileWidget.filePath()
             self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
-
-            self.arguments["-w"] = str(self.neighbourhoodQComboBox.currentText())
-            self.arguments["-k"] = str(self.dlg.backgroundWindowQgsDoubleSpinBox.text())
-            self.arguments["-g"] = str(self.dlg.guardWindowQgsDoubleSpinBox.text())
             self.arguments["-c"] = str(self.dlg.CFARQgsDoubleSpinBox.text())
+            self.arguments["-d"] = str(self.dlg.minTargetSizeQgsDoubleSpinBox.text())
+            self.arguments["-g"] = str(self.dlg.guardWindowQgsDoubleSpinBox.text())
+            self.arguments["-k"] = str(self.dlg.backgroundWindowQgsDoubleSpinBox.text())
+            self.arguments["-m"] = self.dlg.maskQgsFileWidget.filePath()
             self.arguments["-n"] = str(self.dlg.numBinsQgsDoubleSpinBox.text())
+            self.arguments["-q"] = str(self.dlg.histogramBinsQgsFileWidget.filePath())
+            self.arguments["-s"] = str(self.dlg.transitionHistogramQgsFileWidget.filePath())
+            self.arguments["-t"] = self.dlg.targetModelCheckBox.isChecked()
+            self.arguments["-w"] = str(self.neighbourhoodComboBox.currentText())
 
+            self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
-            
             args = []
-            
+
+
             for key, value in self.arguments.items():
                 if(value == False):
                     continue
@@ -260,9 +264,9 @@ class MarkovChainCFAR:
                     args.append(key)
                     args.append(value)
             args.append('/k')
-            
+
             #args.insert(0, "path", "%PATH%;C:\OpenCV\OpenCV-4.2\\bin")
-            
+
             s = QSettings()
             path = s.value("qgis-exe/path")
             exeName = "markovChainCFAR.exe"

@@ -221,11 +221,7 @@ class ModelBasedCFAR:
         # Only create GUI ONCE in callback, so that it will only load when the plugin is started
         if self.first_start == True:
             self.first_start = False
-            self.dlg = ModelBasedCFARDialog()
-
-        self.bar = QgsMessageBar()
-        self.bar.setSizePolicy( QSizePolicy.Minimum, QSizePolicy.Fixed )
-
+            self.dlg = MarkovChainCFARDialog()
 
         # show the dialog
         self.dlg.show()
@@ -236,18 +232,16 @@ class ModelBasedCFAR:
             self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
             self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
-
-            self.arguments["-k"] = str(self.dlg.backgroundWindowQDoubleSpinBox.text())
-            self.arguments["-w"] = str(self.neighbourhoodQComboBox.currentText())
-
             self.arguments["-g"] = str(self.dlg.guardWindowQgsDoubleSpinBox.text())
-            self.arguments["-c"] = str(self.dlg.CFARQgsDoubleSpinBox.text())
-            self.arguments["-n"] = str(self.dlg.numBinsQgsDoubleSpinBox.text())
+            self.arguments["-k"] = str(self.dlg.backgroundWindowQgsDoubleSpinBox.text())
+            self.arguments["-m"] = str(self.dlg.minTargetQgsDoubleSpinBox.text())
+            self.arguments["-n"] = str(self.dlg.maxTargetQgsDoubleSpinBox.text())
+            self.arguments["-p"] = str(self.dlg.probabilityQgsDoubleSpinBox.text())
 
+            self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
-            
             args = []
-            
+
             for key, value in self.arguments.items():
                 if(value == False):
                     continue
@@ -257,9 +251,9 @@ class ModelBasedCFAR:
                     args.append(key)
                     args.append(value)
             args.append('/k')
-            
+
             #args.insert(0, "path", "%PATH%;C:\OpenCV\OpenCV-4.2\\bin")
-            
+
             s = QSettings()
             path = s.value("qgis-exe/path")
             exeName = "markovChainCFAR.exe"

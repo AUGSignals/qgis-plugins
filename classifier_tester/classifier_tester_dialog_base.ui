@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>715</width>
-    <height>596</height>
+    <width>532</width>
+    <height>472</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>500</y>
-     <width>341</width>
-     <height>32</height>
+     <x>330</x>
+     <y>430</y>
+     <width>193</width>
+     <height>28</height>
     </rect>
    </property>
    <property name="orientation">
@@ -32,120 +32,139 @@
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>30</y>
-     <width>611</width>
-     <height>421</height>
+     <x>10</x>
+     <y>50</y>
+     <width>511</width>
+     <height>164</height>
     </rect>
    </property>
    <property name="frameShape">
     <enum>QFrame::Box</enum>
    </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
    <widget class="QWidget" name="page">
-    <widget class="QWidget" name="formLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>591</width>
-       <height>211</height>
-      </rect>
-     </property>
-     <layout class="QFormLayout" name="formLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="inputLabel">
-        <property name="text">
-         <string>Input</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QgsFileWidget" name="inputQgsFileWidget"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="outputLabel">
-        <property name="text">
-         <string>Output</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget">
-        <property name="dialogTitle">
-         <string>Select output file</string>
-        </property>
-        <property name="filter">
-         <string>*.tif *.tiff *.gtif *.img *.*</string>
-        </property>
-        <property name="storageMode">
-         <enum>QgsFileWidget::SaveFile</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="bandIndexLabel">
-        <property name="text">
-         <string>Model</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QgsFileWidget" name="modelQgsFileWidget"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Algorithm ID</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Knn Num Neighbours (optional)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QSpinBox" name="knnNumSpinBox">
-        <property name="value">
-         <number>3</number>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QComboBox" name="comboBox">
-        <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="inputLabel">
          <property name="text">
-          <string>1</string>
+          <string>Input</string>
          </property>
-        </item>
-        <item>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QgsFileWidget" name="inputQgsFileWidget"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="outputLabel">
          <property name="text">
-          <string>2</string>
+          <string>Output</string>
          </property>
-        </item>
-        <item>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QgsFileWidget" name="outputQgsFileWidget">
+         <property name="dialogTitle">
+          <string>Select output file</string>
+         </property>
+         <property name="filter">
+          <string>*.tif *.tiff *.gtif *.img *.*</string>
+         </property>
+         <property name="storageMode">
+          <enum>QgsFileWidget::SaveFile</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="algorithmLabel">
          <property name="text">
-          <string>3</string>
+          <string>Algorithm ID</string>
          </property>
-        </item>
-        <item>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="algorithmComboBox">
+         <item>
+          <property name="text">
+           <string>1 - Knn (No model)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - SVM One Vs Else</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - SVM Pairwise</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Adaboost One Vs Else</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 - Adaboost Pairwise</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 - SVM Pairwise (AUG Version)</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="knnNumLabel">
          <property name="text">
-          <string>4</string>
+          <string>Knn Num Neighbours (optional)</string>
          </property>
-        </item>
-        <item>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QSpinBox" name="knnNumSpinBox">
+         <property name="value">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="modelLabel">
          <property name="text">
-          <string>5</string>
+          <string>Model</string>
          </property>
-        </item>
-       </widget>
-      </item>
-     </layout>
-    </widget>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QgsFileWidget" name="modelQgsFileWidget"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
    <widget class="QWidget" name="page_2"/>
+  </widget>
+  <widget class="QLabel" name="title_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>247</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:16pt; font-weight:600;&quot;&gt;Classifier Tester&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
   </widget>
  </widget>
  <customwidgets>

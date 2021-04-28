@@ -224,7 +224,7 @@ class ClassifierTester:
             self.first_start = False
             self.dlg = ClassifierTesterDialog()
 
-        self.arguments = {} 
+        self.arguments = {}
 
         # show the dialog
         self.dlg.show()
@@ -236,13 +236,13 @@ class ClassifierTester:
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
             self.arguments["-m"] = self.dlg.modelQgsFileWidget.filePath()
 
-            self.arguments["-a"] = str(self.dlg.algorithmSpinBox.text())
+            self.arguments["-a"] = str(self.dlg.algorithmComboBox.currentIndex() + 1)
             self.arguments["-k"] = str(self.dlg.knnNumSpinBox.text())
 
 
-            
+
             args = []
-            
+
             for key, value in self.arguments.items():
                 if(value == False):
                     continue
@@ -251,16 +251,16 @@ class ClassifierTester:
                 else:
                     args.append(key)
                     args.append(value)
-            
+
             #args.insert(0, "path", "%PATH%;C:\OpenCV\OpenCV-4.2\\bin")
-            
+
             s = QSettings()
             path = s.value("qgis-exe/path")
             exeName = "ClassifierTesting.exe"
             path = path + "/" + exeName
             args.insert(0, path)
 
-            
+
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             popen = subprocess.Popen(args, stdout=subprocess.PIPE)
             popen.wait()

@@ -224,7 +224,7 @@ class ClassifierTrainer:
             self.dlg = ClassifierTrainerDialog()
 
         self.arguments = {}
-                
+
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
@@ -234,15 +234,15 @@ class ClassifierTrainer:
             self.arguments['-i'] = self.dlg.inputQgsFileWidget.filePath()
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
 
-            self.arguments["-a"] = str(self.dlg.algorithmDoubleSpinBox.text())
+            self.arguments["-a"] = str(self.dlg.algorithmComboBox.currentIndex() + 1)
             self.arguments["-b"] = str(self.dlg.adaboostTypeComboBox.currentIndex())
             self.arguments["-f"] = str(self.dlg.autoTrainSizeComboBox.currentIndex())
-            self.arguments["-t"] = str(self.dlg.kernelComboBox.currentIndex())
+            self.arguments["-t"] = str(self.dlg.kernelTypeComboBox.currentIndex())
 
 
-            
+
             args = []
-            
+
             for key, value in self.arguments.items():
                 if(value == False):
                     continue
@@ -251,16 +251,16 @@ class ClassifierTrainer:
                 else:
                     args.append(key)
                     args.append(value)
-            
+
             #args.insert(0, "path", "%PATH%;C:\OpenCV\OpenCV-4.2\\bin")
-            
+
             s = QSettings()
             path = s.value("qgis-exe/path")
             exeName = "ClassifierTraining.exe"
             path = path + "/" + exeName
             args.insert(0, path)
 
-            
+
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             popen = subprocess.Popen(args, stdout=subprocess.PIPE)
             popen.wait()
