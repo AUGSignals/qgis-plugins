@@ -94,6 +94,12 @@
         <property name="decimals">
          <number>3</number>
         </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
        </widget>
       </item>
       <item row="4" column="0">
@@ -104,7 +110,11 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QgsSpinBox" name="minTargetSizeQgsSpinBox"/>
+       <widget class="QgsSpinBox" name="minTargetSizeQgsSpinBox">
+        <property name="maximum">
+         <number>10000</number>
+        </property>
+       </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="guardWindowLabel">
@@ -117,6 +127,9 @@
        <widget class="QgsDoubleSpinBox" name="guardWindowQgsDoubleSpinBox">
         <property name="decimals">
          <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>10000.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -131,6 +144,9 @@
        <widget class="QgsDoubleSpinBox" name="backgroundWindowQgsDoubleSpinBox">
         <property name="decimals">
          <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>10000.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -155,6 +171,9 @@
        <widget class="QgsDoubleSpinBox" name="numBinsQgsDoubleSpinBox">
         <property name="decimals">
          <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>10000.000000000000000</double>
         </property>
        </widget>
       </item>

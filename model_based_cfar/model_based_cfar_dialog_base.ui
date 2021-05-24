@@ -90,7 +90,14 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QgsDoubleSpinBox" name="guardWindowQgsDoubleSpinBox"/>
+       <widget class="QgsDoubleSpinBox" name="guardWindowQgsDoubleSpinBox">
+        <property name="decimals">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>10000.000000000000000</double>
+        </property>
+       </widget>
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="backgroundWindowLabel">
@@ -100,7 +107,11 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QgsDoubleSpinBox" name="backgroundWindowQgsDoubleSpinBox"/>
+       <widget class="QgsDoubleSpinBox" name="backgroundWindowQgsDoubleSpinBox">
+        <property name="decimals">
+         <number>0</number>
+        </property>
+       </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="minTargetLabel">
@@ -110,7 +121,14 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QgsDoubleSpinBox" name="minTargetQgsDoubleSpinBox"/>
+       <widget class="QgsDoubleSpinBox" name="minTargetQgsDoubleSpinBox">
+        <property name="decimals">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>10000.000000000000000</double>
+        </property>
+       </widget>
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="maxTargetLabel">
@@ -120,7 +138,14 @@
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QgsDoubleSpinBox" name="maxTargetQgsDoubleSpinBox"/>
+       <widget class="QgsDoubleSpinBox" name="maxTargetQgsDoubleSpinBox">
+        <property name="decimals">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>10000.000000000000000</double>
+        </property>
+       </widget>
       </item>
       <item row="7" column="0">
        <widget class="QLabel" name="probabilityLabel">
@@ -130,7 +155,14 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QgsDoubleSpinBox" name="probabilityQgsDoubleSpinBox"/>
+       <widget class="QgsDoubleSpinBox" name="probabilityQgsDoubleSpinBox">
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
       </item>
       <item row="8" column="0">
        <widget class="QLabel" name="verboseLabel">

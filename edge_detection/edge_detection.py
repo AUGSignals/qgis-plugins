@@ -24,7 +24,6 @@
 import subprocess
 import os
 import sys
-sys.path.append("../settings_configuration")
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
@@ -35,7 +34,7 @@ from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLay
 from .resources import *
 # Import the code for the dialog
 from .edge_detection_dialog import EdgeDetectionDialog
-from output_dialog import OutputDialog
+from .output_dialog import OutputDialog
 import os.path
 
 
@@ -283,25 +282,25 @@ class EdgeDetection:
             path = path + "/" + exeName
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
-            """
-            if QMessageBox.Ok == QMessageBox.question(None,"Confirm arguments", "Do you want to run with the following arguments ? \n " + args_message , QMessageBox.Ok|QMessageBox.Cancel):
-                QgsMessageLog.logMessage("You have selected OK in the confirmation dialog", 'MyPlugin', Qgis.Info)
-            else:
-                QgsMessageLog.logMessage("You have selected Cancel in the confirmation dialog", 'MyPlugin', Qgis.Info)
-            """
 
-
-            my_env = {}
             popen = subprocess.Popen(args, stdout=subprocess.PIPE)
             popen.wait()
             out, err = popen.communicate()
+            output_dialog_text = ""
+            if out is not None:
+                output_dialog_text += out.decode('utf-8')
+                #for line in str(out.decode('utf-8')).splitlines():
+                #    output_dialog_text += line
+            if err is not None:
+                output_dialog_text += err.decode('utf-8')
+        
             QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             print("output is", out, err)
             QgsMessageLog.logMessage(str(out), 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(err), 'MyPlugin', Qgis.Info)
             self.output_dialog.commandText.setText(args_message)
-            self.output_dialog.outputText.setText(str(out) + ' '+ str(err))
+            self.output_dialog.outputText.setText(output_dialog_text)
             test = self.output_dialog.exec_()
             output_path = self.dlg.outputQgsFileWidget.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
