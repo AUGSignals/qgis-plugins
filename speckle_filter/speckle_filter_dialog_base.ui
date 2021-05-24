@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Speckle Filter Loader</string>
+   <string>Lee Filter</string>
   </property>
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
