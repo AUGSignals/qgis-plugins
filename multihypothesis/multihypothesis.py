@@ -35,6 +35,7 @@ from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLay
 from .resources import *
 # Import the code for the dialog
 from .multihypothesis_dialog import MultiHypothesisDialog
+from .output_dialog import OutputDialog
 import os.path
 
 
@@ -51,6 +52,7 @@ class MultiHypothesis:
         """
         # Save reference to the QGIS interface
         self.iface = iface
+        self.output_dialog = OutputDialog()
         # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
         # initialize locale
@@ -67,7 +69,7 @@ class MultiHypothesis:
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&Multiple Hypothesis Sequential Scene Matching')
+        self.menu = self.tr(u'&Multiple Hypothesis Scene Matching')
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
@@ -170,7 +172,7 @@ class MultiHypothesis:
             self.menu.setObjectName('&Image Registration')
             self.menu.setTitle('&Image Registration')
         self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
-                                    "Multihypothesis",
+                                    "Multiple Hypothesis Scene Matching",
                                     self.iface.mainWindow())
         self.action.setObjectName("testAction")
         self.action.setWhatsThis("Configuration for test plugin")
@@ -333,17 +335,32 @@ class MultiHypothesis:
 
             s = QSettings()
             path = s.value("qgis-exe/path")
-            #exeName = "Registration.exe"
-            #path = path + "/" + exeName
-            #args.insert(0, path)
-
-            with open(path + "/" + 'config-multihypothesis.toml', 'w') as f:
+            config_path = path + "/" + 'config-multihypothesis.toml'
+            with open(config_path, 'w') as f:
                 toml_string = toml.dump(self.configContents, f)
+            args.append("-c")
+            args.append(config_path)
 
-            
-            QgsMessageLog.logMessage("Your plugin has been executed correctly", 'MyPlugin', Qgis.Info)
+            exeName = "mulhypseqsm.exe"
+            path = path + "/" + exeName
+            args.insert(0, path)
+            args_message = " ".join(arg for arg in args)
+
+            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+            popen.wait()
+            out, err = popen.communicate()
+            output_dialog_text = ""
+            if out is not None:
+                output_dialog_text += out.decode('utf-8')
+            if err is not None:
+                output_dialog_text += err.decode('utf-8')
+        
+            QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
-            #popen = subprocess.Popen(args)
-            #popen.wait()
-
+            print("output is", out, err)
+            QgsMessageLog.logMessage(str(out), 'MyPlugin', Qgis.Info)
+            QgsMessageLog.logMessage(str(err), 'MyPlugin', Qgis.Info)
+            self.output_dialog.commandText.setText(args_message)
+            self.output_dialog.outputText.setText(output_dialog_text)
+            output_dlg = self.output_dialog.exec_()
             

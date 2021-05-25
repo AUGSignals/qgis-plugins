@@ -33,6 +33,7 @@ from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLay
 from .resources import *
 # Import the code for the dialog
 from .range_doppler_dialog import RangeDopplerTerrainCorrectionDialog
+from .output_dialog import OutputDialog
 import os.path
 
 
@@ -49,6 +50,7 @@ class RangeDopplerTerrainCorrection:
         """
         # Save reference to the QGIS interface
         self.iface = iface
+        self.output_dialog = OutputDialog()
         # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
         # initialize locale
@@ -285,19 +287,58 @@ class RangeDopplerTerrainCorrection:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
-            #args = ["java -jar C:\\Users\\AUG\\Documents\\Tomas\\qgis-plugins\\qgis-exes\\RS2ProductMetadata.jar","C:\\Users\\AUG\\Documents\\Tomas\\qgis-plugins\\qgis-exes\\TestData\\RS2_OK66194_PK606152_DK544088_FQ3W_20150808_103527_HH_VV_HV_VH_SLC.zip","C:\\Users\\AUG\\Documents\\Tomas\\qgis-plugins\\qgis-exes\\output","HH"]
+            self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
+            self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
+
+            self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
+            self.arguments["-p"] = str(self.dlg.percentageOfPixelsNotEdgesDoubleSpinBox.text())
+            self.arguments["-a"] = str(self.dlg.apetureSizeDoubleSpinBox.text())
+            self.arguments["-t"] = str(self.dlg.thresholdRatioDoubleSpinBox.text())
+
+            self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
+
+            
+            args = []
+            
+            for key, value in self.arguments.items():
+                if(value == False):
+                    continue
+                if (value == True):
+                    args.append(key)
+                else:
+                    args.append(key)
+                    args.append(value)
+            args.append('/k')
+            
+            #args.insert(0, "path", "%PATH%;C:\OpenCV\OpenCV-4.2\\bin")
             
             s = QSettings()
-            topDir = s.value("qgis-exe/path")
-            args = ["java", "com.augsignals.rs2Orthorectification.RS2RangeDopplerGeocoding", topDir + "/TestData/RS2_OK86314_PK756859_DK686931_FQ16W_20170507_124445_HH_VV_HV_VH_SLC.zip", topDir + "/TestData/output", "HH"]
-            print(args)
+            path = s.value("qgis-exe/path")
+            exeName = "EdgeDetection.exe"
+            path = path + "/" + exeName
+            args.insert(0, path)
+            args_message = " ".join(arg for arg in args)
+
             popen = subprocess.Popen(args, stdout=subprocess.PIPE)
             popen.wait()
-            output = popen.stdout.read()
-            output_path = self.dlg.le_output.text()
+            out, err = popen.communicate()
+            output_dialog_text = ""
+            if out is not None:
+                output_dialog_text += out.decode('utf-8')
+                #for line in str(out.decode('utf-8')).splitlines():
+                #    output_dialog_text += line
+            if err is not None:
+                output_dialog_text += err.decode('utf-8')
+        
+            QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
+            QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
+            print("output is", out, err)
+            QgsMessageLog.logMessage(str(out), 'MyPlugin', Qgis.Info)
+            QgsMessageLog.logMessage(str(err), 'MyPlugin', Qgis.Info)
+            self.output_dialog.commandText.setText(args_message)
+            self.output_dialog.outputText.setText(output_dialog_text)
+            test = self.output_dialog.exec_()
+            output_path = self.dlg.outputQgsFileWidget.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
             if not rlayer.isValid():
-                print("Layer failed to load!")
-            print(output)
+                QgsMessageLog.logMessage("Layer failed to load!", 'MyPlugin', Qgis.Info)
