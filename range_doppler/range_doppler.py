@@ -191,22 +191,7 @@ class RangeDopplerTerrainCorrection:
         self.action.setStatusTip("This is status tip")
         self.action.triggered.connect(self.run)
 
-        # Create list containing submenu actions from main menu
-        submenus = []
-        for item in self.menu.actions():
-            if item.text() == '&Range Doppler':
-                submenus.append(item.menu())
-                print(item)
-
-        # If 'MySubMenu' is not in above list (i.e. does not exist), create it
-        if submenus:
-            self.subMenu = submenus[0]
-        if not submenus:
-            self.subMenu = self.menu.addMenu( '&Range Doppler')
-
-        self.subMenu.setObjectName("&Range Doppler")
-
-        self.subMenu.addAction(self.action)
+        self.menu.addAction(self.action)
 
         menuBar = self.iface.mainWindow().menuBar()
         menuBar.insertMenu(self.iface.firstRightStandardMenu().menuAction(),
@@ -287,16 +272,11 @@ class RangeDopplerTerrainCorrection:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
+            self.arguments['-i'] = self.dlg.inputQgsFileWidget.filePath()
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
-
-            self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
-            self.arguments["-p"] = str(self.dlg.percentageOfPixelsNotEdgesDoubleSpinBox.text())
-            self.arguments["-a"] = str(self.dlg.apetureSizeDoubleSpinBox.text())
-            self.arguments["-t"] = str(self.dlg.thresholdRatioDoubleSpinBox.text())
-
-            self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
-
+            self.arguments["-b"] = self.dlg.bandQgsFileWidget.filePath()
+            self.arguments["-d"] = self.dlg.demQgsFileWidget.filePath()
+            self.arguments["-g"] = self.dlg.egmQgsFileWidget.filePath()
             
             args = []
             
@@ -314,7 +294,7 @@ class RangeDopplerTerrainCorrection:
             
             s = QSettings()
             path = s.value("qgis-exe/path")
-            exeName = "EdgeDetection.exe"
+            exeName = "SAR-RDTC.exe"
             path = path + "/" + exeName
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
@@ -337,8 +317,4 @@ class RangeDopplerTerrainCorrection:
             QgsMessageLog.logMessage(str(err), 'MyPlugin', Qgis.Info)
             self.output_dialog.commandText.setText(args_message)
             self.output_dialog.outputText.setText(output_dialog_text)
-            test = self.output_dialog.exec_()
-            output_path = self.dlg.outputQgsFileWidget.filePath()
-            rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
-            if not rlayer.isValid():
-                QgsMessageLog.logMessage("Layer failed to load!", 'MyPlugin', Qgis.Info)
+            output_dialog = self.output_dialog.exec_()
