@@ -184,9 +184,9 @@ class RangeDopplerTerrainCorrection:
             self.menu.setObjectName('&Image Registration')
             self.menu.setTitle('&Image Registration')
         self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
-                                    "Range Doppler",
+                                    "Range Doppler Terrain Correction",
                                     self.iface.mainWindow())
-        self.action.setObjectName("Range Doppler")
+        self.action.setObjectName("Range Doppler Terrain Correction")
         self.action.setWhatsThis("Configuration for test plugin")
         self.action.setStatusTip("This is status tip")
         self.action.triggered.connect(self.run)
@@ -208,23 +208,6 @@ class RangeDopplerTerrainCorrection:
         #     self.iface.removeToolBarIcon(action)
 
 
-    def openOutputPath(self):
-        layer_paths = [layer.source() for layer in QgsProject.instance().mapLayers().values()]
-        directory_path = os.path.dirname(layer_paths[0])
-        filepath = QFileDialog.getSaveFileName(self.dlg, "Select output file", directory_path, ".img")
-        self.dlg.le_output.setText(filepath[0] + filepath[1])
-
-    def display_bands(self):
-        curr_layer = self.dlg.mcb_input.currentLayer()
-        if curr_layer.type() == QgsMapLayer.RasterLayer:
-            self.dlg.rcb_band.setEnabled(True)
-            self.dlg.rcb_band.setLayer(curr_layer)
-            size = "{:.1f}(m) x {:.1f}(m)".format(self.dlg.mcb_input.currentLayer().width(), self.dlg.mcb_input.currentLayer().height())
-            self.dlg.la_spacing.setText(size)
-        else:
-            self.dlg.rcb_band.setDisabled(True)
-
-
     def run(self):
         """Run method that performs all the real work"""
 
@@ -233,43 +216,12 @@ class RangeDopplerTerrainCorrection:
         if self.first_start == True:
             self.first_start = False
             self.dlg = RangeDopplerTerrainCorrectionDialog()
-            self.dlg.pb_output.clicked.connect(self.openOutputPath)
-            self.dlg.mcb_input.layerChanged.connect(self.display_bands)
-            self.dlg.rcb_band.setLayer(self.dlg.mcb_input.currentLayer())
-            if self.dlg.mcb_input.currentLayer():
-                size = "{:.1f}(m) x {:.1f}(m)".format(self.dlg.mcb_input.currentLayer().width(), self.dlg.mcb_input.currentLayer().height())
-                self.dlg.la_spacing.setText(size)
-
-        #Set up all options
-
-        #layers = QgsProject.instance().layerTreeRoot().children()
-        #self.dlg.mcb_input.clear()
-        #self.dlg.mcb_input.addItems([layer.name() for layer in layers])
-
-        self.dlg.le_output.clear()
-
-        digital_elevation_models = ["SRTM 3Sec (Auto Download)"]
-        self.dlg.cb_elevation.clear()
-        self.dlg.cb_elevation.addItems(digital_elevation_models)
-
-        dem_resampling_methods = ["BILINEAR_INTERPOLATION"]
-        self.dlg.cb_dem.clear()
-        self.dlg.cb_dem.addItems(dem_resampling_methods)
-
-        img_resampling_methods = ["BILINEAR_INTERPOLATION"]
-        self.dlg.cb_resampling.clear()
-        self.dlg.cb_resampling.addItems(img_resampling_methods)
-
-        self.dlg.le_projection.setText("WGS84") #TODO - can also be set from img
-
-
-
-
 
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
         result = self.dlg.exec_()
+        self.arguments = {}
         # See if OK was pressed
         if result:
             self.arguments['-i'] = self.dlg.inputQgsFileWidget.filePath()
