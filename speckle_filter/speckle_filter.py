@@ -67,7 +67,7 @@ class SpeckleFilter:
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&Speckle Filter Loader')
+        self.menu = self.tr(u'&Lee Filter')
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
@@ -210,7 +210,7 @@ class SpeckleFilter:
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
             self.iface.removePluginMenu(
-                self.tr(u'&Speckle Filter Loader'),
+                self.tr(u'&Lee Filter'),
                 action)
             self.iface.removeToolBarIcon(action)
 
