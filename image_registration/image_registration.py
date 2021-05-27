@@ -70,7 +70,7 @@ class ImageRegistration:
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
-        return QCoreApplication.translate('ImageRegistration', message)
+        return QCoreApplication.translate('Multilayer Registration', message)
 
 
     def add_action(
@@ -116,9 +116,9 @@ class ImageRegistration:
             self.menu.setObjectName('&Image Registration')
             self.menu.setTitle('&Image Registration')
         self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
-                                    "Image Registration",
+                                    "Multilayer Registration",
                                     self.iface.mainWindow())
-        self.action.setObjectName("testAction")
+        self.action.setObjectName("Multilayer Registration")
         self.action.setWhatsThis("Configuration for test plugin")
         self.action.setStatusTip("This is the Image Registration config setup")
         self.action.triggered.connect(self.run)
@@ -141,7 +141,7 @@ class ImageRegistration:
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
             self.iface.removePluginMenu(
-                self.tr(u'&Image Registration'),
+                self.tr(u'&Multilayer Registration'),
                 action)
             self.iface.removeToolBarIcon(action)
 
@@ -210,7 +210,7 @@ class ImageRegistration:
             self.configContents["transformationType"] = self.dlg.transformationTypeComboBox.currentIndex()
             self.configContents["downsample"] = 1 if self.dlg.downsampleInputImageCheckBox.isChecked() else 0
             self.configContents["windowSize"] = int(self.dlg.windowSizeSpinBox.text())
-            self.configContents["warpWindow"] = 0 #TODO add config to UI
+            self.configContents["warpWindow"] = int(self.dlg.warpWindowQgsSpinBox.text())
             self.configContents["interpolationMethod"] = self.dlg.interpolationMethodComboBox.currentIndex()
             self.configContents["searchMethod"] = self.dlg.searchMethodComboBox.currentIndex()
             self.configContents["similarityMetrics"] = self.dlg.similarityMetricsComboBox.currentIndex()
@@ -225,7 +225,7 @@ class ImageRegistration:
             self.configContents["rotationFactor"] = {"LowerRotationalBound":float(self.dlg.lowerRotationFactorBoundDoubleSpinBox.text()), 
                                                         "UpperRotationalBound":float(self.dlg.upperRotationFactorBoundDoubleSpinBox.text())}
             logFilePath = Path(self.dlg.logFileQgsFileWidget.filePath())
-            self.configContents["log"] = {"logDirectory":logFilePath.parent, "logFilename":logFilePath.name}
+            self.configContents["log"] = {"logDirectory":str(logFilePath.parent), "logFilename":str(logFilePath.name)}
             featureImgs = []
             for f in self.featureImagePairs:
                 featureObj = {'reference':f[0], 'warp':f[1]}
