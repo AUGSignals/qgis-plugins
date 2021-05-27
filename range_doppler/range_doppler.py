@@ -226,7 +226,7 @@ class RangeDopplerTerrainCorrection:
         if result:
             self.arguments['-i'] = self.dlg.inputQgsFileWidget.filePath()
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
-            self.arguments["-b"] = self.dlg.bandQgsFileWidget.filePath()
+            self.arguments["-b"] = str(self.dlg.bandQLineEdit.text())
             self.arguments["-d"] = self.dlg.demQgsFileWidget.filePath()
             self.arguments["-g"] = self.dlg.egmQgsFileWidget.filePath()
             
@@ -257,8 +257,6 @@ class RangeDopplerTerrainCorrection:
             output_dialog_text = ""
             if out is not None:
                 output_dialog_text += out.decode('utf-8')
-                #for line in str(out.decode('utf-8')).splitlines():
-                #    output_dialog_text += line
             if err is not None:
                 output_dialog_text += err.decode('utf-8')
         
