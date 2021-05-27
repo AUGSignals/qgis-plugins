@@ -169,7 +169,7 @@ class Histogram:
             self.menu = QMenu(self.iface.mainWindow())
             self.menu.setObjectName('&Image Registration')
             self.menu.setTitle('&Image Registration')
-        self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
+        self.action = QAction(QIcon(":/plugins/histogram/icon.png"),
                                     "Histogram",
                                     self.iface.mainWindow())
         self.action.setObjectName("histogram")

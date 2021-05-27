@@ -170,7 +170,7 @@ class EdgeDetection:
             self.menu = QMenu(self.iface.mainWindow())
             self.menu.setObjectName('&Image Registration')
             self.menu.setTitle('&Image Registration')
-        self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
+        self.action = QAction(QIcon(":/plugins/edge_detection/icon.png"),
                                     "Edge Detection",
                                     self.iface.mainWindow())
         self.action.setObjectName("Edge Detection")

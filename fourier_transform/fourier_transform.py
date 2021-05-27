@@ -171,7 +171,7 @@ class FourierTransform:
             self.menu = QMenu(self.iface.mainWindow())
             self.menu.setObjectName('&Image Registration')
             self.menu.setTitle('&Image Registration')
-        self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
+        self.action = QAction(QIcon(":/plugins/fourier_transform/icon.png"),
                                     "Fourier Transform",
                                     self.iface.mainWindow())
         self.action.setObjectName("fourierTransform")
