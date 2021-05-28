@@ -82,14 +82,14 @@ p, li { white-space: pre-wrap; }
       <item row="0" column="1">
        <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox"/>
       </item>
-      <item row="1" column="0">
+      <item row="2" column="0">
        <widget class="QLabel" name="outputLabel">
         <property name="text">
          <string>Output</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="2" column="1">
        <widget class="QgsFileWidget" name="outputQgsFileWidget">
         <property name="dialogTitle">
          <string>Select output file</string>
@@ -102,45 +102,55 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="kernelSizeLabel">
         <property name="text">
          <string>Kernel Size</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="3" column="1">
        <widget class="QComboBox" name="kernelSizeComboBox"/>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="sigmaLabel">
         <property name="text">
          <string>Sigma</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="4" column="1">
        <widget class="QComboBox" name="sigmaComboBox"/>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="targetWindowSizeLabel">
         <property name="text">
          <string>Target Window Size</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="5" column="1">
        <widget class="QComboBox" name="targetWindowSizeComboBox"/>
       </item>
-      <item row="5" column="0">
+      <item row="6" column="0">
        <widget class="QLabel" name="numLooksLabel">
         <property name="text">
          <string>Num Looks</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="6" column="1">
        <widget class="QComboBox" name="numLooksComboBox"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Band</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -161,6 +171,11 @@ p, li { white-space: pre-wrap; }
    <class>QgsMapLayerComboBox</class>
    <extends>QComboBox</extends>
    <header>qgsmaplayercombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsRasterBandComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsrasterbandcombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

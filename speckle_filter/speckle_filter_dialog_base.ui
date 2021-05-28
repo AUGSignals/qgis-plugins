@@ -86,14 +86,14 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
+      <item row="2" column="0">
        <widget class="QLabel" name="outputLabel">
         <property name="text">
          <string>Output</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="2" column="1">
        <widget class="QgsFileWidget" name="outputQgsFileWidget">
         <property name="statusTip">
          <string>Select location of output. Ensure proper filetype extension is shown.</string>
@@ -109,14 +109,14 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="kernelSizeLabel">
         <property name="text">
          <string>Kernel Size</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="3" column="1">
        <widget class="QComboBox" name="kernelSizeComboBox">
         <property name="statusTip">
          <string>Generally a larger kernel size leads to a more blurred output image.</string>
@@ -158,24 +158,24 @@ p, li { white-space: pre-wrap; }
         </item>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="estimateNLooksLabel">
         <property name="text">
          <string>Estimate NLooks</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="4" column="1">
        <widget class="QCheckBox" name="estimateNLooksCheckBox"/>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="numLooksLabel">
         <property name="text">
          <string>Num Looks</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="5" column="1">
        <widget class="QSpinBox" name="numLooksSpinBox">
         <property name="maximum">
          <number>999</number>
@@ -184,6 +184,16 @@ p, li { white-space: pre-wrap; }
          <number>1</number>
         </property>
        </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Band</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox"/>
       </item>
      </layout>
     </widget>
@@ -204,6 +214,11 @@ p, li { white-space: pre-wrap; }
    <class>QgsMapLayerComboBox</class>
    <extends>QComboBox</extends>
    <header>qgsmaplayercombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsRasterBandComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsrasterbandcombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

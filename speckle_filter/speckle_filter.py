@@ -254,6 +254,7 @@ class SpeckleFilter:
         # See if OK was pressed
         if result:
             self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
+            self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
             self.arguments["-c"] = str(self.dlg.inputQgsMapLayerComboBox.currentLayer().width())
             self.arguments["-r"] = str(self.dlg.inputQgsMapLayerComboBox.currentLayer().height())
             kernelsize = 5 + 2*self.dlg.kernelSizeComboBox.currentIndex() #currently hardcoved. #TODO - change

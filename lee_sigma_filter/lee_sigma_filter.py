@@ -225,6 +225,7 @@ class LeeSigmaFilter:
         if result:
             selected_layer = self.dlg.inputQgsMapLayerComboBox.currentLayer()
             self.arguments['-i'] = selected_layer.dataProvider().dataSourceUri()
+            self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
             self.arguments["-c"] = str(selected_layer.width())
             self.arguments["-r"] = str(selected_layer.height())
             kernelsize = 5 + 2*self.dlg.kernelSizeComboBox.currentIndex() #currently hardcoved. #TODO - change
