@@ -348,7 +348,7 @@ class MultiHypothesis:
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+            popen = subprocess.Popen(args)
             popen.wait()
             out, err = popen.communicate()
             output_dialog_text = ""
@@ -363,6 +363,6 @@ class MultiHypothesis:
             QgsMessageLog.logMessage(str(out), 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(err), 'MyPlugin', Qgis.Info)
             self.output_dialog.commandText.setText(args_message)
-            self.output_dialog.outputText.setText(output_dialog_text)
+            self.output_dialog.outputText.setText("The output flow log is stored in {}".format(logFilePath))
             output_dlg = self.output_dialog.exec_()
             
