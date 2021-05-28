@@ -275,8 +275,6 @@ class SpeckleFilter:
                 else:
                     args.append(key)
                     args.append(value)
-            
-            args.extend(["-b", "1"])
 
             s = QSettings()
             path = s.value("qgis-exe/path")
