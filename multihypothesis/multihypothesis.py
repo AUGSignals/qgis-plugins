@@ -293,6 +293,7 @@ class MultiHypothesis:
             self.configContents['transformationType'] = self.dlg.transformationTypeComboBox.currentIndex()
             self.configContents['downsample'] = int(self.dlg.downsampleQgsSpinBox.text())
             self.configContents['windowSize'] = int(self.dlg.windowSizeSpinBox.text())
+            self.configContents["warpWindow"] = int(self.dlg.warpWindowQgsSpinBox.text())
             self.configContents['interpolationMethod'] = self.dlg.interpolationMethodComboBox.currentIndex()
             self.configContents['searchMethod'] = self.dlg.searchMethodComboBox.currentIndex()
             self.configContents['similarityMetrics'] = self.dlg.similarityMetricsComboBox.currentIndex()

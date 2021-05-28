@@ -20,7 +20,7 @@
       <enum>QFrame::Box</enum>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -84,14 +84,14 @@
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
+         <item row="5" column="0">
           <widget class="QLabel" name="interpolationMethodLabel">
            <property name="text">
             <string>Interpolation Method</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="1">
+         <item row="5" column="1">
           <widget class="QComboBox" name="interpolationMethodComboBox">
            <item>
             <property name="text">
@@ -115,14 +115,14 @@
            </item>
           </widget>
          </item>
-         <item row="5" column="0">
+         <item row="6" column="0">
           <widget class="QLabel" name="searchMethodLabel">
            <property name="text">
             <string>Search Method</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
+         <item row="6" column="1">
           <widget class="QComboBox" name="searchMethodComboBox">
            <item>
             <property name="text">
@@ -136,14 +136,14 @@
            </item>
           </widget>
          </item>
-         <item row="6" column="0">
+         <item row="7" column="0">
           <widget class="QLabel" name="similarityMetricsLabel">
            <property name="text">
             <string>Similarity Metrics</string>
            </property>
           </widget>
          </item>
-         <item row="6" column="1">
+         <item row="7" column="1">
           <widget class="QComboBox" name="similarityMetricsComboBox">
            <item>
             <property name="text">
@@ -167,14 +167,14 @@
            </item>
           </widget>
          </item>
-         <item row="8" column="0">
+         <item row="9" column="0">
           <widget class="QLabel" name="borderPaddingValueLabel">
            <property name="text">
             <string>Border Padding Value</string>
            </property>
           </widget>
          </item>
-         <item row="8" column="1">
+         <item row="9" column="1">
           <widget class="QDoubleSpinBox" name="borderPaddingValueDoubleSpinBox">
            <property name="minimum">
             <double>-100.000000000000000</double>
@@ -187,14 +187,14 @@
            </property>
           </widget>
          </item>
-         <item row="9" column="0">
+         <item row="10" column="0">
           <widget class="QLabel" name="scaleIncrementValueLabel">
            <property name="text">
             <string>Scale Increment Value</string>
            </property>
           </widget>
          </item>
-         <item row="9" column="1">
+         <item row="10" column="1">
           <widget class="QDoubleSpinBox" name="scaleIncrementValueQDoubleSpinBox">
            <property name="minimum">
             <double>-100.000000000000000</double>
@@ -207,14 +207,14 @@
            </property>
           </widget>
          </item>
-         <item row="10" column="0">
+         <item row="11" column="0">
           <widget class="QLabel" name="rotationIncrementValueLabel">
            <property name="text">
             <string>Rotation Increment Value</string>
            </property>
           </widget>
          </item>
-         <item row="10" column="1">
+         <item row="11" column="1">
           <widget class="QDoubleSpinBox" name="rotationIncrementValueDoubleSpinBox">
            <property name="minimum">
             <double>-100.000000000000000</double>
@@ -227,14 +227,14 @@
            </property>
           </widget>
          </item>
-         <item row="11" column="0">
+         <item row="12" column="0">
           <widget class="QLabel" name="lowerRotationFactorBoundLabel">
            <property name="text">
             <string>Lower Rotational Bound</string>
            </property>
           </widget>
          </item>
-         <item row="11" column="1">
+         <item row="12" column="1">
           <widget class="QDoubleSpinBox" name="lowerRotationFactorBoundDoubleSpinBox">
            <property name="minimum">
             <double>-180.000000000000000</double>
@@ -244,14 +244,14 @@
            </property>
           </widget>
          </item>
-         <item row="12" column="0">
+         <item row="13" column="0">
           <widget class="QLabel" name="upperRotationFactorBoundLabel">
            <property name="text">
             <string>Upper Rotational Bound</string>
            </property>
           </widget>
          </item>
-         <item row="12" column="1">
+         <item row="13" column="1">
           <widget class="QDoubleSpinBox" name="upperRotationFactorBoundDoubleSpinBox">
            <property name="minimum">
             <double>-180.000000000000000</double>
@@ -261,14 +261,14 @@
            </property>
           </widget>
          </item>
-         <item row="13" column="0">
+         <item row="14" column="0">
           <widget class="QLabel" name="logFileLabel">
            <property name="text">
             <string>Log File</string>
            </property>
           </widget>
          </item>
-         <item row="13" column="1">
+         <item row="14" column="1">
           <widget class="QgsFileWidget" name="logFileQgsFileWidget">
            <property name="dialogTitle">
             <string>Create or select a log file</string>
@@ -284,14 +284,14 @@
            </property>
           </widget>
          </item>
-         <item row="14" column="0">
+         <item row="15" column="0">
           <widget class="QLabel" name="bandLabel">
            <property name="text">
             <string>Band</string>
            </property>
           </widget>
          </item>
-         <item row="14" column="1">
+         <item row="15" column="1">
           <widget class="QSpinBox" name="bandSpinBox">
            <property name="minimum">
             <number>1</number>
@@ -318,14 +318,14 @@
            </property>
           </widget>
          </item>
-         <item row="7" column="0">
+         <item row="8" column="0">
           <widget class="QLabel" name="paddingLabel">
            <property name="text">
             <string>Padding</string>
            </property>
           </widget>
          </item>
-         <item row="7" column="1">
+         <item row="8" column="1">
           <widget class="QSpinBox" name="paddingSpinBox">
            <property name="minimum">
             <number>-10000</number>
@@ -344,6 +344,16 @@
             <number>10</number>
            </property>
           </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Warp Window</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QgsSpinBox" name="warpWindowQgsSpinBox"/>
          </item>
         </layout>
        </item>
