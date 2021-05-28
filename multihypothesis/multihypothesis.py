@@ -246,7 +246,7 @@ class MultiHypothesis:
 
     def originalImageAdd(self):
         originalImage = self.dlg.originalWarpImageQgsFileWidget.filePath()
-        if originalImage and len(self.originalImagePairs) < len(self.featureImagePairs):
+        if originalImage and len(self.originalImagePairs) <= len(self.featureImagePairs):
             self.originalImagePairs.append(originalImage)
             self.dlg.originalImageList.addItem(originalImage)
 
@@ -322,7 +322,8 @@ class MultiHypothesis:
                 f = {'refTopLeft': refTopLeft, 'displacement': displacement, 'layer': {'refFilename': featureImage[2], 'warpFilename': featureImage[3]}}
                 featImages.append(f)
             self.configContents['featImages'] = featImages
-            self.configContents['origReference'] = {'filename': self.dlg.originalReferenceImageQgsFileWidget.filePath(), 'origWarp': self.originalImagePairs}
+            self.configContents['origReference'] = {'filename': self.dlg.originalReferenceImageQgsFileWidget.filePath()}
+            self.configContents['origWarp'] = [{'filename':item} for item in self.originalImagePairs]
             self.configContents['outputImage'] = {
                 'outputDirectory': self.dlg.outputDirectoryQgsFileWidget.filePath(),
                 'referenceUnion': self.dlg.referenceUnionLineEdit.text(),
