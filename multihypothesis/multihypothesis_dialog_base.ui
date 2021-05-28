@@ -64,9 +64,6 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QCheckBox" name="downsampleInputImageCheckBox"/>
-         </item>
          <item row="3" column="0">
           <widget class="QLabel" name="windowSizeLabel">
            <property name="text">
@@ -335,6 +332,16 @@
            </property>
            <property name="maximum">
             <number>10000</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QgsSpinBox" name="downsampleQgsSpinBox">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
            </property>
           </widget>
          </item>
@@ -794,6 +801,11 @@ p, li { white-space: pre-wrap; }
    <class>QgsFileWidget</class>
    <extends>QWidget</extends>
    <header>qgsfilewidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>qgsspinbox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

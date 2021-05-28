@@ -24,6 +24,7 @@
 import subprocess
 import os
 import toml
+from pathlib import Path
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
@@ -290,7 +291,7 @@ class MultiHypothesis:
             self.configContents = {}
             self.configContents['numTests'] = self.dlg.numberOfTestsSpinBox.value()
             self.configContents['transformationType'] = self.dlg.transformationTypeComboBox.currentIndex()
-            self.configContents['downsample'] = 1 if self.dlg.downsampleInputImageCheckBox.isChecked() else 0
+            self.configContents['downsample'] = int(self.dlg.downsampleQgsSpinBox.text())
             self.configContents['windowSize'] = int(self.dlg.windowSizeSpinBox.text())
             self.configContents['interpolationMethod'] = self.dlg.interpolationMethodComboBox.currentIndex()
             self.configContents['searchMethod'] = self.dlg.searchMethodComboBox.currentIndex()
@@ -305,9 +306,8 @@ class MultiHypothesis:
                 scaling.append(scaleObj)
             self.configContents['scaling'] = scaling
             self.configContents['rotationFactor'] = {'LowerRotationalBound': float(self.dlg.lowerRotationFactorBoundDoubleSpinBox.text()), 'UpperRotationalBound': float(self.dlg.upperRotationFactorBoundDoubleSpinBox.text())}
-            logFilePath = self.dlg.logFileQgsFileWidget.filePath()
-            backslashPos = logFilePath.rfind('\\')
-            self.configContents['log'] = {'logDirectory': logFilePath[:backslashPos], 'logFilename': logFilePath[backslashPos + 1:]}
+            logFilePath = Path(self.dlg.logFileQgsFileWidget.filePath())
+            self.configContents["log"] = {"logDirectory":os.path.join(str(logFilePath.parent), ''), "logFilename":str(logFilePath.name)}
 
             featImages = []
             for featureImage in self.featureImagePairs:

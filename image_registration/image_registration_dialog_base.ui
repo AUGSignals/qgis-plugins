@@ -78,6 +78,16 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
+         <item row="1" column="1">
+          <widget class="QgsSpinBox" name="downsampleQgsSpinBox">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
          <item row="2" column="0">
           <widget class="QLabel" name="windowSizeLabel">
            <property name="text">
@@ -97,6 +107,16 @@ p, li { white-space: pre-wrap; }
             <number>140</number>
            </property>
           </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Warp Window</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QgsSpinBox" name="warpWindowQgsSpinBox"/>
          </item>
          <item row="4" column="0">
           <widget class="QLabel" name="interpolationMethodLabel">
@@ -298,14 +318,14 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="14" column="0">
+         <item row="13" column="0">
           <widget class="QLabel" name="originalReferenceImageLabel">
            <property name="text">
             <string>Original Reference Image</string>
            </property>
           </widget>
          </item>
-         <item row="14" column="1">
+         <item row="13" column="1">
           <widget class="QgsFileWidget" name="originalReferenceImageQgsFileWidget">
            <property name="dialogTitle">
             <string>Select the Original Reference Image</string>
@@ -318,14 +338,14 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="15" column="0">
+         <item row="14" column="0">
           <widget class="QLabel" name="originalWarpImageLabel">
            <property name="text">
             <string>Original Warp Image</string>
            </property>
           </widget>
          </item>
-         <item row="15" column="1">
+         <item row="14" column="1">
           <widget class="QgsFileWidget" name="originalWarpImageQgsFileWidget">
            <property name="dialogTitle">
             <string>Select the Original Warp Image</string>
@@ -335,40 +355,6 @@ p, li { white-space: pre-wrap; }
            </property>
            <property name="storageMode">
             <enum>QgsFileWidget::GetFile</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="13" column="0">
-          <widget class="QLabel" name="bandLabel">
-           <property name="text">
-            <string>Band</string>
-           </property>
-          </widget>
-         </item>
-         <item row="13" column="1">
-          <widget class="QSpinBox" name="bandSpinBox">
-           <property name="minimum">
-            <number>1</number>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Warp Window</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QgsSpinBox" name="warpWindowQgsSpinBox"/>
-         </item>
-         <item row="1" column="1">
-          <widget class="QgsSpinBox" name="downsampleQgsSpinBox">
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>10</number>
            </property>
           </widget>
          </item>
