@@ -78,9 +78,6 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QCheckBox" name="downsampleInputImageCheckBox"/>
-         </item>
          <item row="2" column="0">
           <widget class="QLabel" name="windowSizeLabel">
            <property name="text">
@@ -364,6 +361,16 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="3" column="1">
           <widget class="QgsSpinBox" name="warpWindowQgsSpinBox"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QgsSpinBox" name="downsampleQgsSpinBox">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

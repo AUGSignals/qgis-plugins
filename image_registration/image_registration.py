@@ -208,7 +208,7 @@ class ImageRegistration:
         if result:
             self.configContents = {}
             self.configContents["transformationType"] = self.dlg.transformationTypeComboBox.currentIndex()
-            self.configContents["downsample"] = 1 if self.dlg.downsampleInputImageCheckBox.isChecked() else 0
+            self.configContents["downsample"] = int(downsampleQgsSpinBox.text())
             self.configContents["windowSize"] = int(self.dlg.windowSizeSpinBox.text())
             self.configContents["warpWindow"] = int(self.dlg.warpWindowQgsSpinBox.text())
             self.configContents["interpolationMethod"] = self.dlg.interpolationMethodComboBox.currentIndex()
@@ -225,7 +225,7 @@ class ImageRegistration:
             self.configContents["rotationFactor"] = {"LowerRotationalBound":float(self.dlg.lowerRotationFactorBoundDoubleSpinBox.text()), 
                                                         "UpperRotationalBound":float(self.dlg.upperRotationFactorBoundDoubleSpinBox.text())}
             logFilePath = Path(self.dlg.logFileQgsFileWidget.filePath())
-            self.configContents["log"] = {"logDirectory":str(logFilePath.parent), "logFilename":str(logFilePath.name)}
+            self.configContents["log"] = {"logDirectory":os.path.join(str(logFilePath.parent), ''), "logFilename":str(logFilePath.name)}
             featureImgs = []
             for f in self.featureImagePairs:
                 featureObj = {'reference':f[0], 'warp':f[1]}
@@ -241,32 +241,6 @@ class ImageRegistration:
                 "transMat": self.dlg.trasformationMatrixLineEdit.text(),
                 "finalControlPoints": self.dlg.finalControlPointsLineEdit.text()
             }
-            """
-            self.arguments['-t'] = str(self.dlg.transformationTypeComboBox.currentIndex())
-            self.arguments['-b'] = str(self.dlg.bandSpinBox.text())
-            self.arguments['-d'] = self.dlg.downsampleInputImageCheckBox.isChecked()
-            self.arguments['-k'] = str(self.dlg.windowSizeSpinBox.text())
-            self.arguments['-r'] = str(self.dlg.interpolationMethodComboBox.currentIndex())
-            self.arguments['-m'] = str(self.dlg.searchMethodComboBox.currentIndex())
-            self.arguments['-n'] = str(self.dlg.similarityMetricsComboBox.currentIndex())
-            self.arguments['-p'] = str(self.dlg.borderPaddingValueDoubleSpinBox.text())
-            self.arguments['-c'] = str(self.dlg.scaleIncrementValueQDoubleSpinBox.text())
-            self.arguments['-a'] = str(self.dlg.rotationIncrementValueDoubleSpinBox.text())
-            self.arguments['-rf'] = str(self.dlg.lowerRotationFactorBoundDoubleSpinBox.text()) + ',' + str(self.dlg.upperRotationFactorBoundDoubleSpinBox.text())
-            logFilePath = self.dlg.logFileQgsFileWidget.filePath()
-            backslashPos = logFilePath.rfind('\\')
-            self.arguments['-l'] = logFilePath[:backslashPos] + ',' + logFilePath[backslashPos + 1:]
-            self.arguments['-i'] = self.dlg.originalReferenceImageQgsFileWidget.filePath() + ',' + self.dlg.originalWarpImageQgsFileWidget.filePath()
-
-
-            outputFiles = self.dlg.outputDirectoryQgsFileWidget.filePath() + '\\'
-            outputFiles += ',' + self.dlg.referenceUnionLineEdit.text()
-            outputFiles += ',' + self.dlg.warpUnionLineEdit.text()
-            outputFiles += ',' + self.dlg.warpIntersectLineEdit.text()
-            outputFiles += ',' + self.dlg.trasformationMatrixLineEdit.text()
-            outputFiles += ',' + self.dlg.finalControlPointsLineEdit.text()
-            self.arguments['-o'] = outputFiles
-            """
 
             args = []
 
