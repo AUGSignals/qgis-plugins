@@ -262,7 +262,7 @@ class SpeckleFilter:
 
             if (self.dlg.estimateNLooksCheckBox.isChecked()):
                 self.arguments["-n"] = str(1)
-                self.arguments["-e"] = None
+                self.arguments["-e"] = True
             else:
                 self.arguments["-n"] = str(self.dlg.numLooksSpinBox.text())
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
@@ -285,9 +285,15 @@ class SpeckleFilter:
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
-            popen.wait()
-            out, err = popen.communicate()
+            if self.arguments["-v"] == False:
+                popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+                popen.wait()
+                out, err = popen.communicate()
+            else:
+                popen = subprocess.Popen(args)
+                popen.wait()
+                out, err = popen.communicate()
+                
             output_dialog_text = ""
             if out is not None:
                 output_dialog_text += out.decode('utf-8')

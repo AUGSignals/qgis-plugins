@@ -223,7 +223,7 @@ class RefinedLeeFilter:
             for key, value in self.arguments.items():
                 if(value == False):
                     continue
-                if (value == None):
+                if (value == True):
                     args.append(key)
                 else:
                     args.append(key)
@@ -236,9 +236,15 @@ class RefinedLeeFilter:
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
-            popen.wait()
-            out, err = popen.communicate()
+            if self.arguments["-v"] == False:
+                popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+                popen.wait()
+                out, err = popen.communicate()
+            else:
+                popen = subprocess.Popen(args)
+                popen.wait()
+                out, err = popen.communicate()
+
             output_dialog_text = ""
             if out is not None:
                 output_dialog_text += out.decode('utf-8')

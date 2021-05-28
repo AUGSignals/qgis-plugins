@@ -259,9 +259,15 @@ class LeeSigmaFilter:
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
-            popen.wait()
-            out, err = popen.communicate()
+            if self.arguments["-v"] == False:
+                popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+                popen.wait()
+                out, err = popen.communicate()
+            else:
+                popen = subprocess.Popen(args)
+                popen.wait()
+                out, err = popen.communicate()
+
             output_dialog_text = ""
             if out is not None:
                 output_dialog_text += out.decode('utf-8')
