@@ -244,7 +244,9 @@ class LeeSigmaFilter:
 
             args = []
             for key, value in self.arguments.items():
-                if (value == None):
+                if(value == False):
+                    continue
+                if (value == True):
                     args.append(key)
                 else:
                     args.append(key)

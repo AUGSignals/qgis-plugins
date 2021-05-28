@@ -221,6 +221,8 @@ class RefinedLeeFilter:
 
             args = []
             for key, value in self.arguments.items():
+                if(value == False):
+                    continue
                 if (value == None):
                     args.append(key)
                 else:

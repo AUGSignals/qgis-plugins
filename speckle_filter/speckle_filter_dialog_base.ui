@@ -198,7 +198,7 @@ p, li { white-space: pre-wrap; }
       <item row="6" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>lVerbose</string>
+         <string>Verbose</string>
         </property>
        </widget>
       </item>
