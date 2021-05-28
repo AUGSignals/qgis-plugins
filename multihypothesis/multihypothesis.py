@@ -320,7 +320,7 @@ class MultiHypothesis:
                     return c
                 refTopLeft = parseArray(featureImage[0])
                 displacement = parseArray(featureImage[1])
-                f = {'refTopLeft': refTopLeft, 'displacement': displacement, 'layer': {'refFilename': featureImage[2], 'warpFilename': featureImage[3]}}
+                f = {'refTopLeft': refTopLeft, 'displacement': displacement, 'layer': [{'refFilename': featureImage[2], 'warpFilename': featureImage[3]}]}
                 featImages.append(f)
             self.configContents['featImages'] = featImages
             self.configContents['origReference'] = {'filename': self.dlg.originalReferenceImageQgsFileWidget.filePath()}
