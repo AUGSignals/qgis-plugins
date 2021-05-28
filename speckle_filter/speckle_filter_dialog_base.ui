@@ -195,6 +195,20 @@ p, li { white-space: pre-wrap; }
       <item row="1" column="1">
        <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox"/>
       </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>lVerbose</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </widget>

@@ -240,7 +240,7 @@ class LeeSigmaFilter:
 
             self.arguments["-s"] = sigmas[self.dlg.sigmaComboBox.currentIndex()]
             
-            #self.arguments["-v"] = None
+            self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
             args = []
             for key, value in self.arguments.items():

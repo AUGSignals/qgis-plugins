@@ -266,7 +266,7 @@ class SpeckleFilter:
             else:
                 self.arguments["-n"] = str(self.dlg.numLooksSpinBox.text())
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
-            #self.arguments["-v"] = None
+            self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
             args = []
             for key, value in self.arguments.items():

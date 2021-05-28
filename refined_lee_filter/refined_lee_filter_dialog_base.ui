@@ -82,6 +82,16 @@ p, li { white-space: pre-wrap; }
       <item row="0" column="1">
        <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox"/>
       </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Band </string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox"/>
+      </item>
       <item row="2" column="0">
        <widget class="QLabel" name="outputLabel">
         <property name="text">
@@ -102,13 +112,17 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Band </string>
+         <string>Verbose</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>

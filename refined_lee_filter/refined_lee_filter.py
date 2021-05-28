@@ -217,7 +217,7 @@ class RefinedLeeFilter:
             self.arguments["-c"] = str(self.dlg.inputQgsMapLayerComboBox.currentLayer().width())
             self.arguments["-r"] = str(self.dlg.inputQgsMapLayerComboBox.currentLayer().height())
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
-            #self.arguments["-v"] = None
+            self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
             args = []
             for key, value in self.arguments.items():
