@@ -244,14 +244,15 @@ class MultiCFAR:
             self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
 
-            self.arguments["-a"] = self.dlg.caCfarQRadioButton.isChecked()
+
             self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
             self.arguments["-g"] = str(self.dlg.guardWindowDoubleSpinBox.text())
             self.arguments["-k"] = str(self.dlg.backgroundWindowDoubleSpinBox.text())
             self.arguments["-n"] = str(self.dlg.minTargetSizeDoubleSpinBox.text())
             self.arguments["-c"] = str(self.dlg.cfarDoubleSpinBox.text())
-            self.arguments["-s"] = self.dlg.osCfarQRadioButton.isChecked()
-            self.arguments["-w"] = self.dlg.owCfarQRadioButton.isChecked()
+            self.arguments["-s"] = self.dlg.osCFARCheckBox.isChecked()
+            self.arguments["-w"] = self.dlg.owCFARCheckBox.isChecked()
+            self.arguments["-a"] = self.dlg.caCFARCheckBox.isChecked()
 
             self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
