@@ -33,6 +33,7 @@ from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLay
 from .resources import *
 # Import the code for the dialog
 from .model_based_cfar_dialog import ModelBasedCFARDialog
+from .output_dialog import OutputDialog
 import os.path
 
 
@@ -49,6 +50,7 @@ class ModelBasedCFAR:
         """
         # Save reference to the QGIS interface
         self.iface = iface
+        self.output_dialog = OutputDialog()
         # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
         # initialize locale
@@ -225,6 +227,7 @@ class ModelBasedCFAR:
 
         # show the dialog
         self.dlg.show()
+        self.arguments = {}
         # Run the dialog event loop
         result = self.dlg.exec_()
         # See if OK was pressed
@@ -256,15 +259,28 @@ class ModelBasedCFAR:
 
             s = QSettings()
             path = s.value("qgis-exe/path")
-            exeName = "markovChainCFAR.exe"
+            exeName = "modelBasedCFAR.exe"
             path = path + "/" + exeName
             args.insert(0, path)
+            args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args)
+            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
             popen.wait()
+            out, err = popen.communicate()
+            output_dialog_text = ""
+            if out is not None:
+                output_dialog_text += out.decode('utf-8')
+            if err is not None:
+                output_dialog_text += err.decode('utf-8')
+        
             QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
-            #QgsMessageLog.logMessage(str(output), 'MyPlugin', Qgis.Info)
+            print("output is", out, err)
+            QgsMessageLog.logMessage(str(out), 'MyPlugin', Qgis.Info)
+            QgsMessageLog.logMessage(str(err), 'MyPlugin', Qgis.Info)
+            self.output_dialog.commandText.setText(args_message)
+            self.output_dialog.outputText.setText(output_dialog_text)
+            test = self.output_dialog.exec_()
             output_path = self.dlg.outputQgsFileWidget.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
             if not rlayer.isValid():
