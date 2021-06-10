@@ -81,6 +81,9 @@
         <property name="statusTip">
          <string>Output Image. Ensure you have the file extension included in the full path.</string>
         </property>
+        <property name="storageMode">
+         <enum>QgsFileWidget::SaveFile</enum>
+        </property>
        </widget>
       </item>
       <item row="2" column="0">
@@ -169,7 +172,7 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QCheckBox" name="caCfarDetectionCheckBox">
+       <widget class="QRadioButton" name="caCfarQRadioButton">
         <property name="text">
          <string/>
         </property>
@@ -183,7 +186,7 @@
        </widget>
       </item>
       <item row="8" column="1">
-       <widget class="QCheckBox" name="osCfarDetectionCheckBox">
+       <widget class="QRadioButton" name="osCfarQRadioButton">
         <property name="text">
          <string/>
         </property>
@@ -197,14 +200,7 @@
        </widget>
       </item>
       <item row="9" column="1">
-       <widget class="QCheckBox" name="owCfarDetectionCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox">
+       <widget class="QRadioButton" name="owCfarQRadioButton">
         <property name="text">
          <string/>
         </property>
@@ -214,6 +210,13 @@
        <widget class="QLabel" name="verboseLabel">
         <property name="text">
          <string>Verbose</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
