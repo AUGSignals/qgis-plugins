@@ -281,7 +281,4 @@ class ModelBasedCFAR:
             self.output_dialog.commandText.setText(args_message)
             self.output_dialog.outputText.setText(output_dialog_text)
             test = self.output_dialog.exec_()
-            output_path = self.dlg.outputQgsFileWidget.filePath()
-            rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
-            if not rlayer.isValid():
-                QgsMessageLog.logMessage("Layer failed to load!", 'MyPlugin', Qgis.Info)
+

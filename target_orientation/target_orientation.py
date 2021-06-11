@@ -258,7 +258,7 @@ class TargetOrientation:
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+            popen = subprocess.Popen(args)
             popen.wait()
             out, err = popen.communicate()
             output_dialog_text = ""
@@ -275,7 +275,3 @@ class TargetOrientation:
             self.output_dialog.commandText.setText(args_message)
             self.output_dialog.outputText.setText(output_dialog_text)
             test = self.output_dialog.exec_()
-            output_path = self.dlg.outputQgsFileWidget.filePath()
-            rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
-            if not rlayer.isValid():
-                QgsMessageLog.logMessage("Layer failed to load!", 'MyPlugin', Qgis.Info)

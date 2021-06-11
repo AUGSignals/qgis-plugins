@@ -263,7 +263,7 @@ class ClassifierTester:
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+            popen = subprocess.Popen(args)
             popen.wait()
             out, err = popen.communicate()
             output_dialog_text = ""
