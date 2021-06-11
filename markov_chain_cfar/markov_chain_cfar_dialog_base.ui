@@ -96,7 +96,7 @@
       <item row="3" column="1">
        <widget class="QgsDoubleSpinBox" name="CFARQgsDoubleSpinBox">
         <property name="decimals">
-         <number>3</number>
+         <number>6</number>
         </property>
         <property name="maximum">
          <double>1.000000000000000</double>

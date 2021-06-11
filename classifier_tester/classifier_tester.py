@@ -169,7 +169,7 @@ class ClassifierTester:
             self.menu = QMenu(self.iface.mainWindow())
             self.menu.setObjectName('&ATDR')
             self.menu.setTitle('&ATDR')
-        self.action = QAction(QIcon(":/plugins/lee_sigma_filter/icon.png"),
+        self.action = QAction(QIcon(":/plugins/classifier_tester/icon.png"),
                                     "Classifier Tester",
                                     self.iface.mainWindow())
         self.action.setObjectName("Classifier Tester")
