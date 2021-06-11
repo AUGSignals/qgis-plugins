@@ -222,6 +222,14 @@ class MarkovChainCFAR:
                 action)
             self.iface.removeToolBarIcon(action)
 
+    def toggle_histogram_group(self):
+        if self.dlg.targetModelCheckBox.isChecked():
+            self.dlg.histogramBinsQgsFileWidget.setEnabled(True)
+            self.dlg.transitionHistogramQgsFileWidget.setEnabled(True)
+        else:
+            self.dlg.histogramBinsQgsFileWidget.setDisabled(True)
+            self.dlg.transitionHistogramQgsFileWidget.setDisabled(True)
+
 
     def run(self):
         """Run method that performs all the real work"""
@@ -231,6 +239,9 @@ class MarkovChainCFAR:
         if self.first_start == True:
             self.first_start = False
             self.dlg = MarkovChainCFARDialog()
+            self.dlg.histogramBinsQgsFileWidget.setDisabled(True)
+            self.dlg.transitionHistogramQgsFileWidget.setDisabled(True)
+            self.dlg.targetModelCheckBox.toggled.connect(self.toggle_histogram_group)
 
         # show the dialog
         self.dlg.show()
@@ -248,9 +259,12 @@ class MarkovChainCFAR:
             self.arguments["-k"] = str(self.dlg.backgroundWindowQgsDoubleSpinBox.text())
             self.arguments["-m"] = self.dlg.maskQgsFileWidget.filePath()
             self.arguments["-n"] = str(self.dlg.numBinsQgsDoubleSpinBox.text())
-            self.arguments["-q"] = str(self.dlg.histogramBinsQgsFileWidget.filePath())
-            self.arguments["-s"] = str(self.dlg.transitionHistogramQgsFileWidget.filePath())
+
             self.arguments["-t"] = self.dlg.targetModelCheckBox.isChecked()
+            if self.dlg.targetModelCheckBox.isChecked():
+                self.arguments["-q"] = str(self.dlg.histogramBinsQgsFileWidget.filePath())
+                self.arguments["-s"] = str(self.dlg.transitionHistogramQgsFileWidget.filePath())
+
             self.arguments["-w"] = str(self.neighbourhoodComboBox.currentText())
 
             self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
