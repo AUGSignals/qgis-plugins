@@ -226,7 +226,7 @@ class TargetSegmentation:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.filePath()
+            self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
             self.arguments['-o'] = self.dlg.outputImageQgsFileWidget.filePath()
 
             self.arguments['-b'] = str(self.dlg.bandRasterBandComboBox.currentBand())

@@ -235,7 +235,7 @@ class TargetOrientation:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            self.arguments['-i'] = self.dlg.inputMapLayerComboBox.filePath()
+            self.arguments['-i'] = self.dlg.inputMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
             self.arguments['-p'] = str(self.dlg.percentileDoubleSpinBox.text())
             self.arguments['-b'] = str(self.dlg.bandRasterBandComboBox.currentBand())
 
