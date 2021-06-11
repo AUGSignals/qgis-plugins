@@ -255,14 +255,12 @@ class TargetSegmentation:
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args)
+            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
             popen.wait()
             out, err = popen.communicate()
             output_dialog_text = ""
             if out is not None:
                 output_dialog_text += out.decode('utf-8')
-                #for line in str(out.decode('utf-8')).splitlines():
-                #    output_dialog_text += line
             if err is not None:
                 output_dialog_text += err.decode('utf-8')
         
