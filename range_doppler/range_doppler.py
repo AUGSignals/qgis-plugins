@@ -240,7 +240,7 @@ class RangeDopplerTerrainCorrection:
                 else:
                     args.append(key)
                     args.append(value)
-            args.append('/k')
+            #args.append('/k')
             
             #args.insert(0, "path", "%PATH%;C:\OpenCV\OpenCV-4.2\\bin")
             
@@ -251,7 +251,7 @@ class RangeDopplerTerrainCorrection:
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+            popen = subprocess.Popen(args)
             popen.wait()
             out, err = popen.communicate()
             output_dialog_text = ""
