@@ -232,7 +232,7 @@ class ModelBasedCFAR:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            self.arguments['-i'] = self.dlg.inputQgsMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
+            self.arguments['-i'] = self.dlg.inputMapLayerComboBox.currentLayer().dataProvider().dataSourceUri()
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
             self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
             self.arguments["-g"] = str(self.dlg.guardWindowQgsDoubleSpinBox.text())
