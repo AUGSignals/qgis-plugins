@@ -254,7 +254,7 @@ class MarkovChainCFAR:
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
             self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
             self.arguments["-c"] = str(self.dlg.CFARQgsDoubleSpinBox.text())
-            self.arguments["-d"] = str(self.dlg.minTargetSizeQgsDoubleSpinBox.text())
+            self.arguments["-d"] = str(self.dlg.minTargetSizeQgsSpinBox.text())
             self.arguments["-g"] = str(self.dlg.guardWindowQgsDoubleSpinBox.text())
             self.arguments["-k"] = str(self.dlg.backgroundWindowQgsDoubleSpinBox.text())
             self.arguments["-m"] = self.dlg.maskQgsFileWidget.filePath()
@@ -265,7 +265,7 @@ class MarkovChainCFAR:
                 self.arguments["-q"] = str(self.dlg.histogramBinsQgsFileWidget.filePath())
                 self.arguments["-s"] = str(self.dlg.transitionHistogramQgsFileWidget.filePath())
 
-            self.arguments["-w"] = str(self.neighbourhoodComboBox.currentText())
+            self.arguments["-w"] = str(self.dlg.neighbourhoodComboBox.currentText())
 
             self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
