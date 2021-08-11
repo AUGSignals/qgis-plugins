@@ -254,7 +254,7 @@ class Histogram:
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
 
             self.arguments["-b"] = str(self.dlg.bandIndexQgsRasterBandComboBox.currentBand())
-            self.arguments["-n"] = str(self.dlg.numberOfBinsSpinBox.text())
+            self.arguments["-n"] = str(self.dlg.numberOfBinsQSpinBox.text())
 
             self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
