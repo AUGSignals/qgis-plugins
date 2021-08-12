@@ -234,7 +234,7 @@ class ImageRegistration:
             self.configContents["originalImage"] = {"reference":self.dlg.originalReferenceImageQgsFileWidget.filePath(), 
                                                     "warp":self.dlg.originalWarpImageQgsFileWidget.filePath()}
             self.configContents["outputImage"] = {
-                "outputDirectory": self.dlg.outputDirectoryQgsFileWidget.filePath(),
+                "outputDirectory": str(self.dlg.outputDirectoryQgsFileWidget.filePath()) + "\\",
                 "referenceUnion": self.dlg.referenceUnionLineEdit.text(),
                 "warpUnion": self.dlg.warpUnionLineEdit.text(),
                 "warpIntersect": self.dlg.warpIntersectLineEdit.text(),

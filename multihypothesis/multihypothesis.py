@@ -326,7 +326,7 @@ class MultiHypothesis:
             self.configContents['origReference'] = {'filename': self.dlg.originalReferenceImageQgsFileWidget.filePath()}
             self.configContents['origWarp'] = [{'filename':item} for item in self.originalImagePairs]
             self.configContents['outputImage'] = {
-                'outputDirectory': self.dlg.outputDirectoryQgsFileWidget.filePath(),
+                'outputDirectory': str(self.dlg.outputDirectoryQgsFileWidget.filePath()) + "\\",
                 'referenceUnion': self.dlg.referenceUnionLineEdit.text(),
                 'warpUnion': self.dlg.warpUnionLineEdit.text(),
                 'warpIntersect': self.dlg.warpIntersectLineEdit.text(),
