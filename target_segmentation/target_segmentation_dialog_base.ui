@@ -71,6 +71,9 @@ p, li { white-space: pre-wrap; }
          <property name="statusTip">
           <string>Select output filepath. Ensure file extension is included</string>
          </property>
+         <property name="storageMode">
+          <enum>QgsFileWidget::SaveFile</enum>
+         </property>
         </widget>
        </item>
        <item row="4" column="0">
