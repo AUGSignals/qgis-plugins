@@ -21,6 +21,12 @@ The following pre-requisites must be satisfied to install and use the plugins.
 * [QGIS](https://www.qgis.org/da/site/forusers/download.html) version 3.14 or newer
 	* Version 3.16 long-term release is preferred for stability
 
+To build documentation (optional), the following additional software are required.
+
+* [Doxygen](https://www.doxygen.nl/index.html) v 1.8.18 or newer
+* [doxypypy](https://github.com/Feneric/doxypypy) v 0.8.8 or newer
+* [LaTex](https://www.latex-project.org/get/) (optional) to create a PDF document
+
 
 Installation
 -------------
