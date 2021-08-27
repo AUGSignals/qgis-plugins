@@ -231,8 +231,8 @@ class ImageRegistration:
             self.configContents['scaling'] = scaling
             self.configContents["rotationFactor"] = {"LowerRotationalBound":float(self.dlg.lowerRotationFactorBoundDoubleSpinBox.text()), 
                                                         "UpperRotationalBound":float(self.dlg.upperRotationFactorBoundDoubleSpinBox.text())}
-            logFilePath = Path(self.dlg.logFileQgsFileWidget.filePath())
-            self.configContents["log"] = {"logDirectory":os.path.join(str(logFilePath.parent), ''), "logFilename":str(logFilePath.name)}
+            logFilePath = self.dlg.logFileQgsFileWidget.filePath()
+            self.configContents["logFilename"] = logFilePath
             featureImgs = []
             for f in self.featureImagePairs:
                 featureObj = {'reference':f[0], 'warp':f[1]}
