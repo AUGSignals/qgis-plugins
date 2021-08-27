@@ -83,35 +83,38 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="label_6">
         <property name="text">
          <string>Band</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="bandQLineEdit"/>
+      </item>
+      <item row="4" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
          <string>DEM File</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="4" column="1">
        <widget class="QgsFileWidget" name="demQgsFileWidget">
         <property name="filter">
          <string>*.dem;;*.*</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
          <string>EGM File</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="5" column="1">
        <widget class="QgsFileWidget" name="egmQgsFileWidget">
         <property name="filter">
          <string>*.egm;;*.*</string>
@@ -119,7 +122,21 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="bandQLineEdit"/>
+       <widget class="QgsDoubleSpinBox" name="outputResolutionQgsDoubleSpinBox">
+        <property name="maximum">
+         <double>999.990000000000009</double>
+        </property>
+        <property name="value">
+         <double>12.740000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Output Resolution</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -146,6 +163,11 @@
   </widget>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>QgsDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>qgsdoublespinbox.h</header>
+  </customwidget>
   <customwidget>
    <class>QgsFileWidget</class>
    <extends>QWidget</extends>

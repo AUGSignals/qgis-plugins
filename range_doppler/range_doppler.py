@@ -229,6 +229,7 @@ class RangeDopplerTerrainCorrection:
             self.arguments["-b"] = str(self.dlg.bandQLineEdit.text())
             self.arguments["-d"] = self.dlg.demQgsFileWidget.filePath()
             self.arguments["-g"] = self.dlg.egmQgsFileWidget.filePath()
+            self.arguments["-r"] = str(self.dlg.outputResolutionQgsDoubleSpinBox.text())
             
             args = []
             
