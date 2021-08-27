@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/gcp_mapper" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
