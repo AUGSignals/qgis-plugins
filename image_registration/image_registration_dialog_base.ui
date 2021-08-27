@@ -34,7 +34,7 @@ p, li { white-space: pre-wrap; }
       <enum>QFrame::Box</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -331,7 +331,7 @@ p, li { white-space: pre-wrap; }
             <string>Select the Original Reference Image</string>
            </property>
            <property name="filter">
-            <string>*.tif *.tiff *.gtif *.img</string>
+            <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
            </property>
            <property name="storageMode">
             <enum>QgsFileWidget::GetFile</enum>

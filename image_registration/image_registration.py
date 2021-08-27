@@ -148,10 +148,16 @@ class ImageRegistration:
     def pageChange(self, pagesToChange):
         curIndex = self.dlg.stackedWidget.currentIndex()
         curIndex += pagesToChange
-        if curIndex < 0:
+        if curIndex < 0 or curIndex == 0:
             curIndex = 0
-        if curIndex >= self.dlg.stackedWidget.count():
+            self.dlg.previousButton.setEnabled(False)
+        else:
+            self.dlg.previousButton.setEnabled(True)
+        if curIndex >= self.dlg.stackedWidget.count() or curIndex == self.dlg.stackedWidget.count() - 1:
             curIndex = self.dlg.stackedWidget.count() - 1
+            self.dlg.nextButton.setEnabled(False)
+        else:
+            self.dlg.nextButton.setEnabled(True)
         self.dlg.stackedWidget.setCurrentIndex(curIndex)
 
     def scalingAdd(self):
@@ -184,6 +190,7 @@ class ImageRegistration:
         if self.first_start == True:
             self.first_start = False
             self.dlg = ImageRegistrationDialog()
+            self.dlg.previousButton.setEnabled(False)
             self.dlg.previousButton.clicked.connect(lambda: self.pageChange(-1))
             self.dlg.nextButton.clicked.connect(lambda: self.pageChange(1))
             self.dlg.scalingAddButton.clicked.connect(self.scalingAdd)
