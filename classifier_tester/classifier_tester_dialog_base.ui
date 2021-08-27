@@ -61,7 +61,7 @@
           <string>Select Input Data</string>
          </property>
          <property name="filter">
-          <string>*.h5;*.*</string>
+          <string>*.h5;;*.*</string>
          </property>
          <property name="storageMode">
           <enum>QgsFileWidget::GetFile</enum>
@@ -79,6 +79,9 @@
         <widget class="QgsFileWidget" name="outputQgsFileWidget">
          <property name="dialogTitle">
           <string>Select output directory</string>
+         </property>
+         <property name="filter">
+          <string/>
          </property>
          <property name="storageMode">
           <enum>QgsFileWidget::GetDirectory</enum>

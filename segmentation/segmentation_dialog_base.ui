@@ -75,7 +75,7 @@
          <string>Select output file</string>
         </property>
         <property name="filter">
-         <string>*.tif *.tiff *.gtif *.img *.*</string>
+         <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
         </property>
         <property name="storageMode">
          <enum>QgsFileWidget::SaveFile</enum>
@@ -95,7 +95,7 @@
          <string>Select Temp Output</string>
         </property>
         <property name="filter">
-         <string>*.txt *.*</string>
+         <string>*.csv;;*.txt;; *.*</string>
         </property>
         <property name="storageMode">
          <enum>QgsFileWidget::SaveFile</enum>
@@ -115,7 +115,7 @@
          <string>Select PDF Filename</string>
         </property>
         <property name="filter">
-         <string>*.pdf *.txt *.*</string>
+         <string>*.csv;;*.txt;; *.*</string>
         </property>
         <property name="storageMode">
          <enum>QgsFileWidget::SaveFile</enum>

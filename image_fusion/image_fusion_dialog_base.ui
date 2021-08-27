@@ -41,6 +41,9 @@
    <property name="frameShape">
     <enum>QFrame::Box</enum>
    </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
    <widget class="QWidget" name="page">
     <widget class="QWidget" name="formLayoutWidget">
      <property name="geometry">
@@ -68,6 +71,9 @@
       </item>
       <item row="2" column="1">
        <widget class="QgsFileWidget" name="outputQgsFileWidget">
+        <property name="filter">
+         <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
+        </property>
         <property name="storageMode">
          <enum>QgsFileWidget::SaveFile</enum>
         </property>
@@ -132,10 +138,18 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsFileWidget" name="opticalQgsFileWidget"/>
+       <widget class="QgsFileWidget" name="opticalQgsFileWidget">
+        <property name="filter">
+         <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
+        </property>
+       </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QgsFileWidget" name="sarQgsFileWidget"/>
+       <widget class="QgsFileWidget" name="sarQgsFileWidget">
+        <property name="filter">
+         <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
+        </property>
+       </widget>
       </item>
       <item row="6" column="1">
        <widget class="QCheckBox" name="singleBandCheckBox">

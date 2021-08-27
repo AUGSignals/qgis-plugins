@@ -81,6 +81,9 @@
         <property name="statusTip">
          <string>Output Image. Ensure you have the file extension included in the full path.</string>
         </property>
+        <property name="filter">
+         <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
+        </property>
         <property name="storageMode">
          <enum>QgsFileWidget::SaveFile</enum>
         </property>

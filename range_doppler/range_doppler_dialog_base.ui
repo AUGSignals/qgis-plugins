@@ -61,6 +61,9 @@
         <property name="statusTip">
          <string>Input Folder or Zipped File</string>
         </property>
+        <property name="filter">
+         <string>*.zip;;*;;*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
+        </property>
        </widget>
       </item>
       <item row="1" column="0">
@@ -72,6 +75,9 @@
       </item>
       <item row="1" column="1">
        <widget class="QgsFileWidget" name="outputQgsFileWidget">
+        <property name="filter">
+         <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
+        </property>
         <property name="storageMode">
          <enum>QgsFileWidget::SaveFile</enum>
         </property>
@@ -92,7 +98,11 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QgsFileWidget" name="demQgsFileWidget"/>
+       <widget class="QgsFileWidget" name="demQgsFileWidget">
+        <property name="filter">
+         <string>*.dem;;*.*</string>
+        </property>
+       </widget>
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="label_4">
@@ -102,7 +112,11 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QgsFileWidget" name="egmQgsFileWidget"/>
+       <widget class="QgsFileWidget" name="egmQgsFileWidget">
+        <property name="filter">
+         <string>*.egm;;*.*</string>
+        </property>
+       </widget>
       </item>
       <item row="2" column="1">
        <widget class="QLineEdit" name="bandQLineEdit"/>

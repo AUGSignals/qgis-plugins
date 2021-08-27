@@ -308,7 +308,7 @@ p, li { white-space: pre-wrap; }
             <string>Create or select a log file</string>
            </property>
            <property name="filter">
-            <string>*.log *.*</string>
+            <string>*.log ;; *.txt;;*.*</string>
            </property>
            <property name="defaultRoot">
             <string/>
@@ -351,7 +351,7 @@ p, li { white-space: pre-wrap; }
             <string>Select the Original Warp Image</string>
            </property>
            <property name="filter">
-            <string>*.tif *.tiff *.gtif *.img</string>
+            <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
            </property>
            <property name="storageMode">
             <enum>QgsFileWidget::GetFile</enum>
@@ -484,7 +484,7 @@ p, li { white-space: pre-wrap; }
                <string>Select the Feature Reference Image</string>
               </property>
               <property name="filter">
-               <string>*.tif *.tiff *.gtif *.img</string>
+               <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
               </property>
              </widget>
             </item>
@@ -501,7 +501,7 @@ p, li { white-space: pre-wrap; }
                <string>Select the Feature Warp Image</string>
               </property>
               <property name="filter">
-               <string>*.tif *.tiff *.gtif *.img</string>
+               <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
               </property>
              </widget>
             </item>
@@ -648,6 +648,19 @@ p, li { white-space: pre-wrap; }
          </layout>
         </widget>
        </item>
+       <item row="1" column="0">
+        <widget class="QDialogButtonBox" name="button_box">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="standardButtons">
+          <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+         </property>
+         <property name="centerButtons">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -663,19 +676,6 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="nextButton">
      <property name="text">
       <string>Next</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QDialogButtonBox" name="button_box">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-     <property name="centerButtons">
-      <bool>false</bool>
      </property>
     </widget>
    </item>
@@ -697,9 +697,9 @@ p, li { white-space: pre-wrap; }
  <connections>
   <connection>
    <sender>button_box</sender>
-   <signal>accepted()</signal>
+   <signal>rejected()</signal>
    <receiver>ImageRegistrationDialogBase</receiver>
-   <slot>accept()</slot>
+   <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>20</x>
@@ -713,9 +713,9 @@ p, li { white-space: pre-wrap; }
   </connection>
   <connection>
    <sender>button_box</sender>
-   <signal>rejected()</signal>
+   <signal>accepted()</signal>
    <receiver>ImageRegistrationDialogBase</receiver>
-   <slot>reject()</slot>
+   <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>20</x>
