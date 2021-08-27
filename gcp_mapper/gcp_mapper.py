@@ -168,11 +168,11 @@ class GCPMap:
         return action
 
     def addToCustomMenu(self):
-        self.menu = self.iface.mainWindow().findChild(QMenu, '&Image Registration')
+        self.menu = self.iface.mainWindow().findChild(QMenu, '&GCP Map')
         if not self.menu:
             self.menu = QMenu(self.iface.mainWindow())
-            self.menu.setObjectName('&Image Registration')
-            self.menu.setTitle('&Image Registration')
+            self.menu.setObjectName('&GCP Map')
+            self.menu.setTitle('&GCP Map')
         self.action = QAction(QIcon(":/plugins/gcp_mapper/icon.png"),
                                     "Multilayer Registration",
                                     self.iface.mainWindow())
