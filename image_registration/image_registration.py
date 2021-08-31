@@ -191,6 +191,7 @@ class ImageRegistration:
             self.first_start = False
             self.dlg = ImageRegistrationDialog()
             self.dlg.previousButton.setEnabled(False)
+            self.dlg.nextButton.setEnabled(True)
             self.dlg.previousButton.clicked.connect(lambda: self.pageChange(-1))
             self.dlg.nextButton.clicked.connect(lambda: self.pageChange(1))
             self.dlg.scalingAddButton.clicked.connect(self.scalingAdd)
@@ -200,6 +201,8 @@ class ImageRegistration:
 
         # Start the widget on the first page
         self.dlg.stackedWidget.setCurrentIndex(0)
+        self.dlg.previousButton.setEnabled(False)
+        self.dlg.nextButton.setEnabled(True)
         self.scalingPairs = []
         self.featureImagePairs = []
         self.dlg.scalingList.clear()
