@@ -231,7 +231,10 @@ class GCPMap:
             args = {'Reference Image':ref_image, 'Reference Band': str(ref_band), 'Warp Image': warp_image, 'Warp Band': str(warp_band), 'Final Controls Point Filename':csv_input, 'Output': outfile}
 
             QgsMessageLog.logMessage("The GCP Map has been executed", 'MyPlugin', Qgis.Info)
-            output_msg = 'The output code is ' + str(out)
+            if out is True:
+                output_msg = 'The GCP executed correctly and the output file is at ' + str(outfile)
+            else:
+                output_msg = 'Error while mapping the control points. Could not generate output.'
             QgsMessageLog.logMessage(output_msg, 'MyPlugin', Qgis.Info)
 
             self.output_dialog.commandText.setText(str(args))
