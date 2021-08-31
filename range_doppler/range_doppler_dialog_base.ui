@@ -44,7 +44,7 @@
       <rect>
        <x>2</x>
        <y>40</y>
-       <width>525</width>
+       <width>521</width>
        <height>341</height>
       </rect>
      </property>
@@ -71,12 +71,12 @@
         <item>
          <widget class="QLabel" name="label_9">
           <property name="text">
-           <string>X</string>
+           <string>X1</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QgsSpinBox" name="xQgsSpinBox">
+         <widget class="QgsSpinBox" name="x1QgsSpinBox">
           <property name="maximum">
            <number>65535</number>
           </property>
@@ -85,12 +85,12 @@
         <item>
          <widget class="QLabel" name="label_10">
           <property name="text">
-           <string>Y </string>
+           <string>Y1</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QgsSpinBox" name="yQgsSpinBox">
+         <widget class="QgsSpinBox" name="y1QgsSpinBox">
           <property name="maximum">
            <number>65535</number>
           </property>
@@ -99,12 +99,12 @@
         <item>
          <widget class="QLabel" name="label_11">
           <property name="text">
-           <string>Width</string>
+           <string>X2</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QgsSpinBox" name="widthQgsSpinBox">
+         <widget class="QgsSpinBox" name="x2QgsSpinBox">
           <property name="maximum">
            <number>65535</number>
           </property>
@@ -113,12 +113,12 @@
         <item>
          <widget class="QLabel" name="label_12">
           <property name="text">
-           <string>Height</string>
+           <string>Y2</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QgsSpinBox" name="heightQgsSpinBox">
+         <widget class="QgsSpinBox" name="y2QgsSpinBox">
           <property name="maximum">
            <number>65535</number>
           </property>
@@ -208,7 +208,7 @@
       <item row="1" column="1">
        <widget class="QCheckBox" name="subRangeCheckBox">
         <property name="text">
-         <string>For large images, select the top left coordinate, width,  height of desired sub-image</string>
+         <string>For large images, select the top left and bottom right coordinates of  sub-image</string>
         </property>
        </widget>
       </item>
