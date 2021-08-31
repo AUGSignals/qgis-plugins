@@ -39,6 +39,7 @@ from .resources import *
 # Import the code for the dialog
 from .gcp_mapper_dialog import GCPMapDialog
 from .output_dialog import OutputDialog
+from .gcp_mapper_base import mapgcp
 import os.path
 
 
@@ -55,6 +56,7 @@ class GCPMap:
         """
         # Save reference to the QGIS interface
         self.iface = iface
+        self.output_dialog = OutputDialog()
         # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
         # initialize locale
@@ -168,13 +170,13 @@ class GCPMap:
         return action
 
     def addToCustomMenu(self):
-        self.menu = self.iface.mainWindow().findChild(QMenu, '&GCP Map')
+        self.menu = self.iface.mainWindow().findChild(QMenu, '&Image Registration')
         if not self.menu:
             self.menu = QMenu(self.iface.mainWindow())
-            self.menu.setObjectName('&GCP Map')
-            self.menu.setTitle('&GCP Map')
+            self.menu.setObjectName('&Image Registration')
+            self.menu.setTitle('&Image Registration')
         self.action = QAction(QIcon(":/plugins/gcp_mapper/icon.png"),
-                                    "Multilayer Registration",
+                                    "GCP Map",
                                     self.iface.mainWindow())
         self.action.setObjectName("GCP Map")
         self.action.setWhatsThis("Configuration for test plugin")
@@ -219,46 +221,19 @@ class GCPMap:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            ref_image_box = self.dlg.refImageQgsFileWidget.filePath()
-            warp_image_box = self.dlg.warpImageQgsFileWidget.filePath()
-            csv_input_box = self.dlg.csvQgsFileWidget.filePath()
-            output_box = self.dlg.outputQgsFileWidget.filePath()
-            im_ref = cv2.imread(ref_image_box,-1)          # refImage
-            im_warp = cv2.imread(warp_image_box,-1) # registered warpIntersectImage
-            im_ref = np.uint8(im_ref)
-            im_warp = np.uint8(im_warp)
-            # Initiate keypoints
-            marker_diameter = 10
-            kp_ref = []
-            kp_warp = []
-            csv_filename = csv_input_box
-            with open(csv_filename,'r') as csv_file:
-                csv_reader = csv.reader(csv_file, delimiter=',')
-                next(csv_reader, None)  # skip the headers
-                count = 0
-                for row in csv_reader:
-                    if row == []:
-                        break
-                    y1 = int(row[0])
-                    x1 = int(row[1])
-                    y2 = int(row[2])
-                    x2 = int(row[3])
-                    temp_keyPtRef = cv2.KeyPoint(x1,y1,marker_diameter)
-                    kp_ref.append(temp_keyPtRef)
-                    temp_keyPtWarp = cv2.KeyPoint(x2,y2,marker_diameter)
-                    kp_warp.append(temp_keyPtWarp) 
-                    count+=1
-            print('Number of control points to be matched:' + str(count))
-            good = []
-            for i in range(count):
-                temp_dmatch = cv2.DMatch(i,i,0,0)
-                good.append(temp_dmatch)
-            # cv.drawMatches expects list of matches.
-            img_map = cv2.drawMatches(im_ref,kp_ref,im_warp,kp_warp,good,None,flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
+            ref_image = self.dlg.refImageQgsFileWidget.filePath()
+            ref_band = int(self.dlg.referenceBandQgsSpinBox.text())
+            warp_image = self.dlg.warpImageQgsFileWidget.filePath()
+            warp_band = int(self.dlg.warpBandQgsSpinBox.text())
+            csv_input = self.dlg.csvQgsFileWidget.filePath()
+            outfile = self.dlg.outputQgsFileWidget.filePath()
+            out = mapgcp(ref_image, csv_input, outfile, warp_image, ref_band, warp_band)
+            args = {'Reference Image':ref_image, 'Reference Band': str(ref_band), 'Warp Image': warp_image, 'Warp Band': str(warp_band), 'Final Controls Point Filename':csv_input, 'Output': outfile}
 
-            #take user provided output filename
-            outfilename = output_box
-            if cv2.imwrite(outfilename, img_map):
-                print('Output file is saved at: ' + outfilename)
-            else:
-                print('Error while saving the output file ' + outfilename)
+            QgsMessageLog.logMessage("The GCP Map has been executed", 'MyPlugin', Qgis.Info)
+            output_msg = 'The output code is ' + str(out)
+            QgsMessageLog.logMessage(output_msg, 'MyPlugin', Qgis.Info)
+
+            self.output_dialog.commandText.setText(str(args))
+            self.output_dialog.outputText.setText(output_msg)
+            test = self.output_dialog.exec_()
