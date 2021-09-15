@@ -207,13 +207,6 @@ class RangeDopplerTerrainCorrection:
         #         action)
         #     self.iface.removeToolBarIcon(action)
 
-    def toggleSubRange(self):
-        isTrue = self.dlg.subRangeCheckBox.isChecked()
-        self.dlg.x1QgsSpinBox.setEnabled(isTrue)
-        self.dlg.y1QgsSpinBox.setEnabled(isTrue)
-        self.dlg.x2QgsSpinBox.setEnabled(isTrue)
-        self.dlg.y2QgsSpinBox.setEnabled(isTrue)
-
 
     def run(self):
         """Run method that performs all the real work"""
@@ -223,12 +216,6 @@ class RangeDopplerTerrainCorrection:
         if self.first_start == True:
             self.first_start = False
             self.dlg = RangeDopplerTerrainCorrectionDialog()
-            self.dlg.x1QgsSpinBox.setDisabled(True)
-            self.dlg.y1QgsSpinBox.setDisabled(True)
-            self.dlg.x2QgsSpinBox.setDisabled(True)
-            self.dlg.y2QgsSpinBox.setDisabled(True)
-            self.dlg.subRangeCheckBox.toggled.connect(self.toggleSubRange)
-
 
         # show the dialog
         self.dlg.show()
@@ -243,8 +230,6 @@ class RangeDopplerTerrainCorrection:
             self.arguments["-d"] = self.dlg.demQgsFileWidget.filePath()
             self.arguments["-g"] = self.dlg.egmQgsFileWidget.filePath()
             self.arguments["-r"] = str(self.dlg.outputResolutionQgsDoubleSpinBox.text())
-            if self.dlg.subRangeCheckBox.isChecked():
-                self.arguments["-m"] = self.dlg.x1QgsSpinBox.text() + ',' + self.dlg.y1QgsSpinBox.text() + ',' + self.dlg.x2QgsSpinBox.text() + ',' + self.dlg.y2QgsSpinBox.text()
             
             args = []
             
