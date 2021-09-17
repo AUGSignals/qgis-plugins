@@ -28,7 +28,7 @@ from pathlib import Path
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction, QWidget, QMenu
+from qgis.PyQt.QtWidgets import QAction, QWidget, QMenu, QMessageBox
 from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLayer
 
 # Initialize Qt resources from file resources.py
@@ -147,6 +147,27 @@ class ImageRegistration:
 
     def pageChange(self, pagesToChange):
         curIndex = self.dlg.stackedWidget.currentIndex()
+        if (curIndex == 0 and pagesToChange == 1 and len(str(self.dlg.originalReferenceImageQgsFileWidget.filePath()))<2
+                and len(str(self.dlg.originalWarpImageQgsFileWidget.filePath()))<2):
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setText("Reference and Warp Original Images Required")
+            msgBox.setWindowTitle("Missing Entries")
+            msgBox.setStandardButtons(QMessageBox.Ok)
+
+            returnValue = msgBox.exec()
+            if returnValue == QMessageBox.Ok:
+                return
+        elif (curIndex == 2 and pagesToChange == 1 and not self.featureImagePairs):
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setText("Reference and Warp Feature Image Pair Required")
+            msgBox.setWindowTitle("Missing Entries")
+            msgBox.setStandardButtons(QMessageBox.Ok)
+
+            returnValue = msgBox.exec()
+            if returnValue == QMessageBox.Ok:
+                return
         curIndex += pagesToChange
         if curIndex < 0 or curIndex == 0:
             curIndex = 0
@@ -187,6 +208,8 @@ class ImageRegistration:
 
         # Create the dialog with elements (after translation) and keep reference
         # Only create GUI ONCE in callback, so that it will only load when the plugin is started
+        self.featureImagePairs = []
+        
         if self.first_start == True:
             self.first_start = False
             self.dlg = ImageRegistrationDialog()
@@ -204,7 +227,6 @@ class ImageRegistration:
         self.dlg.previousButton.setEnabled(False)
         self.dlg.nextButton.setEnabled(True)
         self.scalingPairs = []
-        self.featureImagePairs = []
         self.dlg.scalingList.clear()
         self.dlg.featureImageList.clear()
 
