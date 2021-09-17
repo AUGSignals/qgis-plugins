@@ -44,7 +44,7 @@ Post-Installation
 
 The installation will create menu items in QGIS, named `Image Registration` and `ATDR`. These will have sub-menu items corresponding to the different software modules delivered under SMACT.
 
-To use these C++ software, their location must be specified to the plugins. To specify the location, first launch the `Image Registration > Settings Configuration` plugin, then click the button [...] and select the folder (called `qgis-exes`). 
+To use these plugins, the location of the C++ software executables (`*.exe`) must be specified to the plugins. To specify the location, first launch the `Image Registration > Settings Configuration` plugin, then click the button [...] and select the folder (called `qgis-exes`).
 
 The C++ software can be located anywhere on the same computer. If using the installer, `setup.cmd` version 0.3 or newer, the software will typically be placed at `C:\OSGeo4W64\smact`. In older versions, the installer will *NOT* copy the downloaded C++ software. In either case, users can manually copy all the EXE and DLL files to any folder on the computer, and select that folder from the `Image Registration > Settings Configuration` plugin dialog.
 

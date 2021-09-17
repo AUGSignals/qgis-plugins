@@ -28,7 +28,7 @@ from pathlib import Path
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction, QWidget, QMenu
+from qgis.PyQt.QtWidgets import QAction, QWidget, QMenu, QMessageBox
 from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer, QgsMapLayer
 
 
@@ -215,6 +215,26 @@ class MultiHypothesis:
 
     def pageChange(self, pagesToChange):
         curIndex = self.dlg.stackedWidget.currentIndex()
+        if (curIndex == 2 and pagesToChange == 1 and not self.featureImagePairs):
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setText("Reference and Warp Feature Images Required")
+            msgBox.setWindowTitle("Missing Entries")
+            msgBox.setStandardButtons(QMessageBox.Ok)
+
+            returnValue = msgBox.exec()
+            if returnValue == QMessageBox.Ok:
+                return
+        elif (curIndex == 3 and pagesToChange == 1 and not self.originalImagePairs):
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setText("Reference and Warp Original Image Pair Required")
+            msgBox.setWindowTitle("Missing Entries")
+            msgBox.setStandardButtons(QMessageBox.Ok)
+
+            returnValue = msgBox.exec()
+            if returnValue == QMessageBox.Ok:
+                return
         curIndex += pagesToChange
         if curIndex < 0 or curIndex == 0:
             curIndex = 0
@@ -267,6 +287,8 @@ class MultiHypothesis:
 
         # Create the dialog with elements (after translation) and keep reference
         # Only create GUI ONCE in callback, so that it will only load when the plugin is started
+        self.featureImagePairs = []
+        self.originalImagePairs = []
         if self.first_start == True:
             self.first_start = False
             self.dlg = MultiHypothesisDialog()
@@ -283,8 +305,7 @@ class MultiHypothesis:
         # Start the widget on the first page
         self.dlg.stackedWidget.setCurrentIndex(0)
         self.scalingPairs = []
-        self.featureImagePairs = []
-        self.originalImagePairs = []
+
         self.dlg.scalingList.clear()
         self.dlg.featureImageList.clear()
         self.dlg.originalImageList.clear()

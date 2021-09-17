@@ -321,7 +321,7 @@ p, li { white-space: pre-wrap; }
          <item row="13" column="0">
           <widget class="QLabel" name="originalReferenceImageLabel">
            <property name="text">
-            <string>Original Reference Image</string>
+            <string>Original Reference Image [*]</string>
            </property>
           </widget>
          </item>
@@ -341,7 +341,7 @@ p, li { white-space: pre-wrap; }
          <item row="14" column="0">
           <widget class="QLabel" name="originalWarpImageLabel">
            <property name="text">
-            <string>Original Warp Image</string>
+            <string>Original Warp Image [*]</string>
            </property>
           </widget>
          </item>
@@ -359,6 +359,13 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
         </layout>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>[*] Denotes a required field</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -469,7 +476,7 @@ p, li { white-space: pre-wrap; }
           <item row="1" column="0" colspan="2">
            <widget class="QListWidget" name="featureImageList"/>
           </item>
-          <item row="2" column="0" colspan="2">
+          <item row="3" column="0" colspan="2">
            <layout class="QFormLayout" name="formLayout_3">
             <item row="0" column="0">
              <widget class="QLabel" name="featureReferenceImageLabel">
@@ -507,17 +514,24 @@ p, li { white-space: pre-wrap; }
             </item>
            </layout>
           </item>
-          <item row="3" column="0">
+          <item row="4" column="1">
+           <widget class="QPushButton" name="featureImageDeleteButton">
+            <property name="text">
+             <string>Delete</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
            <widget class="QPushButton" name="featureImageAddButton">
             <property name="text">
              <string>Add</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QPushButton" name="featureImageDeleteButton">
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>Delete</string>
+             <string>[REQUIRED- At least one set of feature reference &amp; warp image]]</string>
             </property>
            </widget>
           </item>
