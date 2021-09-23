@@ -219,6 +219,7 @@ class RangeDopplerTerrainCorrection:
 
         # show the dialog
         self.dlg.show()
+        self.satellitemapping = {'RADARSAT-2':'RS2', 'ICEYE':'ICEYE', 'TerraSAR-X':'TSX', 'PALSAR':'PALSAR'}
         # Run the dialog event loop
         result = self.dlg.exec_()
         self.arguments = {}
@@ -230,6 +231,7 @@ class RangeDopplerTerrainCorrection:
             self.arguments["-d"] = self.dlg.demQgsFileWidget.filePath()
             self.arguments["-g"] = self.dlg.egmQgsFileWidget.filePath()
             self.arguments["-r"] = str(self.dlg.outputResolutionQgsDoubleSpinBox.text())
+            self.arguments["-s"] = self.satellitemapping[self.dlg.satelliteComboBox.currentText()]
             
             args = []
             
