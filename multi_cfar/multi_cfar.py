@@ -280,7 +280,7 @@ class MultiCFAR:
             popen = subprocess.Popen(args)
             popen.wait()
             out, err = popen.communicate()
-            output_dialog_text = ""
+            output_dialog_text = "Program Finished Running"
             if out is not None:
                 output_dialog_text += out.decode('utf-8')
             if err is not None:
