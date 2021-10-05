@@ -48,12 +48,32 @@ p, li { white-space: pre-wrap; }
       <enum>QFrame::Box</enum>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
         <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="numberOfTestsLabel">
+           <property name="text">
+            <string>Number of Tests</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="numberOfTestsSpinBox">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>6</number>
+           </property>
+           <property name="value">
+            <number>3</number>
+           </property>
+          </widget>
+         </item>
          <item row="1" column="0">
           <widget class="QLabel" name="transformationTypeLabel">
            <property name="text">
@@ -92,6 +112,16 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
+         <item row="2" column="1">
+          <widget class="QgsSpinBox" name="downsampleQgsSpinBox">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
          <item row="3" column="0">
           <widget class="QLabel" name="windowSizeLabel">
            <property name="text">
@@ -111,6 +141,16 @@ p, li { white-space: pre-wrap; }
             <number>140</number>
            </property>
           </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Warp Window</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QgsSpinBox" name="warpWindowQgsSpinBox"/>
          </item>
          <item row="5" column="0">
           <widget class="QLabel" name="interpolationMethodLabel">
@@ -193,6 +233,23 @@ p, li { white-space: pre-wrap; }
              <string>MI</string>
             </property>
            </item>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="paddingLabel">
+           <property name="text">
+            <string>Padding</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QSpinBox" name="paddingSpinBox">
+           <property name="minimum">
+            <number>-10000</number>
+           </property>
+           <property name="maximum">
+            <number>10000</number>
+           </property>
           </widget>
          </item>
          <item row="9" column="0">
@@ -311,77 +368,6 @@ p, li { white-space: pre-wrap; }
             <enum>QgsFileWidget::SaveFile</enum>
            </property>
           </widget>
-         </item>
-         <item row="15" column="0">
-          <widget class="QLabel" name="bandLabel">
-           <property name="text">
-            <string>Band</string>
-           </property>
-          </widget>
-         </item>
-         <item row="15" column="1">
-          <widget class="QSpinBox" name="bandSpinBox">
-           <property name="minimum">
-            <number>1</number>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="numberOfTestsLabel">
-           <property name="text">
-            <string>Number of Tests</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QSpinBox" name="numberOfTestsSpinBox">
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>6</number>
-           </property>
-           <property name="value">
-            <number>3</number>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="0">
-          <widget class="QLabel" name="paddingLabel">
-           <property name="text">
-            <string>Padding</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="1">
-          <widget class="QSpinBox" name="paddingSpinBox">
-           <property name="minimum">
-            <number>-10000</number>
-           </property>
-           <property name="maximum">
-            <number>10000</number>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QgsSpinBox" name="downsampleQgsSpinBox">
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>10</number>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Warp Window</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QgsSpinBox" name="warpWindowQgsSpinBox"/>
          </item>
         </layout>
        </item>
