@@ -34,6 +34,7 @@ from .resources import *
 # Import the code for the dialog
 from .range_doppler_dialog import RangeDopplerTerrainCorrectionDialog
 from .output_dialog import OutputDialog
+from .hdf2gtiff import hdf2gtiff
 import os.path
 
 
@@ -225,13 +226,20 @@ class RangeDopplerTerrainCorrection:
         self.arguments = {}
         # See if OK was pressed
         if result:
-            self.arguments['-i'] = self.dlg.inputQgsFileWidget.filePath()
+            selectedSatellite = self.satellitemapping[self.dlg.satelliteComboBox.currentText()]
+            
+            self.arguments["-i"] = self.dlg.inputQgsFileWidget.filePath()
             self.arguments["-o"] = self.dlg.outputQgsFileWidget.filePath()
             self.arguments["-b"] = str(self.dlg.bandQLineEdit.text())
             self.arguments["-d"] = self.dlg.demQgsFileWidget.filePath()
             self.arguments["-g"] = self.dlg.egmQgsFileWidget.filePath()
             self.arguments["-r"] = str(self.dlg.outputResolutionQgsDoubleSpinBox.text())
-            self.arguments["-s"] = self.satellitemapping[self.dlg.satelliteComboBox.currentText()]
+            self.arguments["-s"] = selectedSatellite
+            
+            if selectedSatellite == 'ICEYE':
+                # bandFile = '...'
+                bandfile = hdf2gtiff(self.dlg.inputQgsFileWidget.filePath())
+                self.arguments["-b"] = bandfile
             
             args = []
             
