@@ -237,7 +237,6 @@ class RangeDopplerTerrainCorrection:
             self.arguments["-s"] = selectedSatellite
             
             if selectedSatellite == 'ICEYE':
-                # bandFile = '...'
                 bandfile = hdf2gtiff(self.dlg.inputQgsFileWidget.filePath())
                 self.arguments["-b"] = bandfile
             
@@ -251,9 +250,6 @@ class RangeDopplerTerrainCorrection:
                 else:
                     args.append(key)
                     args.append(value)
-            #args.append('/k')
-            
-            #args.insert(0, "path", "%PATH%;C:\OpenCV\OpenCV-4.2\\bin")
             
             s = QSettings()
             path = s.value("qgis-exe/path")
