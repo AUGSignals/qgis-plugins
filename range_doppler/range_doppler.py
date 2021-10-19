@@ -35,7 +35,7 @@ from .resources import *
 from .range_doppler_dialog import RangeDopplerTerrainCorrectionDialog
 from .output_dialog import OutputDialog
 from .hdf2gtiff import hdf2gtiff
-import os.path
+#from os import path
 
 
 class RangeDopplerTerrainCorrection:

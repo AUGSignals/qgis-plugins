@@ -77,7 +77,7 @@
          <string>Input Folder or Zipped File</string>
         </property>
         <property name="filter">
-         <string>*.zip;;*;;*.tif, *.tiff, *.gtif ;;*.img ;; *.*</string>
+         <string>*.zip;;*.tif;;*.tiff;;*.gtif ;;*.img ;; *.*</string>
         </property>
        </widget>
       </item>
@@ -118,7 +118,7 @@
       <item row="5" column="1">
        <widget class="QgsFileWidget" name="demQgsFileWidget">
         <property name="filter">
-         <string>*.tif, *.tiff;;*.*</string>
+         <string>*.tif;;*.tiff;;*.*</string>
         </property>
        </widget>
       </item>

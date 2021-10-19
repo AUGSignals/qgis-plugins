@@ -1,5 +1,5 @@
 from osgeo import gdal
-from os import path
+import os
 from zipfile import ZipFile
 import glob
 
@@ -34,6 +34,9 @@ def hdf2gtiff(h5loc):
     opExt = '.tiff'
 
     h5ds = gdal.Open(h5file)
+    if h5ds == None:
+        return '..'
+
     fstr = h5ds.GetSubDatasets()
 
     s_i = gdal.Open(fstr[2][0])
