@@ -12,37 +12,38 @@ def findH5file(h5loc):
 
 def findH5zip(h5loc):
     # Search for HDF5 file in zip archive `h5loc`
-    h5file = '..'
+    h5file = None
     with ZipFile(h5loc, 'r') as zip:
         for info in zip.infolist():
             if info.filename.endswith('.h5'):
-                h5file = info.filename
+                h5file = os.path.join('/vsizip', h5loc, info.filename)
                 break
                 
     return h5file
-            
+
     
 def hdf2gtiff(h5loc):
     
+    h5loc = h5loc.replace('\\', '/')
     if h5loc.endswith(".zip"):
         h5file = findH5zip(h5loc)
     else:
         h5file = findH5file(h5loc)
-    
-    ## Output format
-    opFormat = 'Gtiff'
-    opExt = '.tiff'
 
     h5ds = gdal.Open(h5file)
     if h5ds == None:
-        return '..'
+        return None
 
     fstr = h5ds.GetSubDatasets()
 
     s_i = gdal.Open(fstr[2][0])
     s_q = gdal.Open(fstr[3][0])
 
-    # Write to TIFF file
+    ## Output format
+    opFormat = 'Gtiff'
+    opExt = '.tiff'
+
+    ## Write to TIFF file
     # dstfile = h5file + opExt
     tmpdir = os.environ['TEMP']
     pname = os.path.basename(h5file)
