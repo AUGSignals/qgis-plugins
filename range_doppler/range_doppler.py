@@ -237,8 +237,12 @@ class RangeDopplerTerrainCorrection:
             self.arguments["-s"] = selectedSatellite
             
             if selectedSatellite == 'ICEYE':
-                bandfile = hdf2gtiff(self.dlg.inputQgsFileWidget.filePath())
+                bandfile , extdir = hdf2gtiff(self.dlg.inputQgsFileWidget.filePath())
                 self.arguments["-b"] = bandfile
+                pathOfFile = self.dlg.inputQgsFileWidget.filePath()
+                if pathOfFile.endswith('.zip'):
+                    self.arguments["-i"] = extdir
+                
             
             args = []
             

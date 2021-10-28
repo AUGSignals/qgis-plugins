@@ -1,5 +1,6 @@
 from osgeo import gdal
 import os
+import zipfile
 from zipfile import ZipFile
 import glob
 
@@ -10,23 +11,38 @@ def findH5file(h5loc):
     return h5files_files[0]
 
 
-def findH5zip(h5loc):
+def findH5zip2(h5loc):
     # Search for HDF5 file in zip archive `h5loc`
     h5file = None
-    with ZipFile(h5loc, 'r') as zip:
-        for info in zip.infolist():
+    with ZipFile(h5loc, 'r') as zip_ref:
+        for info in zip_ref.infolist():
             if info.filename.endswith('.h5'):
-                h5file = os.path.join('/vsizip', h5loc, info.filename)
+                h5file = os.path.join(h5loc, info.filename)
+                h5file = "/vsizip/{}".format(h5file.replace('\\', '/'))
                 break
-                
     return h5file
 
+def findH5zip(h5loc):
+    tmpdir = os.environ['TEMP']
+    bname, ext = os.path.splitext(os.path.basename(h5loc))
+    
+    extdir = os.path.join(tmpdir, bname)
+    
+    with ZipFile(h5loc, 'r') as zip_ref:
+        zip_ref.extractall(extdir)
+    
+    #if extracted_dir.endswith('.zip'):
+    #    extracted_dir = extracted_dir[:-4]
+    #zip_ref.extractall(extracted_dir)
+    
+    h5file = findH5file(extdir)
+    h5file = h5file.replace('\\', '/')
+    return h5file , extdir
     
 def hdf2gtiff(h5loc):
-    
     h5loc = h5loc.replace('\\', '/')
     if h5loc.endswith(".zip"):
-        h5file = findH5zip(h5loc)
+        h5file , extdir  = findH5zip(h5loc)
     else:
         h5file = findH5file(h5loc)
 
@@ -78,4 +94,5 @@ def hdf2gtiff(h5loc):
         ob.WriteArray(ib)
 
     del ods
-    return dstfile
+    return dstfile , extdir
+    
