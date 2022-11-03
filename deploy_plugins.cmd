@@ -27,6 +27,7 @@ REM TODO: Check for pb-tool
 
 REM Set deployment path
 SET QgisPluginsPath=%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins
+MKDIR %QgisPluginsPath%
 
 REM Deploy plugins from source directory to QgisPluginsPath
 FOR /D %%d IN ("%~dp0*") DO CALL :install_plugin "%%d"

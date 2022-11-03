@@ -107,4 +107,7 @@ pluginbuilder3/
 test_plugin/
 
 # Doxygen outputs
-docs/html/docs/latex/
+docs/html/
+docs/latex/
+
+**LOC-*
