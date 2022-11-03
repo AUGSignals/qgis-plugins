@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/Call_Rectification" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
