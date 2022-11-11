@@ -60,7 +60,11 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox"/>
+       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input Image file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="outputLabel">
@@ -70,12 +74,12 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget">
-        <property name="filter">
-         <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
+       <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Image filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
-        <property name="storageMode">
-         <enum>QgsFileWidget::SaveFile</enum>
+        <property name="filter" stdset="0">
+         <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
         </property>
        </widget>
       </item>
@@ -87,7 +91,11 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox"/>
+       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Band Index&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="CFARLabel">
@@ -98,6 +106,9 @@
       </item>
       <item row="3" column="1">
        <widget class="QgsDoubleSpinBox" name="CFARQgsDoubleSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CFAR value [0,1], usually close to zero&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="decimals">
          <number>6</number>
         </property>
@@ -118,6 +129,9 @@
       </item>
       <item row="4" column="1">
        <widget class="QgsSpinBox" name="minTargetSizeQgsSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Minimum target size (used to eliminate false detetcions)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="maximum">
          <number>10000</number>
         </property>
@@ -132,6 +146,9 @@
       </item>
       <item row="5" column="1">
        <widget class="QgsDoubleSpinBox" name="guardWindowQgsDoubleSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Guard window size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="decimals">
          <number>0</number>
         </property>
@@ -149,6 +166,9 @@
       </item>
       <item row="6" column="1">
        <widget class="QgsDoubleSpinBox" name="backgroundWindowQgsDoubleSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Background window size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="decimals">
          <number>0</number>
         </property>
@@ -165,7 +185,11 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QgsFileWidget" name="maskQgsFileWidget"/>
+       <widget class="QgsFileWidget" name="maskQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mask (defines detection region)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="8" column="0">
        <widget class="QLabel" name="numBinsLabel">
@@ -176,6 +200,9 @@
       </item>
       <item row="8" column="1">
        <widget class="QgsDoubleSpinBox" name="numBinsQgsDoubleSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of bins in Markov chain&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="decimals">
          <number>0</number>
         </property>
@@ -192,8 +219,11 @@
        </widget>
       </item>
       <item row="10" column="1">
-       <widget class="QgsFileWidget" name="histogramBinsQgsFileWidget">
-        <property name="filter">
+       <widget class="QgsFileWidget" name="histogramBinsQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Histograms bins&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="filter" stdset="0">
          <string>*.csv;;*.*</string>
         </property>
        </widget>
@@ -206,8 +236,11 @@
        </widget>
       </item>
       <item row="11" column="1">
-       <widget class="QgsFileWidget" name="transitionHistogramQgsFileWidget">
-        <property name="filter">
+       <widget class="QgsFileWidget" name="transitionHistogramQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Transition histogram (if available)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="filter" stdset="0">
          <string>*.csv;;*.*</string>
         </property>
        </widget>
@@ -221,6 +254,9 @@
       </item>
       <item row="13" column="1">
        <widget class="QComboBox" name="neighbourhoodComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Neighbourhood window order&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <item>
          <property name="text">
           <string>c</string>
@@ -242,6 +278,9 @@
       </item>
       <item row="14" column="1">
        <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verbose Mode - print a message to console&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -256,6 +295,9 @@
       </item>
       <item row="9" column="1">
        <widget class="QCheckBox" name="targetModelCheckBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Target model (if available)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
          <string/>
         </property>

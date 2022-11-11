@@ -53,8 +53,11 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QgsFileWidget" name="inputDatasetQgsFileWidget">
-         <property name="filter">
+        <widget class="QgsFileWidget" name="inputDatasetQgsFileWidget" native="true">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input Dataset filenames&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="filter" stdset="0">
           <string>*.h5;;*.*</string>
          </property>
         </widget>
@@ -69,7 +72,11 @@ p, li { white-space: pre-wrap; }
        <item row="1" column="1">
         <layout class="QVBoxLayout" name="outputDatasetVBoxLayout">
          <item>
-          <widget class="QLineEdit" name="outputDatasetLineEdit"/>
+          <widget class="QLineEdit" name="outputDatasetLineEdit">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output dataset filenames entered as traning and testing pair for each feature ((comma-seperated list))&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="outputDatasetHelpLabel">
@@ -90,7 +97,11 @@ p, li { white-space: pre-wrap; }
        <item row="2" column="1">
         <layout class="QVBoxLayout" name="fftFeatureVBoxLayout">
          <item>
-          <widget class="QLineEdit" name="fftFeatureLineEdit"/>
+          <widget class="QLineEdit" name="fftFeatureLineEdit">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Feature : 1-FFT, 2-FFTPCA, 3-Humoment, 4-HuMomentPCA&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="fftFeatureHelpLabel">
@@ -111,7 +122,11 @@ p, li { white-space: pre-wrap; }
        <item row="3" column="1">
         <layout class="QVBoxLayout" name="groupNamesVBoxLayout">
          <item>
-          <widget class="QLineEdit" name="groupNamesLineEdit"/>
+          <widget class="QLineEdit" name="groupNamesLineEdit">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Group names&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="groupNamesHelpLabel">
@@ -131,6 +146,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="5" column="1">
         <widget class="QSpinBox" name="numberPCASpinBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of PCA&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="maximum">
           <number>2147483647</number>
          </property>
@@ -145,6 +163,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="6" column="1">
         <widget class="QDoubleSpinBox" name="percentageTrainingDataDoubleSpinBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Percentage Training Data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="maximum">
           <double>1.000000000000000</double>
          </property>
@@ -162,6 +183,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="7" column="1">
         <widget class="QSpinBox" name="imageCropSizeSpinBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Image Crop Size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="maximum">
           <number>100</number>
          </property>
@@ -169,6 +193,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="8" column="0">
         <widget class="QCheckBox" name="textModeCheckBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Text Mode- Write feature data to file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="text">
           <string>Use Text Mode</string>
          </property>

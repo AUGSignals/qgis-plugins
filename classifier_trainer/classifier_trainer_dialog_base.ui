@@ -63,8 +63,11 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QgsFileWidget" name="inputQgsFileWidget">
-        <property name="dialogTitle">
+       <widget class="QgsFileWidget" name="inputQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input Training Datasets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="dialogTitle" stdset="0">
          <string>*.h5;;*.*</string>
         </property>
        </widget>
@@ -77,18 +80,18 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget">
-        <property name="fileWidgetButtonVisible">
+       <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Model Directory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="fileWidgetButtonVisible" stdset="0">
          <bool>true</bool>
         </property>
-        <property name="dialogTitle">
+        <property name="dialogTitle" stdset="0">
          <string>Select output directory</string>
         </property>
-        <property name="filter">
+        <property name="filter" stdset="0">
          <string/>
-        </property>
-        <property name="storageMode">
-         <enum>QgsFileWidget::GetDirectory</enum>
         </property>
        </widget>
       </item>
@@ -101,6 +104,9 @@
       </item>
       <item row="2" column="1">
        <widget class="QComboBox" name="algorithmComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Algorithm Id: 1=KNN, 2=SVM 1VsElse, 3=SVM pairwise, 4=Adaboost 1VsElse, 5=Adaboost&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <item>
          <property name="text">
           <string>1 - Knn (No model)</string>
@@ -142,6 +148,9 @@
       </item>
       <item row="3" column="1">
        <widget class="QComboBox" name="adaboostTypeComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;type for Adaboost: 0: Discrete, 1: Real, 2: Logit, 3:Gentle (default)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="currentIndex">
          <number>3</number>
         </property>
@@ -176,6 +185,9 @@
       </item>
       <item row="4" column="1">
        <widget class="QComboBox" name="autoTrainSizeComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enable automatic training flag for SVM: disabled (default), enabled&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>This is a test of the status tip info popup</string>
         </property>
@@ -200,6 +212,9 @@
       </item>
       <item row="5" column="1">
        <widget class="QComboBox" name="kernelTypeComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The kernel type for SVM: linear (default), poly, RBF, Sigmoid, Chi2, Inter&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string extracomment="This is the test comment">This is a test status tip. Shows what can be done.</string>
         </property>

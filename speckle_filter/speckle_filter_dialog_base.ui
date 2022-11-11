@@ -81,6 +81,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="0" column="1">
        <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input Image file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>Select input image from images loaded in layers</string>
         </property>
@@ -94,18 +97,18 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget">
+       <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Image filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>Select location of output. Ensure proper filetype extension is shown.</string>
         </property>
-        <property name="dialogTitle">
+        <property name="dialogTitle" stdset="0">
          <string>Select output file</string>
         </property>
-        <property name="filter">
+        <property name="filter" stdset="0">
          <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
-        </property>
-        <property name="storageMode">
-         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>
@@ -118,6 +121,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="3" column="1">
        <widget class="QComboBox" name="kernelSizeComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kernel Window Size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>Generally a larger kernel size leads to a more blurred output image.</string>
         </property>
@@ -166,7 +172,11 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QCheckBox" name="estimateNLooksCheckBox"/>
+       <widget class="QCheckBox" name="estimateNLooksCheckBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Estimate Equivalent Number of Looks&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="numLooksLabel">
@@ -177,6 +187,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="5" column="1">
        <widget class="QSpinBox" name="numLooksSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of Looks&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="maximum">
          <number>999</number>
         </property>
@@ -193,7 +206,11 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox"/>
+       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Band Index&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="label_2">
@@ -204,6 +221,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="6" column="1">
        <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verbose Mode - print  a message to console&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
          <string/>
         </property>

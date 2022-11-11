@@ -68,7 +68,7 @@ p, li { white-space: pre-wrap; }
        <x>10</x>
        <y>10</y>
        <width>591</width>
-       <height>211</height>
+       <height>215</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout">
@@ -80,7 +80,11 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox"/>
+       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input image file name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="outputLabel">
@@ -90,15 +94,15 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget">
-        <property name="dialogTitle">
+       <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output image file name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="dialogTitle" stdset="0">
          <string>Select output file</string>
         </property>
-        <property name="filter">
+        <property name="filter" stdset="0">
          <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
-        </property>
-        <property name="storageMode">
-         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>
@@ -110,7 +114,11 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QComboBox" name="kernelSizeComboBox"/>
+       <widget class="QComboBox" name="kernelSizeComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt; Kernel window size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="sigmaLabel">
@@ -120,7 +128,11 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QComboBox" name="sigmaComboBox"/>
+       <widget class="QComboBox" name="sigmaComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sigma&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="targetWindowSizeLabel">
@@ -130,7 +142,11 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QComboBox" name="targetWindowSizeComboBox"/>
+       <widget class="QComboBox" name="targetWindowSizeComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Target window size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="numLooksLabel">
@@ -140,10 +156,18 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QComboBox" name="numLooksComboBox"/>
+       <widget class="QComboBox" name="numLooksComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of looks&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox"/>
+       <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Band Index&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label">
@@ -161,6 +185,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="7" column="1">
        <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verbose mode - print messages to console&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
          <string/>
         </property>

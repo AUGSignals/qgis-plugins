@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>410</width>
-    <height>170</height>
+    <height>201</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
      <property name="frameShape">
       <enum>QFrame::Box</enum>
      </property>
-     <widget class="QWidget" name="stackedWidgetPage1" native="true">
+     <widget class="QWidget" name="stackedWidgetPage1">
       <layout class="QFormLayout" name="formLayout">
        <item row="1" column="0">
         <widget class="QLabel" name="bandIndexLabel">
@@ -53,7 +53,11 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QDoubleSpinBox" name="percentileDoubleSpinBox"/>
+        <widget class="QDoubleSpinBox" name="percentileDoubleSpinBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Percentile value to find edge threshold&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="inputImageLabel">
@@ -63,10 +67,18 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QgsMapLayerComboBox" name="inputMapLayerComboBox"/>
+        <widget class="QgsMapLayerComboBox" name="inputMapLayerComboBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input image file name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QgsRasterBandComboBox" name="bandRasterBandComboBox"/>
+        <widget class="QgsRasterBandComboBox" name="bandRasterBandComboBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Band Index&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

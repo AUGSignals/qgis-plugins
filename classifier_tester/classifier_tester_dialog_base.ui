@@ -56,15 +56,15 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QgsFileWidget" name="inputQgsFileWidget">
-         <property name="dialogTitle">
+        <widget class="QgsFileWidget" name="inputQgsFileWidget" native="true">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input Testing Datasets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="dialogTitle" stdset="0">
           <string>Select Input Data</string>
          </property>
-         <property name="filter">
+         <property name="filter" stdset="0">
           <string>*.h5;;*.*</string>
-         </property>
-         <property name="storageMode">
-          <enum>QgsFileWidget::GetFile</enum>
          </property>
         </widget>
        </item>
@@ -76,15 +76,15 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QgsFileWidget" name="outputQgsFileWidget">
-         <property name="dialogTitle">
+        <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Directory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="dialogTitle" stdset="0">
           <string>Select output directory</string>
          </property>
-         <property name="filter">
+         <property name="filter" stdset="0">
           <string/>
-         </property>
-         <property name="storageMode">
-          <enum>QgsFileWidget::GetDirectory</enum>
          </property>
         </widget>
        </item>
@@ -97,6 +97,9 @@
        </item>
        <item row="2" column="1">
         <widget class="QComboBox" name="algorithmComboBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Algorithm Id: 1=KNN, 2=SVM 1VsElse, 3=SVM pairwise, 4=Adaboost 1VsElse, 5=Adaboost pairwise&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <item>
           <property name="text">
            <string>1 - Knn (No model)</string>
@@ -138,6 +141,9 @@
        </item>
        <item row="3" column="1">
         <widget class="QSpinBox" name="knnNumSpinBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of neighbors for Knn (default=3)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="value">
           <number>3</number>
          </property>
@@ -151,12 +157,12 @@
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QgsFileWidget" name="modelQgsFileWidget">
-         <property name="dialogTitle">
-          <string>Select Model</string>
+        <widget class="QgsFileWidget" name="modelQgsFileWidget" native="true">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Trained Model (or Training data for KNN)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
-         <property name="storageMode">
-          <enum>QgsFileWidget::GetDirectory</enum>
+         <property name="dialogTitle" stdset="0">
+          <string>Select Model</string>
          </property>
         </widget>
        </item>

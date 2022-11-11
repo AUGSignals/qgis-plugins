@@ -83,7 +83,11 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox"/>
+       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input Image file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="outputLabel">
@@ -93,18 +97,18 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget">
+       <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Image filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>Output filepath - ensure filetype extension is included.</string>
         </property>
-        <property name="dialogTitle">
+        <property name="dialogTitle" stdset="0">
          <string>Select output file</string>
         </property>
-        <property name="filter">
+        <property name="filter" stdset="0">
          <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
-        </property>
-        <property name="storageMode">
-         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>
@@ -117,6 +121,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="2" column="1">
        <widget class="QgsRasterBandComboBox" name="bandIndexQgsRasterBandComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Band Index&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>Select band from selected input image</string>
         </property>
@@ -131,6 +138,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="3" column="1">
        <widget class="QDoubleSpinBox" name="percentageOfPixelsNotEdgesDoubleSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Percentage of Pixels Not Edges&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>Higher percentage means less pixels will be classified as edges.</string>
         </property>
@@ -164,6 +174,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="5" column="1">
        <widget class="QDoubleSpinBox" name="thresholdRatioDoubleSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Threshold ratio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>Threshold ratio </string>
         </property>
@@ -177,6 +190,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="4" column="1">
        <widget class="QDoubleSpinBox" name="apetureSizeDoubleSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Aperture Size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>Ap</string>
         </property>
@@ -200,6 +216,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item row="6" column="1">
        <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verbose Mode - print a message to console&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>Print output to the terminal instead of to file</string>
         </property>

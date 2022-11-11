@@ -303,18 +303,15 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="12" column="1">
-          <widget class="QgsFileWidget" name="logFileQgsFileWidget">
-           <property name="dialogTitle">
+          <widget class="QgsFileWidget" name="logFileQgsFileWidget" native="true">
+           <property name="dialogTitle" stdset="0">
             <string>Create or select a log file</string>
            </property>
-           <property name="filter">
+           <property name="filter" stdset="0">
             <string>*.log ;; *.txt;;*.*</string>
            </property>
-           <property name="defaultRoot">
+           <property name="defaultRoot" stdset="0">
             <string/>
-           </property>
-           <property name="storageMode">
-            <enum>QgsFileWidget::SaveFile</enum>
            </property>
           </widget>
          </item>
@@ -326,15 +323,12 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="13" column="1">
-          <widget class="QgsFileWidget" name="originalReferenceImageQgsFileWidget">
-           <property name="dialogTitle">
+          <widget class="QgsFileWidget" name="originalReferenceImageQgsFileWidget" native="true">
+           <property name="dialogTitle" stdset="0">
             <string>Select the Original Reference Image</string>
            </property>
-           <property name="filter">
+           <property name="filter" stdset="0">
             <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
-           </property>
-           <property name="storageMode">
-            <enum>QgsFileWidget::GetFile</enum>
            </property>
           </widget>
          </item>
@@ -346,15 +340,12 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="14" column="1">
-          <widget class="QgsFileWidget" name="originalWarpImageQgsFileWidget">
-           <property name="dialogTitle">
+          <widget class="QgsFileWidget" name="originalWarpImageQgsFileWidget" native="true">
+           <property name="dialogTitle" stdset="0">
             <string>Select the Original Warp Image</string>
            </property>
-           <property name="filter">
+           <property name="filter" stdset="0">
             <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
-           </property>
-           <property name="storageMode">
-            <enum>QgsFileWidget::GetFile</enum>
            </property>
           </widget>
          </item>
@@ -486,11 +477,11 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QgsFileWidget" name="featureReferenceImageQgsFileWidget">
-              <property name="dialogTitle">
+             <widget class="QgsFileWidget" name="featureReferenceImageQgsFileWidget" native="true">
+              <property name="dialogTitle" stdset="0">
                <string>Select the Feature Reference Image</string>
               </property>
-              <property name="filter">
+              <property name="filter" stdset="0">
                <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
               </property>
              </widget>
@@ -503,11 +494,11 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QgsFileWidget" name="featureWarpImageQgsFileWidget">
-              <property name="dialogTitle">
+             <widget class="QgsFileWidget" name="featureWarpImageQgsFileWidget" native="true">
+              <property name="dialogTitle" stdset="0">
                <string>Select the Feature Warp Image</string>
               </property>
-              <property name="filter">
+              <property name="filter" stdset="0">
                <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
               </property>
              </widget>
@@ -578,12 +569,12 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QgsFileWidget" name="outputDirectoryQgsFileWidget">
-              <property name="dialogTitle">
-               <string>Select the output directory</string>
+             <widget class="QgsFileWidget" name="outputDirectoryQgsFileWidget" native="true">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Directory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
-              <property name="storageMode">
-               <enum>QgsFileWidget::GetDirectory</enum>
+              <property name="dialogTitle" stdset="0">
+               <string>Select the output directory</string>
               </property>
              </widget>
             </item>
@@ -596,6 +587,9 @@ p, li { white-space: pre-wrap; }
             </item>
             <item row="1" column="1">
              <widget class="QLineEdit" name="referenceUnionLineEdit">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reference Union&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>refUnion.tif</string>
               </property>
@@ -603,6 +597,9 @@ p, li { white-space: pre-wrap; }
             </item>
             <item row="2" column="0">
              <widget class="QLabel" name="warpUnionLabel">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Warp Union</string>
               </property>
@@ -610,6 +607,9 @@ p, li { white-space: pre-wrap; }
             </item>
             <item row="2" column="1">
              <widget class="QLineEdit" name="warpUnionLineEdit">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Warp union&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>warpUnion.tif</string>
               </property>
@@ -617,6 +617,9 @@ p, li { white-space: pre-wrap; }
             </item>
             <item row="3" column="0">
              <widget class="QLabel" name="warpIntersectLabel">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Warp Intersect</string>
               </property>
@@ -624,6 +627,9 @@ p, li { white-space: pre-wrap; }
             </item>
             <item row="3" column="1">
              <widget class="QLineEdit" name="warpIntersectLineEdit">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Warp Intersect&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>warpIntersect.tif</string>
               </property>
@@ -638,6 +644,9 @@ p, li { white-space: pre-wrap; }
             </item>
             <item row="4" column="1">
              <widget class="QLineEdit" name="trasformationMatrixLineEdit">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Transformation Matrix&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>transMat.csv</string>
               </property>
@@ -652,6 +661,9 @@ p, li { white-space: pre-wrap; }
             </item>
             <item row="5" column="1">
              <widget class="QLineEdit" name="finalControlPointsLineEdit">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Final Control Points&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>finalControlPoints.csv</string>
               </property>

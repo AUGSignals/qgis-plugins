@@ -54,6 +54,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="1" column="1">
         <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input Image file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="statusTip">
           <string>Select input image from loaded layers</string>
          </property>
@@ -67,15 +70,15 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QgsFileWidget" name="outputImageQgsFileWidget">
+        <widget class="QgsFileWidget" name="outputImageQgsFileWidget" native="true">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Image filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="statusTip">
           <string>Select output filepath. Ensure file extension is included</string>
          </property>
-         <property name="filter">
+         <property name="filter" stdset="0">
           <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
-         </property>
-         <property name="storageMode">
-          <enum>QgsFileWidget::SaveFile</enum>
          </property>
         </widget>
        </item>
@@ -87,7 +90,11 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QgsRasterBandComboBox" name="bandRasterBandComboBox"/>
+        <widget class="QgsRasterBandComboBox" name="bandRasterBandComboBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Band Index&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
        </item>
        <item row="5" column="0">
         <widget class="QLabel" name="majorAxisLabel">
@@ -98,6 +105,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="5" column="1">
         <widget class="QSpinBox" name="majorAxisSpinBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Width/Major Axis Size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="statusTip">
           <string>Width for rectangular/cross shape, semi major axis for ellipse (integer)</string>
          </property>
@@ -112,6 +122,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="6" column="1">
         <widget class="QSpinBox" name="minorAxisSpinBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Height/Minor Axis Size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="statusTip">
           <string>Height for rectangular/cross shape, semi minor axis for ellipse (integer)</string>
          </property>
@@ -126,6 +139,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="7" column="1">
         <widget class="QComboBox" name="morphShapeComboBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Morph Shape&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="statusTip">
           <string>Shape of the structuring element</string>
          </property>
@@ -155,6 +171,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="8" column="1">
         <widget class="QSpinBox" name="anchorWidthSpinBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anchor Position  Width&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="statusTip">
           <string>Anchor position width (integer)</string>
          </property>
@@ -175,6 +194,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="9" column="1">
         <widget class="QSpinBox" name="anchorHeightSpinBox">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anchor Position Height&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="statusTip">
           <string>Anchor position height (integer)</string>
          </property>

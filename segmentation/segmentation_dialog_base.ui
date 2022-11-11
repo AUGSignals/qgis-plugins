@@ -60,7 +60,11 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox"/>
+       <widget class="QgsMapLayerComboBox" name="inputQgsMapLayerComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input Image file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="outputLabel">
@@ -70,15 +74,15 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget">
-        <property name="dialogTitle">
+       <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Image filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="dialogTitle" stdset="0">
          <string>Select output file</string>
         </property>
-        <property name="filter">
+        <property name="filter" stdset="0">
          <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
-        </property>
-        <property name="storageMode">
-         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>
@@ -90,15 +94,15 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QgsFileWidget" name="tempOutputQgsFileWidget">
-        <property name="dialogTitle">
+       <widget class="QgsFileWidget" name="tempOutputQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temporary Output&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="dialogTitle" stdset="0">
          <string>Select Temp Output</string>
         </property>
-        <property name="filter">
+        <property name="filter" stdset="0">
          <string>*.csv;;*.txt;; *.*</string>
-        </property>
-        <property name="storageMode">
-         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>
@@ -110,15 +114,15 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QgsFileWidget" name="pDFFilenameQgsFileWidget">
-        <property name="dialogTitle">
+       <widget class="QgsFileWidget" name="pDFFilenameQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;PDF Filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="dialogTitle" stdset="0">
          <string>Select PDF Filename</string>
         </property>
-        <property name="filter">
+        <property name="filter" stdset="0">
          <string>*.csv;;*.txt;; *.*</string>
-        </property>
-        <property name="storageMode">
-         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>
@@ -131,6 +135,9 @@
       </item>
       <item row="5" column="1">
        <widget class="QSpinBox" name="kernelSizeSpinBox_2">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kernel Window Size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="maximum">
          <number>999</number>
         </property>
@@ -151,6 +158,9 @@
       </item>
       <item row="6" column="1">
        <widget class="QDoubleSpinBox" name="thresholdDoubleSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Threshold Value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="minimum">
          <double>-100.000000000000000</double>
         </property>
@@ -170,7 +180,11 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox_2"/>
+       <widget class="QCheckBox" name="verboseCheckBox_2">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verbose Mode - print a message to console&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="bandLabel">
@@ -180,7 +194,11 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsRasterBandComboBox" name="bandQgsRasterBandComboBox"/>
+       <widget class="QgsRasterBandComboBox" name="bandQgsRasterBandComboBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Band Index&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

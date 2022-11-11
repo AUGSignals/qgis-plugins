@@ -44,7 +44,7 @@
       <rect>
        <x>2</x>
        <y>40</y>
-       <width>521</width>
+       <width>593</width>
        <height>341</height>
       </rect>
      </property>
@@ -57,11 +57,14 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QgsFileWidget" name="inputQgsFileWidget">
+       <widget class="QgsFileWidget" name="inputQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input Folder or Zipped File&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="statusTip">
          <string>Input Folder or Zipped File</string>
         </property>
-        <property name="filter">
+        <property name="filter" stdset="0">
          <string>*.zip;;*;;*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
         </property>
        </widget>
@@ -134,12 +137,12 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget">
-        <property name="filter">
-         <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
+       <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Image filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
-        <property name="storageMode">
-         <enum>QgsFileWidget::SaveFile</enum>
+        <property name="filter" stdset="0">
+         <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
         </property>
        </widget>
       </item>
@@ -152,6 +155,9 @@
       </item>
       <item row="4" column="1">
        <widget class="QgsDoubleSpinBox" name="outputResolutionQgsDoubleSpinBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Image Resolution&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="maximum">
          <double>999.990000000000009</double>
         </property>
@@ -168,7 +174,11 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QLineEdit" name="bandQLineEdit"/>
+       <widget class="QLineEdit" name="bandQLineEdit">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Band filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="label_3">
@@ -178,8 +188,11 @@
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QgsFileWidget" name="demQgsFileWidget">
-        <property name="filter">
+       <widget class="QgsFileWidget" name="demQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Digital Elevation Model (DEM) file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="filter" stdset="0">
          <string>*.dem;;*.*</string>
         </property>
        </widget>
@@ -192,8 +205,11 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QgsFileWidget" name="egmQgsFileWidget">
-        <property name="filter">
+       <widget class="QgsFileWidget" name="egmQgsFileWidget" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Earth's Gravitational Model (EGM) file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="filter" stdset="0">
          <string>*.egm;;*.*</string>
         </property>
        </widget>
