@@ -1,7 +1,7 @@
 #/***************************************************************************
-# CallRectification
+# Rectification
 #
-# This plugin is to call the rectification executable 
+# This plugin performs geo-rectification on MMW imagery 
 #							 -------------------
 #		begin				: 2022-10-11
 #		git sha				: $Format:%H$
@@ -38,15 +38,15 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	Call_Rectification.py Call_Rectification_dialog.py
+	rectification.py rectification_dialog.py
 
-PLUGINNAME = Call_Rectification
+PLUGINNAME = Rectification
 
 PY_FILES = \
 	__init__.py \
-	Call_Rectification.py Call_Rectification_dialog.py
+	rectification.py rectification_dialog.py
 
-UI_FILES = Call_Rectification_dialog_base.ui
+UI_FILES = rectification_dialog_base.ui
 
 EXTRAS = metadata.txt icon.png
 

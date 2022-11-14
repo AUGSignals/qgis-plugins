@@ -3,14 +3,14 @@
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
-name=Call Rectification
+name=Rectification
 qgisMinimumVersion=3.0
-description=This plugin is to call the rectification executable 
+description=This plugin performs geo-rectification on MMW imagery 
 version=0.1
 author=Nusaibah Alhadhrami
 email=nusaibah.alhadhrami@bayanat.ai
 
-about=This plugin was created to call the rectification executable.
+about=This plugin performs geo-rectification on MMW imagery.
 
 tracker=http://bugs
 repository=http://repo
@@ -26,7 +26,7 @@ hasProcessingProvider=no
 tags=python
 
 homepage=http://homepage
-category=Vector
+category=Plugins
 icon=icon.png
 # experimental flag
 experimental=True
