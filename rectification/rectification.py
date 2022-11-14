@@ -247,8 +247,9 @@ class CallRectification:
             # substitute with your code.
             self.arguments["-i"] = self.dlg.mQgsFileWidget_2.filePath()
             self.arguments["-o"] = self.dlg.mQgsFileWidget_3.filePath()
-            self.arguments["-s"] = str(self.dlg.lineEdit_3.text())
+            self.arguments["-s"] = self.dlg.comboBox_2.currentText()
             self.arguments["-d"] = self.dlg.mQgsFileWidget.filePath()
+            self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
             
             args = []
             for key, value in self.arguments.items():
