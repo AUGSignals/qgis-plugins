@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Segmentation</string>
+   <string>Feature Extraction &gt; Segmentation</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.png</normaloff>icon.png</iconset>
   </property>
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
@@ -74,15 +78,18 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+       <widget class="QgsFileWidget" name="outputQgsFileWidget">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Image filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
-        <property name="dialogTitle" stdset="0">
+        <property name="dialogTitle">
          <string>Select output file</string>
         </property>
-        <property name="filter" stdset="0">
+        <property name="filter">
          <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
+        </property>
+        <property name="storageMode">
+         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>
@@ -94,15 +101,18 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QgsFileWidget" name="tempOutputQgsFileWidget" native="true">
+       <widget class="QgsFileWidget" name="tempOutputQgsFileWidget">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temporary Output&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Intermediate/Temporary Output Filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
-        <property name="dialogTitle" stdset="0">
+        <property name="dialogTitle">
          <string>Select Temp Output</string>
         </property>
-        <property name="filter" stdset="0">
+        <property name="filter">
          <string>*.csv;;*.txt;; *.*</string>
+        </property>
+        <property name="storageMode">
+         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>
@@ -114,15 +124,18 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QgsFileWidget" name="pDFFilenameQgsFileWidget" native="true">
+       <widget class="QgsFileWidget" name="pDFFilenameQgsFileWidget">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;PDF Filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Intermediate/Temporary PDF Filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
-        <property name="dialogTitle" stdset="0">
+        <property name="dialogTitle">
          <string>Select PDF Filename</string>
         </property>
-        <property name="filter" stdset="0">
+        <property name="filter">
          <string>*.csv;;*.txt;; *.*</string>
+        </property>
+        <property name="storageMode">
+         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>

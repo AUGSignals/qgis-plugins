@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Histogram</string>
+   <string>Feature Extraction &gt; Histogram</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.png</normaloff>icon.png</iconset>
   </property>
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
@@ -34,7 +38,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>111</width>
+     <width>601</width>
      <height>33</height>
     </rect>
    </property>
@@ -46,7 +50,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Histogram&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
-    <set>Qt::AlignCenter</set>
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QStackedWidget" name="stackedWidget">
@@ -94,15 +98,18 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+       <widget class="QgsFileWidget" name="outputQgsFileWidget">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Image filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
-        <property name="dialogTitle" stdset="0">
+        <property name="dialogTitle">
          <string>Select output file</string>
         </property>
-        <property name="filter" stdset="0">
+        <property name="filter">
          <string>*.csv ;;*.*</string>
+        </property>
+        <property name="storageMode">
+         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>
