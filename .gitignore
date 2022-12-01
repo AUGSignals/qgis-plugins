@@ -109,5 +109,6 @@ test_plugin/
 # Doxygen outputs
 docs/html/
 docs/latex/
+docs/pdf/
 
 **LOC-*

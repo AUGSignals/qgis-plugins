@@ -27,6 +27,9 @@ To build documentation (optional), the following additional software are require
 * [doxypypy](https://github.com/Feneric/doxypypy) v 0.8.8 or newer
 * [LaTex](https://www.latex-project.org/get/) (optional) to create a PDF document
 
+Developer
+---------
+Run `copy_assets.bat` to copy common files to all plugin folders.
 
 Installation
 -------------
