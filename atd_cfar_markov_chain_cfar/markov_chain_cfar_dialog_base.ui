@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Markov Chain CFAR</string>
+   <string>Detector &gt; CFAR &gt; Markov Chain CFAR</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.png</normaloff>icon.png</iconset>
   </property>
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
@@ -74,12 +78,15 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+       <widget class="QgsFileWidget" name="outputQgsFileWidget">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Image filename&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
-        <property name="filter" stdset="0">
+        <property name="filter">
          <string>*.tif *.tiff *.gtif ;;*.img ;; *.*</string>
+        </property>
+        <property name="storageMode">
+         <enum>QgsFileWidget::SaveFile</enum>
         </property>
        </widget>
       </item>
@@ -185,7 +192,7 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QgsFileWidget" name="maskQgsFileWidget" native="true">
+       <widget class="QgsFileWidget" name="maskQgsFileWidget">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mask (defines detection region)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -219,11 +226,11 @@
        </widget>
       </item>
       <item row="10" column="1">
-       <widget class="QgsFileWidget" name="histogramBinsQgsFileWidget" native="true">
+       <widget class="QgsFileWidget" name="histogramBinsQgsFileWidget">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Histograms bins&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
-        <property name="filter" stdset="0">
+        <property name="filter">
          <string>*.csv;;*.*</string>
         </property>
        </widget>
@@ -236,11 +243,11 @@
        </widget>
       </item>
       <item row="11" column="1">
-       <widget class="QgsFileWidget" name="transitionHistogramQgsFileWidget" native="true">
+       <widget class="QgsFileWidget" name="transitionHistogramQgsFileWidget">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Transition histogram (if available)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
-        <property name="filter" stdset="0">
+        <property name="filter">
          <string>*.csv;;*.*</string>
         </property>
        </widget>
@@ -312,7 +319,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>341</width>
+     <width>521</width>
      <height>33</height>
     </rect>
    </property>

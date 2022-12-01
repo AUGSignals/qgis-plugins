@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Classifier Tester</string>
+   <string>Target Recognition &gt; Classifier: Classify</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.png</normaloff>icon.png</iconset>
   </property>
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
@@ -56,14 +60,14 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QgsFileWidget" name="inputQgsFileWidget" native="true">
+        <widget class="QgsFileWidget" name="inputQgsFileWidget">
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Input Testing Datasets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
-         <property name="dialogTitle" stdset="0">
+         <property name="dialogTitle">
           <string>Select Input Data</string>
          </property>
-         <property name="filter" stdset="0">
+         <property name="filter">
           <string>*.h5;;*.*</string>
          </property>
         </widget>
@@ -76,15 +80,18 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QgsFileWidget" name="outputQgsFileWidget" native="true">
+        <widget class="QgsFileWidget" name="outputQgsFileWidget">
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Output Directory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
-         <property name="dialogTitle" stdset="0">
+         <property name="dialogTitle">
           <string>Select output directory</string>
          </property>
-         <property name="filter" stdset="0">
+         <property name="filter">
           <string/>
+         </property>
+         <property name="storageMode">
+          <enum>QgsFileWidget::GetDirectory</enum>
          </property>
         </widget>
        </item>
@@ -157,11 +164,11 @@
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QgsFileWidget" name="modelQgsFileWidget" native="true">
+        <widget class="QgsFileWidget" name="modelQgsFileWidget">
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Trained Model (or Training data for KNN)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
-         <property name="dialogTitle" stdset="0">
+         <property name="dialogTitle">
           <string>Select Model</string>
          </property>
         </widget>
@@ -177,7 +184,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>247</width>
+     <width>501</width>
      <height>33</height>
     </rect>
    </property>
@@ -186,7 +193,7 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:16pt; font-weight:600;&quot;&gt;Classifier Tester&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:16pt; font-weight:600;&quot;&gt;Apply Classifier&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

@@ -1,10 +1,10 @@
-A3DP GUI Toolkit
-================
+SMAC Test Bench GUI Toolkit
+============================
 
 Introduction
 ------------
 
-This directory contains a collection of Graphical User Interfaces (GUIs) based on the QGIS plugin platform. The GUIs are dialog-based user interfaces designed in Qt-5. The QGIS plugins platform supports the Python programming language, and as a result the A3DP GUI Toolkit is written in Python 3.7. 
+This directory contains a collection of Graphical User Interfaces (GUIs) based on the QGIS plugin platform. The GUIs are dialog-based user interfaces designed in Qt-5. The QGIS plugins platform supports the Python programming language, and as a result the SMAC GUI Toolkit is written in Python 3.7. 
 
 
 How Does It Work?
@@ -19,7 +19,7 @@ Requirements
 The following pre-requisites must be satisfied to install and use the plugins.
 
 * [QGIS](https://www.qgis.org/da/site/forusers/download.html) version 3.14 or newer
-	* Version 3.16 long-term release is preferred for stability
+	* Version 3.16/3.22 long-term release is preferred for stability
 
 To build documentation (optional), the following additional software are required.
 
@@ -53,3 +53,4 @@ References
 -----------
 
 [1]: AUG Signals, "SMACT UI Installation Manual.pdf", August 2021
+

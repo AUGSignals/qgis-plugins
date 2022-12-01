@@ -21,13 +21,14 @@
  *                                                                         *
  ***************************************************************************/
 """
+
 import subprocess
 import os
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QMenu, QFileDialog
-from qgis.core import QgsProject, Qgis, QgsProject, QgsMessageLog, QgsRasterLayer
+from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsRasterLayer
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -37,7 +38,7 @@ from .output_dialog import OutputDialog
 import os.path
 
 
-class CallRectification:
+class Rectification:
     """QGIS Plugin Implementation."""
 
     def __init__(self, iface):
@@ -155,26 +156,13 @@ class CallRectification:
             self.iface.addToolBarIcon(action)
 
         if add_to_menu:
-            self.iface.addPluginToVectorMenu(
+            self.iface.addPluginToMenu(
                 self.menu,
                 action)
 
         self.actions.append(action)
 
         return action
-
-    def initGui(self):
-        """Create the menu entries and toolbar icons inside the QGIS GUI."""
-
-        # icon_path = ':/plugins/rectification/icon.png'
-        # self.add_action(
-        #     icon_path,
-        #     text=self.tr(u'Rectification'),
-        #     callback=self.run,
-        #     parent=self.iface.mainWindow())
-
-        # will be set False in run()
-        self.first_start = True
 
     def addToCustomMenu(self):
         self.menu = self.iface.mainWindow().findChild(QMenu, '&Image Registration')
@@ -187,7 +175,7 @@ class CallRectification:
                                     self.iface.mainWindow())
         self.action.setObjectName("Rectification")
         self.action.setWhatsThis("Configuration for test plugin")
-        self.action.setStatusTip("This is status tip")
+        self.action.setStatusTip("This is Rectification status")
         self.action.triggered.connect(self.run)
 
         self.menu.addAction(self.action)
@@ -196,31 +184,28 @@ class CallRectification:
         menuBar.insertMenu(self.iface.firstRightStandardMenu().menuAction(),
                        self.menu)
 
+    def initGui(self):
+        """Create the menu entries and toolbar icons inside the QGIS GUI."""
+
+        # icon_path = ':/plugins/rectification/icon.png'
+        # self.add_action(
+        #     icon_path,
+        #     text=self.tr(u'Rectification'),
+        #     callback=self.run,
+        #     parent=self.iface.mainWindow())
+		
+        self.addToCustomMenu()
+
+        # will be set False in run()
+        self.first_start = True
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
-        #self.addToCustomMenu()        
-        # for action in self.actions:
-        #     self.iface.removePluginMenu(
-        #         self.tr(u'&Rectification'),
-        #         action)
-        #     self.iface.removeToolBarIcon(action)
-    
-    # def select_input_file(self):
-       # inputFilename, _filter = QFileDialog.getOpenFileName(
-        # self.dlg, "Select input image ","", '*.tif')
-       # self.dlg.mQgsFileWidget.setText(inputFilename)
-       
-    # def select_input_hdf(self):
-       # inputFilename_2, _filter = QFileDialog.getOpenFileName(
-        # self.dlg, "Select HDF file ","", '*.h5')
-       # self.dlg.mQgsFileWidget_2.setText(inputFilename_2)
-       
-    # def select_output_file(self):
-       # outputFilename, _filter = QFileDialog.getSaveFileName(
-        # self.dlg, "Select   output file ","", '*.tiff')
-       # self.dlg.mQgsFileWidget_3.setText(outputFilename)
-
+        for action in self.actions:
+            self.iface.removePluginMenu(
+                self.tr(u'&Rectification'),
+                action)
+            self.iface.removeToolBarIcon(action)
 
     def run(self):
         """Run method that performs all the real work"""
@@ -230,27 +215,22 @@ class CallRectification:
         if self.first_start == True:
             self.first_start = False
             self.dlg = RectificationDialog()
-            # self.dlg.mQgsFileWidget.clicked.connect(self.select_input_file)
-            # self.dlg.mQgsFileWidget_2.clicked.connect(self.select_input_hdf)
-            # self.dlg.mQgsFileWidget_3.clicked.connect(self.select_output_file)
-            self.dlg.mQgsFileWidget_3.setStorageMode(3)
+            #self.dlg.mQgsFileWidget_3.setStorageMode(3)
 
         self.arguments = {}
-        
+
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
             self.arguments["-i"] = self.dlg.mQgsFileWidget_2.filePath()
             self.arguments["-o"] = self.dlg.mQgsFileWidget_3.filePath()
             self.arguments["-s"] = self.dlg.comboBox_2.currentText()
             self.arguments["-d"] = self.dlg.mQgsFileWidget.filePath()
             self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
-            
+
             args = []
             for key, value in self.arguments.items():
                 if(value == False):
@@ -260,7 +240,7 @@ class CallRectification:
                 else:
                     args.append(key)
                     args.append(value)
-            
+
             s = QSettings()
             path = s.value("qgis-exe/path")
             exeName = "Rectification.exe"
@@ -268,15 +248,21 @@ class CallRectification:
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args)
-            popen.wait()
-            out, err = popen.communicate()
-            output_dialog_text = "Program Finished Running"
+            if self.arguments["-v"] == False:
+                popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+                popen.wait()
+                out, err = popen.communicate()
+            else:
+                popen = subprocess.Popen(args)
+                popen.wait()
+                out, err = popen.communicate()
+
+            output_dialog_text = ""
             if out is not None:
                 output_dialog_text += out.decode('utf-8')
             if err is not None:
                 output_dialog_text += err.decode('utf-8')
-            
+        
             QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
             print("output is", out, err)
@@ -284,7 +270,7 @@ class CallRectification:
             QgsMessageLog.logMessage(str(err), 'MyPlugin', Qgis.Info)
             self.output_dialog.commandText.setText(args_message)
             self.output_dialog.outputText.setText(output_dialog_text)
-            output_dialog = self.output_dialog.exec_()
+            test = self.output_dialog.exec_()
             output_path = self.dlg.mQgsFileWidget_3.filePath()
             rlayer = QgsRasterLayer(output_path, os.path.basename(output_path))
             if not rlayer.isValid():

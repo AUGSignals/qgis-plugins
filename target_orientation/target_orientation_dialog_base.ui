@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>410</width>
-    <height>201</height>
+    <width>480</width>
+    <height>246</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Target Orientation</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.png</normaloff>icon.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="6" column="0">
@@ -26,6 +30,12 @@
    </item>
    <item row="1" column="0" alignment="Qt::AlignLeft|Qt::AlignTop">
     <widget class="QLabel" name="label">
+     <property name="minimumSize">
+      <size>
+       <width>250</width>
+       <height>25</height>
+      </size>
+     </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Target Orientation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
