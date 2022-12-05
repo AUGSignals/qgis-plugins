@@ -239,7 +239,7 @@ class ModelBasedCFAR:
             self.arguments["-k"] = str(self.dlg.backgroundWindowQgsDoubleSpinBox.text())
             self.arguments["-m"] = str(self.dlg.minTargetQgsDoubleSpinBox.text())
             self.arguments["-n"] = str(self.dlg.maxTargetQgsDoubleSpinBox.text())
-            self.arguments["-p"] = str(self.dlg.probabilityQgsDoubleSpinBox.text())
+            self.arguments["-c"] = str(self.dlg.probabilityQgsDoubleSpinBox.text())
 
             self.arguments["-v"] = self.dlg.verboseCheckBox.isChecked()
 
@@ -253,9 +253,8 @@ class ModelBasedCFAR:
                 else:
                     args.append(key)
                     args.append(value)
-            args.append('/k')
-
-            #args.insert(0, "path", "%PATH%;C:\OpenCV\OpenCV-4.2\\bin")
+            
+            #args.append('/k')
 
             s = QSettings()
             path = s.value("qgis-exe/path")
@@ -264,7 +263,7 @@ class ModelBasedCFAR:
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+            popen = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             popen.wait()
             out, err = popen.communicate()
             output_dialog_text = ""
