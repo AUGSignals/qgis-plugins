@@ -61,7 +61,6 @@ class TargetOrientation:
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&Target Orientation')
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
@@ -196,15 +195,6 @@ class TargetOrientation:
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
         self.addToCustomMenu()
 
-        """
-        icon_path = ':/plugins/target_orientation/icon.png'
-        self.add_action(
-            icon_path,
-            text=self.tr(u'Target Orientation'),
-            callback=self.run,
-            parent=self.iface.mainWindow())
-        """
-
         # will be set False in run()
         self.first_start = True
 
@@ -254,13 +244,14 @@ class TargetOrientation:
             s = QSettings()
             path = s.value("qgis-exe/path")
             exeName = "TargetOrientation.exe"
-            path = path + "/" + exeName
+            path = path.replace("\\", "/") + "/" + exeName
             args.insert(0, path)
             args_message = " ".join(arg for arg in args)
 
-            popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+            popen = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             popen.wait()
             out, err = popen.communicate()
+
             output_dialog_text = ""
             if out is not None:
                 output_dialog_text += out.decode('utf-8')
@@ -269,9 +260,8 @@ class TargetOrientation:
         
             QgsMessageLog.logMessage("Your plugin code has been executed correctly", 'MyPlugin', Qgis.Info)
             QgsMessageLog.logMessage(str(args), 'MyPlugin', Qgis.Info)
-            print("output is", out, err)
-            QgsMessageLog.logMessage(str(out), 'MyPlugin', Qgis.Info)
-            QgsMessageLog.logMessage(str(err), 'MyPlugin', Qgis.Info)
+            print("output is", output_dialog_text)
+            QgsMessageLog.logMessage(str(output_dialog_text), 'MyPlugin', Qgis.Info)
             self.output_dialog.commandText.setText(args_message)
             self.output_dialog.outputText.setText(output_dialog_text)
             test = self.output_dialog.exec_()
